@@ -12,6 +12,7 @@ const translations = {
         contact: "Contact",
         myCart: "My Cart",
         theme: "Theme",
+        language: "Language",
         
         // Hero Section
         heroTitle: "Welcome to Sweat Box APG",
@@ -23,6 +24,9 @@ const translations = {
         searchPlaceholder: "Search trainers, products…",
         viewMore: "View More",
         learnMore: "Learn More",
+        readMore: "Read More",
+        submit: "Submit",
+        close: "Close",
         
         // About Page
         aboutTitle: "About Sweat Box APG",
@@ -31,15 +35,21 @@ const translations = {
         ourStoryText: "Founded with a passion for fitness excellence, Sweat Box APG has become Addis Ababa's most trusted performance gym. We combine cutting-edge equipment with personalized training to help you achieve your fitness goals.",
         ourMission: "Our Mission",
         ourMissionText: "To empower individuals through fitness, providing world-class facilities, expert guidance, and a supportive community that inspires lasting health and wellness.",
+        ourValues: "Our Values",
+        ourValuesText: "Excellence, Community, Innovation, and Results-driven approach to fitness.",
         contact: "Contact",
-        phone: "+251 11 639 2624",
-        email: "contact@sweatboxapg.com",
+        phone: "Phone",
+        email: "Email",
+        phoneValue: "+251 11 639 2624",
+        emailValue: "contact@sweatboxapg.com",
         
         // Trainers Page
         trainersTitle: "Expert Trainers",
         trainersSubtitle: "Meet Our Certified Fitness Professionals",
         specialties: "Specialties",
         experience: "Experience",
+        certification: "Certification",
+        bio: "Bio",
         
         // Contact Page
         contactTitle: "Contact Us",
@@ -48,17 +58,45 @@ const translations = {
         name: "Name",
         email: "Email",
         message: "Message",
+        location: "Location",
+        hours: "Hours",
         
         // Membership Page
         membershipTitle: "Membership Plans",
         membershipSubtitle: "Choose Your Fitness Journey",
         selectPlan: "Select Plan",
+        monthly: "Monthly",
+        quarterly: "Quarterly",
+        yearly: "Yearly",
+        features: "Features",
+        price: "Price",
+        signUp: "Sign Up",
         
         // Shop Page
         shopTitle: "Fitness Shop",
         shopSubtitle: "Premium Fitness Equipment & Supplements",
         addToCart: "Add to Cart",
-        price: "Price"
+        price: "Price",
+        description: "Description",
+        cart: "Cart",
+        checkout: "Checkout",
+        total: "Total",
+        
+        // Footer
+        aboutUs: "About Us",
+        services: "Services",
+        quickLinks: "Quick Links",
+        followUs: "Follow Us",
+        allRightsReserved: "All Rights Reserved",
+        
+        // Mobile Navigation
+        menu: "Menu",
+        search: "Search",
+        
+        // Form Validation
+        required: "This field is required",
+        invalidEmail: "Please enter a valid email",
+        messageTooShort: "Message is too short"
     },
     am: {
         // Navigation
@@ -70,6 +108,7 @@ const translations = {
         contact: "ያግኙን",
         myCart: "የእኔ ጋሪ",
         theme: "ገጽታ",
+        language: "ቋንቋ",
         
         // Hero Section
         heroTitle: "እንኳን ወደ ስዌት ቦክስ ኤፒጂ በደህና መጡ",
@@ -81,6 +120,9 @@ const translations = {
         searchPlaceholder: "ስልጠና ሰጪዎች፣ ምርቶችን ይፈልጉ…",
         viewMore: "ተጨማሪ ይመልከቱ",
         learnMore: "ተጨማሪ ይወቁ",
+        readMore: "ተጨማሪ ያንብቡ",
+        submit: "ያስገቡ",
+        close: "ዝጋ",
         
         // About Page
         aboutTitle: "ስለ ስዌት ቦክስ ኤፒጂ",
@@ -89,15 +131,21 @@ const translations = {
         ourStoryText: "በፍትህ የተሞላ ትልቅ ፍላጎት በመጀመር የተመሰረተው ስዌት ቦክስ ኤፒጂ ወደ አዲስ አበባ በጣም የሚታመን የፍትህ ጉዞ ማእበቻ ሆኗል። የዘመናዊ መሳሪያዎችን ከግል ስልጠና ጋር በማዋሃድ የፍትህ ዓላማዎችዎን ለማሳካት እንረዳዎታለን።",
         ourMission: "ተልዕኮችን",
         ourMissionText: "በፍትህ የተሞላ ሰዎችን በመቀላቀል፣ የዓለም ክፍል መመሪያዎች፣ የባለሙያ መመሪያዎች እና የሚያስተውል ማህበረሰብ በመስጠት የረዥም ጊዜ ጤናን እና ደህንነትን ለማሳያ ነው።",
+        ourValues: "ዋጋዎቻችን",
+        ourValuesText: "አስተማሪነት፣ ማህበረሰብ፣ አዳዲስ ሀሳብ እና የውጤት-የሚመራ የፍትህ አቀራረብ።",
         contact: "ያግኙን",
-        phone: "+251 11 639 2624",
-        email: "contact@sweatboxapg.com",
+        phone: "ስልክ",
+        email: "ኢሜይል",
+        phoneValue: "+251 11 639 2624",
+        emailValue: "contact@sweatboxapg.com",
         
         // Trainers Page
         trainersTitle: "የባለሙያ ስልጠና ሰጪዎች",
         trainersSubtitle: "የተረጋገጡ የፍትህ ሙያተኞችን ይገኙባቸው",
         specialties: "ልምዶች",
         experience: "ልምድ",
+        certification: "የምስክር ወረቀት",
+        bio: "ታሪክ",
         
         // Contact Page
         contactTitle: "ያግኙን",
@@ -106,17 +154,45 @@ const translations = {
         name: "ስም",
         email: "ኢሜይል",
         message: "መልዕክት",
+        location: "አካባቢ",
+        hours: "ሰዓታት",
         
         // Membership Page
         membershipTitle: "የአባልነት እቅዶች",
         membershipSubtitle: "የፍትህ ጉዎዎን ይምረጡ",
         selectPlan: "እቅድ ይምረጡ",
+        monthly: "ወርሃዊ",
+        quarterly: "ሩብ ዓመታዊ",
+        yearly: "ዓመታዊ",
+        features: "ባህሪያት",
+        price: "ዋጋ",
+        signUp: "ይመዝገቡ",
         
         // Shop Page
         shopTitle: "የፍትህ ሱቅ",
         shopSubtitle: "የፍትህ መሳሪያዎች እና ተጨማሪ ምግቦች",
         addToCart: "ወደ ጋሪ ያክሉ",
-        price: "ዋጋ"
+        price: "ዋጋ",
+        description: "መግለጫ",
+        cart: "ጋሪ",
+        checkout: "ይክፈሉ",
+        total: "ድምር",
+        
+        // Footer
+        aboutUs: "ስለ እኛ",
+        services: "አገልግሎቶች",
+        quickLinks: "ፈጣን አገናኞች",
+        followUs: "ይከተሉን",
+        allRightsReserved: "ሁሉም መብቶች የተጠበቁ ናቸው",
+        
+        // Mobile Navigation
+        menu: "ዝርዝር",
+        search: "ፈልግ",
+        
+        // Form Validation
+        required: "ይህ መስክ ያስፈልጋል",
+        invalidEmail: "እባክዎ ትክክለኛ ኢሜይል ያስገቡ",
+        messageTooShort: "መልዕክቱ በጣም አጭር ነው"
     }
 };
 
@@ -164,18 +240,82 @@ function applyTranslations(lang) {
         navLinks[5].textContent = t.contact;
     }
     
+    // Update mobile navigation links
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-content .nav-links a');
+    if (mobileNavLinks.length >= 6) {
+        mobileNavLinks[0].textContent = t.home;
+        mobileNavLinks[1].textContent = t.about;
+        mobileNavLinks[2].textContent = t.trainers;
+        mobileNavLinks[3].textContent = t.shop;
+        mobileNavLinks[4].textContent = t.membership;
+        mobileNavLinks[5].textContent = t.contact;
+    }
+    
     // Update header buttons
     const cartLabel = document.querySelector('#cartBtn .btn-label');
     const themeLabel = document.querySelector('#themeToggle .btn-label');
+    const langLabel = document.querySelector('#langToggle .btn-label');
     if (cartLabel) cartLabel.textContent = t.myCart;
     if (themeLabel) themeLabel.textContent = t.theme;
+    if (langLabel) langLabel.textContent = lang.toUpperCase();
+    
+    // Update mobile header buttons
+    const mobileCartLabel = document.querySelector('.mobile-controls #cartBtn .btn-label');
+    const mobileThemeLabel = document.querySelector('.mobile-controls #themeToggle .btn-label');
+    const mobileLangLabel = document.querySelector('.mobile-controls #langToggle .lang-text');
+    if (mobileCartLabel) mobileCartLabel.textContent = t.myCart;
+    if (mobileThemeLabel) mobileThemeLabel.textContent = t.theme;
+    if (mobileLangLabel) mobileLangLabel.textContent = lang.toUpperCase();
     
     // Update search placeholder
     const searchInput = document.getElementById('searchInput');
     if (searchInput) searchInput.placeholder = t.searchPlaceholder;
     
+    // Update mobile search placeholder
+    const mobileSearchInput = document.querySelector('.mobile-search input');
+    if (mobileSearchInput) mobileSearchInput.placeholder = t.searchPlaceholder;
+    
     // Update page titles based on current page
     updatePageContent(lang);
+    
+    // Update footer content
+    updateFooterContent(lang);
+    
+    // Update mobile menu button text
+    const menuBtn = document.querySelector('.menu-btn');
+    if (menuBtn) {
+        const menuText = menuBtn.querySelector('.menu-text');
+        if (menuText) menuText.textContent = t.menu;
+    }
+    
+    // Update close button text
+    const closeBtn = document.querySelector('.close-btn');
+    if (closeBtn) {
+        const closeText = closeBtn.querySelector('.close-text');
+        if (closeText) closeText.textContent = t.close;
+    }
+}
+
+function updateFooterContent(lang) {
+    const t = translations[lang];
+    
+    // Update footer headings
+    const aboutUsHeadings = document.querySelectorAll('.footer-col h3');
+    const servicesHeadings = document.querySelectorAll('.footer-col:nth-child(2) h3');
+    const quickLinksHeadings = document.querySelectorAll('.footer-col:nth-child(3) h3');
+    const followUsHeadings = document.querySelectorAll('.footer-col:nth-child(4) h3');
+    
+    if (aboutUsHeadings.length > 0) aboutUsHeadings[0].textContent = t.aboutUs;
+    if (servicesHeadings.length > 0) servicesHeadings[0].textContent = t.services;
+    if (quickLinksHeadings.length > 0) quickLinksHeadings[0].textContent = t.quickLinks;
+    if (followUsHeadings.length > 0) followUsHeadings[0].textContent = t.followUs;
+    
+    // Update copyright text
+    const copyright = document.querySelector('.footer-bottom p');
+    if (copyright) {
+        const currentYear = new Date().getFullYear();
+        copyright.textContent = `© ${currentYear} Sweat Box APG. ${t.allRightsReserved}`;
+    }
 }
 
 function updatePageContent(lang) {
@@ -214,6 +354,23 @@ function updateAboutPage(lang) {
     
     if (aboutTitle) aboutTitle.textContent = t.aboutTitle;
     if (aboutSubtitle) aboutSubtitle.textContent = t.aboutSubtitle;
+    
+    // Update about content sections
+    const storyHeadings = document.querySelectorAll('h3');
+    const missionHeadings = document.querySelectorAll('h3');
+    const valuesHeadings = document.querySelectorAll('h3');
+    
+    // Update contact info
+    const phoneLabels = document.querySelectorAll('.contact-info p');
+    const emailLabels = document.querySelectorAll('.contact-info p');
+    
+    // Update buttons
+    const contactButtons = document.querySelectorAll('.btn');
+    contactButtons.forEach(btn => {
+        if (btn.textContent.includes('Contact') || btn.textContent.includes('ያግኙን')) {
+            btn.textContent = t.contact;
+        }
+    });
 }
 
 function updateTrainersPage(lang) {
@@ -223,6 +380,29 @@ function updateTrainersPage(lang) {
     
     if (trainersTitle) trainersTitle.textContent = t.trainersTitle;
     if (trainersSubtitle) trainersSubtitle.textContent = t.trainersSubtitle;
+    
+    // Update trainer cards
+    const specialtyLabels = document.querySelectorAll('.trainer-card h4');
+    const experienceLabels = document.querySelectorAll('.trainer-card p');
+    const bioLabels = document.querySelectorAll('.trainer-card .bio h4');
+    
+    specialtyLabels.forEach(label => {
+        if (label.textContent.includes('Specialties') || label.textContent.includes('ልምዶች')) {
+            label.textContent = t.specialties;
+        }
+    });
+    
+    experienceLabels.forEach(label => {
+        if (label.textContent.includes('Experience') || label.textContent.includes('ልምድ')) {
+            label.textContent = t.experience;
+        }
+    });
+    
+    bioLabels.forEach(label => {
+        if (label.textContent.includes('Bio') || label.textContent.includes('ታሪክ')) {
+            label.textContent = t.bio;
+        }
+    });
 }
 
 function updateContactPage(lang) {
@@ -232,6 +412,44 @@ function updateContactPage(lang) {
     
     if (contactTitle) contactTitle.textContent = t.contactTitle;
     if (contactSubtitle) contactSubtitle.textContent = t.contactSubtitle;
+    
+    // Update form labels
+    const nameLabel = document.querySelector('label[for="name"]');
+    const emailLabel = document.querySelector('label[for="email"]');
+    const messageLabel = document.querySelector('label[for="message"]');
+    
+    if (nameLabel) nameLabel.textContent = t.name;
+    if (emailLabel) emailLabel.textContent = t.email;
+    if (messageLabel) messageLabel.textContent = t.message;
+    
+    // Update form placeholders
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
+    
+    if (nameInput) nameInput.placeholder = t.name;
+    if (emailInput) emailInput.placeholder = t.email;
+    if (messageInput) messageInput.placeholder = t.message;
+    
+    // Update submit button
+    const submitBtn = document.querySelector('.contact-form .btn');
+    if (submitBtn) submitBtn.textContent = t.send;
+    
+    // Update contact info
+    const locationHeadings = document.querySelectorAll('.contact-info h3');
+    const hoursHeadings = document.querySelectorAll('.contact-info h3');
+    
+    locationHeadings.forEach(heading => {
+        if (heading.textContent.includes('Location') || heading.textContent.includes('አካባቢ')) {
+            heading.textContent = t.location;
+        }
+    });
+    
+    hoursHeadings.forEach(heading => {
+        if (heading.textContent.includes('Hours') || heading.textContent.includes('ሰዓታት')) {
+            heading.textContent = t.hours;
+        }
+    });
 }
 
 function updateMembershipPage(lang) {
@@ -241,6 +459,29 @@ function updateMembershipPage(lang) {
     
     if (membershipTitle) membershipTitle.textContent = t.membershipTitle;
     if (membershipSubtitle) membershipSubtitle.textContent = t.membershipSubtitle;
+    
+    // Update membership cards
+    const selectPlanButtons = document.querySelectorAll('.membership-card .btn');
+    const featuresHeadings = document.querySelectorAll('.membership-card h4');
+    const priceLabels = document.querySelectorAll('.membership-card .price');
+    
+    selectPlanButtons.forEach(btn => {
+        if (btn.textContent.includes('Select') || btn.textContent.includes('ይምረጡ')) {
+            btn.textContent = t.selectPlan;
+        }
+    });
+    
+    featuresHeadings.forEach(heading => {
+        if (heading.textContent.includes('Features') || heading.textContent.includes('ባህሪያት')) {
+            heading.textContent = t.features;
+        }
+    });
+    
+    priceLabels.forEach(label => {
+        if (label.textContent.includes('Price') || label.textContent.includes('ዋጋ')) {
+            label.textContent = t.price;
+        }
+    });
 }
 
 function updateShopPage(lang) {
@@ -250,6 +491,120 @@ function updateShopPage(lang) {
     
     if (shopTitle) shopTitle.textContent = t.shopTitle;
     if (shopSubtitle) shopSubtitle.textContent = t.shopSubtitle;
+    
+    // Update product cards
+    const addToCartButtons = document.querySelectorAll('.product-card .btn');
+    const priceLabels = document.querySelectorAll('.product-card .price');
+    const descriptionLabels = document.querySelectorAll('.product-card .description h4');
+    
+    addToCartButtons.forEach(btn => {
+        if (btn.textContent.includes('Add to Cart') || btn.textContent.includes('ወደ ጋሪ')) {
+            btn.textContent = t.addToCart;
+        }
+    });
+    
+    priceLabels.forEach(label => {
+        if (label.textContent.includes('Price') || label.textContent.includes('ዋጋ')) {
+            label.textContent = t.price;
+        }
+    });
+    
+    descriptionLabels.forEach(label => {
+        if (label.textContent.includes('Description') || label.textContent.includes('መግለጫ')) {
+            label.textContent = t.description;
+        }
+    });
+    
+    // Update cart section
+    const cartHeadings = document.querySelectorAll('.cart-section h2');
+    const checkoutButtons = document.querySelectorAll('.cart-section .btn');
+    const totalLabels = document.querySelectorAll('.cart-section .total');
+    
+    cartHeadings.forEach(heading => {
+        if (heading.textContent.includes('Cart') || heading.textContent.includes('ጋሪ')) {
+            heading.textContent = t.cart;
+        }
+    });
+    
+    checkoutButtons.forEach(btn => {
+        if (btn.textContent.includes('Checkout') || btn.textContent.includes('ይክፈሉ')) {
+            btn.textContent = t.checkout;
+        }
+    });
+    
+    totalLabels.forEach(label => {
+        if (label.textContent.includes('Total') || label.textContent.includes('ድምር')) {
+            label.textContent = t.total;
+        }
+    });
+}
+
+// =============================================
+// CART FUNCTIONALITY
+// =============================================
+function setupCartFunctionality() {
+    // Initialize cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Update cart count for all cart badges
+    function updateCartCount() {
+        const cartBadges = document.querySelectorAll('#cartCount');
+        const totalItems = cart.reduce((total, item) => total + (item.quantity || 1), 0);
+        
+        cartBadges.forEach(badge => {
+            badge.textContent = totalItems;
+            badge.style.display = totalItems > 0 ? 'inline-flex' : 'none';
+        });
+    }
+    
+    // Add to cart function
+    window.addToCart = function(product) {
+        const existingItem = cart.find(item => item.id === product.id);
+        
+        if (existingItem) {
+            existingItem.quantity = (existingItem.quantity || 1) + 1;
+        } else {
+            cart.push({ ...product, quantity: 1 });
+        }
+        
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        
+        // Show notification
+        showNotification(`${product.name} added to cart!`);
+    };
+    
+    // Remove from cart function
+    window.removeFromCart = function(productId) {
+        cart = cart.filter(item => item.id !== productId);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+    };
+    
+    // Get cart function
+    window.getCart = function() {
+        return cart;
+    };
+    
+    // Clear cart function
+    window.clearCart = function() {
+        cart = [];
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+    };
+    
+    // Initial cart count update
+    updateCartCount();
+    
+    // Set up cart button clicks
+    const cartButtons = document.querySelectorAll('#cartBtn');
+    cartButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = 'shop.html';
+        });
+    });
 }
 
 // =============================================
@@ -260,12 +615,16 @@ function setupMobileNavigation() {
     const mobileNavOverlay = document.getElementById('mobileNavOverlay');
     const mobileCloseBtn = document.getElementById('mobileCloseBtn');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+    const mobileButtons = document.querySelectorAll('.mobile-btn');
 
     // Open mobile menu
     mobileMenuBtn.addEventListener('click', () => {
         mobileNavOverlay.classList.add('active');
         mobileMenuBtn.setAttribute('aria-expanded', 'true');
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        
+        // Animate hamburger to X
+        mobileMenuBtn.classList.add('active');
     });
 
     // Close mobile menu
@@ -273,9 +632,12 @@ function setupMobileNavigation() {
         mobileNavOverlay.classList.remove('active');
         mobileMenuBtn.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = ''; // Restore scrolling
+        
+        // Reset hamburger animation
+        mobileMenuBtn.classList.remove('active');
     }
 
-    // Close button click
+    // Close button functionality
     mobileCloseBtn.addEventListener('click', closeMobileMenu);
 
     // Close when clicking on overlay background
@@ -290,12 +652,67 @@ function setupMobileNavigation() {
         link.addEventListener('click', closeMobileMenu);
     });
 
+    // Handle mobile buttons (prevent menu close when clicking buttons)
+    mobileButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent menu from closing
+            
+            // Handle specific button functionality
+            if (button.id === 'cartBtn') {
+                // Cart functionality - navigate to shop page
+                window.location.href = 'shop.html';
+            } else if (button.id === 'themeToggle') {
+                // Theme toggle functionality
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                
+                // Update theme
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('sb_theme', newTheme); // Use same key as desktop
+                
+                // Update button icon
+                const icon = button.querySelector('.theme-icon');
+                if (icon) {
+                    icon.className = newTheme === 'light' ? 'fas fa-sun theme-icon' : 'fas fa-moon theme-icon';
+                }
+                
+                // Update aria-pressed
+                button.setAttribute('aria-pressed', newTheme === 'light' ? 'true' : 'false');
+                
+                // Update canvas colors if animated background exists
+                const canvas = document.getElementById('bgCanvas');
+                if (canvas && window.updateCanvasColors) {
+                    window.updateCanvasColors();
+                }
+            } else if (button.id === 'langToggle') {
+                // Language toggle functionality
+                const currentLang = button.getAttribute('data-lang') || 'en';
+                const newLang = currentLang === 'en' ? 'am' : 'en';
+                
+                // Update language
+                button.setAttribute('data-lang', newLang);
+                document.documentElement.setAttribute('data-lang', newLang);
+                localStorage.setItem('preferredLanguage', newLang); // Use same key as desktop
+                
+                // Update button text
+                const langText = button.querySelector('.lang-text');
+                if (langText) {
+                    langText.textContent = newLang.toUpperCase();
+                }
+                
+                // Apply translations
+                applyTranslations(newLang);
+            }
+        });
+    });
+
     // Close on escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && mobileNavOverlay.classList.contains('active')) {
             closeMobileMenu();
         }
     });
+
 }
 
 // =============================================
@@ -785,16 +1202,23 @@ function initializePage() {
     document.documentElement.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme);
     
+    // Initialize language
+    const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
+    document.documentElement.setAttribute('data-lang', savedLanguage);
+    
     // Setup all functionality
     setupMobileNavigation();
     setupThemeToggle();
-    setupCart();
+    setupCartFunctionality(); // New cart functionality
     setupCartButton();
     setupSearch();
     setupMembershipForm();
     setupAnimatedBackground();
     setupKeyboardShortcuts();
     setupLanguageSwitcher();
+    
+    // Apply initial translations
+    applyTranslations(savedLanguage);
     
     // Update cart UI
     updateCartUI();

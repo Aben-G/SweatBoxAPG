@@ -72,6 +72,17 @@
                 <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close mobile menu">
                     <i class="fas fa-times"></i>
                 </button>
+                
+                <div class="mobile-nav-header">
+                    <a href="index.html" class="brand">
+                        <img src="images/image.png" alt="SweatBox APG Logo" class="logo">
+                        <div>
+                            <h1>Sweat Box APG</h1>
+                            <div class="muted small">Addis Ababa • Performance Gym</div>
+                        </div>
+                    </a>
+                </div>
+                
                 <nav class="mobile-nav-links" aria-label="Mobile navigation">
                     <a href="index.html">Home</a>
                     <a href="about.html">About</a>
@@ -80,17 +91,26 @@
                     <a href="membership.html">Membership</a>
                     <a href="contact.html" class="active">Contact</a>
                 </nav>
+                
                 <div class="mobile-controls">
                     <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search" />
-                    <div class="header-buttons">
-                        <button id="cartBtn" class="cart-toggle-btn" title="View your cart">
+                    
+                    <div class="mobile-buttons">
+                        <button id="cartBtn" class="mobile-btn" title="View your cart">
                             <i class="fas fa-shopping-cart"></i>
                             <span class="btn-label">My Cart</span>
                             <span id="cartCount" class="cart-badge">0</span>
                         </button>
-                        <button id="themeToggle" class="theme-toggle-btn" aria-pressed="false" title="Switch theme">
-                            <i class="fas fa-moon"></i>
+                        
+                        <button id="themeToggle" class="mobile-btn theme-btn" aria-pressed="false" title="Switch theme">
+                            <i class="fas fa-moon theme-icon"></i>
                             <span class="btn-label">Theme</span>
+                        </button>
+                        
+                        <button id="langToggle" class="mobile-btn lang-btn" title="Switch language" data-lang="en">
+                            <i class="fas fa-globe"></i>
+                            <span class="btn-label">Language</span>
+                            <span class="lang-text">EN</span>
                         </button>
                     </div>
                 </div>
