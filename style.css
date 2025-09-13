@@ -251,6 +251,11 @@ footer {
     flex-shrink: 0;
 }
 
+/* Light theme footer text styling */
+[data-theme="light"] footer {
+    color: #1a1a1a; /* Black text for light theme */
+}
+
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -264,8 +269,19 @@ footer {
     margin-bottom: 1rem;
 }
 
+/* Light theme footer logo */
+[data-theme="light"] .footer-logo {
+    color: #1a1a1a; /* Black logo for light theme */
+}
+
 .footer-logo span {
-    color: rgba(255, 255, 255, 0.8);
+    color: #FF6B35; /* Orange accent for APG in dark theme */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Black shadow for better visibility */
+}
+
+/* Light theme footer logo span */
+[data-theme="light"] .footer-logo span {
+    color: #FF6B35; /* Orange accent for APG in light theme */
 }
 
 .footer-links {
@@ -278,19 +294,33 @@ footer {
 .footer-links a {
     color: white;
     text-decoration: none;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .footer-links a:hover {
-    color: rgba(255, 255, 255, 0.8);
-    opacity: 0.8;
+    color: #FF6B35; /* Orange on hover for dark theme */
+    opacity: 1;
 }
 
+/* Light theme footer links */
+[data-theme="light"] .footer-links a {
+    color: #1a1a1a; /* Black links for light theme */
+}
+
+[data-theme="light"] .footer-links a:hover {
+    color: #FF6B35; /* Orange on hover for light theme */
+    opacity: 1;
+}
 
 footer .muted.small {
     color: rgba(255, 255, 255, 0.7);
     margin-top: 1rem;
     font-size: 14px;
+}
+
+/* Light theme footer muted text */
+[data-theme="light"] footer .muted.small {
+    color: #666666; /* Gray muted text for light theme */
 }
 
 /* small utilities */
