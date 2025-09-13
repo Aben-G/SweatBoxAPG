@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SweatboxAPG | CrossFit 1109</title>
+    <meta name="description"
+        content="Become a member of Sweat Box APG. Choose from monthly, quarterly, or annual plans. Sign up for a free trial today!">
+    <meta name="keywords" content="gym membership, join gym Addis Ababa, fitness membership, CrossFit membership">
+    <meta name="author" content="Sweat Box APG">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+    <div class="site" role="application" aria-label="Sweat Box APG website">
+        <header>
+            <a class="brand" href="index.html">
+                <img src="images/image.png" alt="SweatBox APG Logo" class="logo">
+                <div>
+                    <h1>Sweat Box APG</h1>
+                    <div class="muted small">Addis Ababa • Performance Gym</div>
+                </div>
+            </a>
+
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="trainers.html">Trainers</a>
+                <a href="shop.html">Shop</a>
+                <a href="membership.html" class="active">Membership</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <div class="controls">
+                <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search"
+                    id="searchInput" />
+                
+                <!-- Cart and theme buttons in header -->
+                <div class="header-buttons">
+                    <button id="cartBtn" class="cart-toggle-btn" title="View your cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="btn-label">My Cart</span>
+                        <span id="cartCount" class="cart-badge">0</span>
+                    </button>
+                    <button id="themeToggle" class="theme-toggle-btn" aria-pressed="false" title="Switch theme">
+                        <i class="fas fa-moon"></i>
+                        <span class="btn-label">Theme</span>
+                    </button>
+                    <button id="langToggle" class="lang-toggle-btn" title="Switch language" data-lang="en">
+                        <i class="fas fa-globe"></i>
+                        <span class="btn-label">EN</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </header>
+
+        <!-- Mobile navigation overlay -->
+        <div class="mobile-nav-overlay" id="mobileNavOverlay">
+            <div class="mobile-nav-content">
+                <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close mobile menu">
+                    <i class="fas fa-times"></i>
+                </button>
+                <nav class="mobile-nav-links" aria-label="Mobile navigation">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="trainers.html">Trainers</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="membership.html" class="active">Membership</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+                <div class="mobile-controls">
+                    <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search" />
+                    <div class="header-buttons">
+                        <button id="cartBtn" class="cart-toggle-btn" title="View your cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="btn-label">My Cart</span>
+                            <span id="cartCount" class="cart-badge">0</span>
+                        </button>
+                        <button id="themeToggle" class="theme-toggle-btn" aria-pressed="false" title="Switch theme">
+                            <i class="fas fa-moon"></i>
+                            <span class="btn-label">Theme</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main>
+            <section id="pageContainer">
+
+                <!-- Membership -->
+                <article id="membership" class="page" role="region" aria-label="Membership">
+                    <h2>Membership</h2>
+                    <p class="muted small">Sample sign-up form (demo). Connect to your backend to persist memberships.
+                    </p>
+
+                    <div class="gallery">
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNyb3NzZml0fGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80"
+                                alt="Join our membership">
+                        </div>
+                    </div>
+
+                    <form id="memberForm" class="panel" style="margin-top:12px">
+                        <div class="form-row">
+                            <input name="first" placeholder="First name" required />
+                            <input name="last" placeholder="Last name" required />
+                        </div>
+                        <div style="margin-top:8px">
+                            <input name="email" placeholder="Email" required />
+                        </div>
+
+                        <div style="margin-top:8px">
+                            <select name="plan" required>
+                                <option value="">Select plan</option>
+                                <option value="monthly">Monthly — 3,999 ETB</option>
+                                <option value="quarter">Quarterly — 10,999 ETB</option>
+                                <option value="year">Year — 39,999 ETB</option>
+                            </select>
+                        </div>
+
+                        <div style="margin-top:10px; display:flex; gap:8px;">
+                            <button type="submit" class="btn primary">Sign up (demo)</button>
+                            <button type="reset" class="btn">Reset</button>
+                        </div>
+                    </form>
+                </article>
+
+            </section>
+
+            <aside style="position:relative;">
+                <div class="panel">
+                    <h4>Opening Hours</h4>
+                    <p class="small">Mon–Sun: 5:00 AM – 10:00 PM</p>
+                </div>
+
+                <div class="panel" style="margin-top:12px; min-height: 280px;">
+                    <h4>Follow Us</h4>
+                    <p class="muted small">Stay connected with us on social media</p>
+                    <div class="social-list">
+                        <div class="social-item">
+                            <a href="https://www.instagram.com/sweatboxapg/" target="_blank" rel="noopener noreferrer"
+                                class="social-link">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                        </div>
+                        <div class="social-item">
+                            <a href="https://www.facebook.com/p/sweatboxapg-100063940720079/" target="_blank"
+                                rel="noopener noreferrer" class="social-link">
+                                <i class="fab fa-facebook"></i>
+                                <span>Facebook</span>
+                            </a>
+                        </div>
+                        <div class="social-item">
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="social-link">
+                                <i class="fab fa-tiktok"></i>
+                                <span>TikTok</span>
+                            </a>
+                        </div>
+                        <div class="social-item">
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="social-link">
+                                <i class="fab fa-telegram"></i>
+                                <span>Telegram</span>
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+
+    </div>
+    </aside>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">SweatBox<span>APG</span></div>
+            <p>&copy; 2025 Sweat Box APG. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Support</a>
+            </div>
+        </div>
+    </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

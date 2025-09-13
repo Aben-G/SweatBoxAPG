@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SweatboxAPG | CrossFit 1109</title>
+    <meta name="description"
+        content="Meet our certified trainers at Sweat Box APG. CrossFit Level 1 certified coaches focused on performance and safety.">
+    <meta name="keywords" content="gym trainers Addis Ababa, CrossFit coaches, personal trainers, fitness instructors">
+    <meta name="author" content="Sweat Box APG">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+    <div class="site" role="application" aria-label="Sweat Box APG website">
+        <header>
+            <a class="brand" href="index.html">
+                <img src="images/image.png" alt="SweatBox APG Logo" class="logo">
+                <div>
+                    <h1>Sweat Box APG</h1>
+                    <div class="muted small">Addis Ababa • Performance Gym</div>
+                </div>
+            </a>
+
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="trainers.html" class="active">Trainers</a>
+                <a href="shop.html">Shop</a>
+                <a href="membership.html">Membership</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <div class="controls">
+                <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search"
+                    id="searchInput" />
+                
+                <!-- Cart and theme buttons in header -->
+                <div class="header-buttons">
+                    <button id="cartBtn" class="cart-toggle-btn" title="View your cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="btn-label">My Cart</span>
+                        <span id="cartCount" class="cart-badge">0</span>
+                    </button>
+                    <button id="themeToggle" class="theme-toggle-btn" aria-pressed="false" title="Switch theme">
+                        <i class="fas fa-moon"></i>
+                        <span class="btn-label">Theme</span>
+                    </button>
+                    <button id="langToggle" class="lang-toggle-btn" title="Switch language" data-lang="en">
+                        <i class="fas fa-globe"></i>
+                        <span class="btn-label">EN</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </header>
+
+        <!-- Mobile navigation overlay -->
+        <div class="mobile-nav-overlay" id="mobileNavOverlay">
+            <div class="mobile-nav-content">
+                <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close mobile menu">
+                    <i class="fas fa-times"></i>
+                </button>
+                <nav class="mobile-nav-links" aria-label="Mobile navigation">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="trainers.html" class="active">Trainers</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="membership.html">Membership</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+                <div class="mobile-controls">
+                    <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search" />
+                    <div class="header-buttons">
+                        <button id="cartBtn" class="cart-toggle-btn" title="View your cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="btn-label">My Cart</span>
+                            <span id="cartCount" class="cart-badge">0</span>
+                        </button>
+                        <button id="themeToggle" class="theme-toggle-btn" aria-pressed="false" title="Switch theme">
+                            <i class="fas fa-moon"></i>
+                            <span class="btn-label">Theme</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main>
+            <section id="pageContainer">
+
+                <!-- Trainers -->
+                <article id="trainers" class="page" role="region" aria-label="Trainers">
+                    <h2>Trainers</h2>
+                    <p class="muted small">Certified coaches focused on performance and safety.</p>
+
+                    <div class="gallery">
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHRyYWluZXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=80"
+                                alt="Trainer at Sweat Box APG">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8eW9nYSUyMHRlYWNoZXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=80"
+                                alt="Fitness instructor">
+                        </div>
+                    </div>
+
+                    <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+                        <div class="panel trainer">
+                            <div class="avatar">AK</div>
+                            <div>
+                                <h4>Abbey K. — Head Coach</h4>
+                                <div class="muted small">CrossFit L1, Strength & Conditioning</div>
+                            </div>
+                        </div>
+
+                        <div class="panel trainer">
+                            <div class="avatar">MT</div>
+                            <div>
+                                <h4>Mesa T. — Performance Coach</h4>
+                                <div class="muted small">HIIT, Mobility, Weightlifting</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </section>
+
+            <aside style="position:relative;">
+                <div class="panel">
+                    <h4>Opening Hours</h4>
+                    <p class="small">Mon–Sun: 5:00 AM – 10:00 PM</p>
+                </div>
+
+                <div class="panel" style="margin-top:12px; min-height: 280px;">
+                    <h4>Follow Us</h4>
+                    <p class="muted small">Stay connected with us on social media</p>
+                    <div class="social-list">
+                        <div class="social-item">
+                            <a href="https://www.instagram.com/sweatboxapg/" target="_blank" rel="noopener noreferrer"
+                                class="social-link">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                        </div>
+                        <div class="social-item">
+                            <a href="https://www.facebook.com/p/sweatboxapg-100063940720079/" target="_blank"
+                                rel="noopener noreferrer" class="social-link">
+                                <i class="fab fa-facebook"></i>
+                                <span>Facebook</span>
+                            </a>
+                        </div>
+                        <div class="social-item">
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="social-link">
+                                <i class="fab fa-tiktok"></i>
+                                <span>TikTok</span>
+                            </a>
+                        </div>
+                        <div class="social-item">
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="social-link">
+                                <i class="fab fa-telegram"></i>
+                                <span>Telegram</span>
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </aside>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">SweatBox<span>APG</span></div>
+                <p>&copy; 2025 Sweat Box APG. All Rights Reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Contact Support</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
