@@ -197,33 +197,69 @@ const translations = {
 };
 
 function setupLanguageSwitcher() {
+    // Desktop language toggle
     const langToggle = document.getElementById('langToggle');
-    const langLabel = langToggle.querySelector('.btn-label');
+    // Mobile language toggle
+    const mobileLangToggle = document.getElementById('mobileLangToggle');
+    
+    if (!langToggle && !mobileLangToggle) return;
     
     // Load saved language or default to English
     let currentLang = localStorage.getItem('preferredLanguage') || 'en';
     
-    // Update button state
-    langToggle.setAttribute('data-lang', currentLang);
-    langLabel.textContent = currentLang.toUpperCase();
-    
-    // Apply translations
-    applyTranslations(currentLang);
-    
-    // Toggle language on click
-    langToggle.addEventListener('click', () => {
+    const handleLanguageToggle = (toggle) => {
         currentLang = currentLang === 'en' ? 'am' : 'en';
         
         // Save preference
         localStorage.setItem('preferredLanguage', currentLang);
         
-        // Update button
-        langToggle.setAttribute('data-lang', currentLang);
-        langLabel.textContent = currentLang.toUpperCase();
+        // Update all language toggles
+        updateAllLanguageToggles(currentLang);
         
         // Apply translations
         applyTranslations(currentLang);
-    });
+    };
+    
+    // Initialize both toggles
+    updateAllLanguageToggles(currentLang);
+    
+    // Apply translations
+    applyTranslations(currentLang);
+    
+    // Add event listeners
+    if (langToggle) {
+        langToggle.addEventListener('click', () => handleLanguageToggle(langToggle));
+    }
+    
+    if (mobileLangToggle) {
+        mobileLangToggle.addEventListener('click', () => handleLanguageToggle(mobileLangToggle));
+    }
+}
+
+// Update all language toggle buttons (desktop and mobile)
+function updateAllLanguageToggles(lang) {
+    // Calculate the opposite language (what we will switch TO)
+    const oppositeLang = lang === 'en' ? 'am' : 'en';
+    
+    // Desktop language toggle
+    const desktopLangToggle = document.getElementById('langToggle');
+    if (desktopLangToggle) {
+        desktopLangToggle.setAttribute('data-lang', lang);
+        const desktopLabel = desktopLangToggle.querySelector('.btn-label');
+        if (desktopLabel) {
+            desktopLabel.textContent = oppositeLang.toUpperCase();
+        }
+    }
+    
+    // Mobile language toggle
+    const mobileLangToggle = document.getElementById('mobileLangToggle');
+    if (mobileLangToggle) {
+        mobileLangToggle.setAttribute('data-lang', lang);
+        const mobileLabel = mobileLangToggle.querySelector('.btn-label');
+        if (mobileLabel) {
+            mobileLabel.textContent = oppositeLang.toUpperCase();
+        }
+    }
 }
 
 function applyTranslations(lang) {
@@ -254,18 +290,17 @@ function applyTranslations(lang) {
     // Update header buttons
     const cartLabel = document.querySelector('#cartBtn .btn-label');
     const themeLabel = document.querySelector('#themeToggle .btn-label');
-    const langLabel = document.querySelector('#langToggle .btn-label');
     if (cartLabel) cartLabel.textContent = t.myCart;
     if (themeLabel) themeLabel.textContent = t.theme;
-    if (langLabel) langLabel.textContent = lang.toUpperCase();
     
     // Update mobile header buttons
     const mobileCartLabel = document.querySelector('.mobile-controls #cartBtn .btn-label');
-    const mobileThemeLabel = document.querySelector('.mobile-controls #themeToggle .btn-label');
-    const mobileLangLabel = document.querySelector('.mobile-controls #langToggle .lang-text');
+    const mobileThemeLabel = document.querySelector('.mobile-controls #mobileThemeToggle .btn-label');
     if (mobileCartLabel) mobileCartLabel.textContent = t.myCart;
     if (mobileThemeLabel) mobileThemeLabel.textContent = t.theme;
-    if (mobileLangLabel) mobileLangLabel.textContent = lang.toUpperCase();
+    
+    // Update language toggles using the centralized function
+    updateAllLanguageToggles(lang);
     
     // Update search placeholder
     const searchInput = document.getElementById('searchInput');
@@ -761,21 +796,51 @@ function updateThemeIcon(theme) {
     }
 }
 
+// Update all theme toggle icons (desktop and mobile)
+function updateAllThemeIcons(theme) {
+    // Desktop theme icon
+    const desktopIcon = document.querySelector('#themeToggle i');
+    if (desktopIcon) {
+        desktopIcon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+    }
+    
+    // Mobile theme icon
+    const mobileIcon = document.querySelector('#mobileThemeToggle i');
+    if (mobileIcon) {
+        mobileIcon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+    }
+}
+
 // =============================================
 // THEME TOGGLE FUNCTIONALITY
 // =============================================
 function setupThemeToggle() {
+    // Desktop theme toggle
     const themeToggle = document.getElementById('themeToggle');
-    if (!themeToggle) return;
+    // Mobile theme toggle
+    const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+    
+    if (!themeToggle && !mobileThemeToggle) return;
 
-    themeToggle.addEventListener('click', () => {
+    const handleThemeToggle = (toggle) => {
         const current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
         const next = current === 'light' ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', next);
         localStorage.setItem('sb_theme', next);
-        themeToggle.setAttribute('aria-pressed', next === 'light');
+        toggle.setAttribute('aria-pressed', next === 'light');
         updateThemeIcon(next);
-    });
+        
+        // Update all theme toggle icons
+        updateAllThemeIcons(next);
+    };
+    
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => handleThemeToggle(themeToggle));
+    }
+    
+    if (mobileThemeToggle) {
+        mobileThemeToggle.addEventListener('click', () => handleThemeToggle(mobileThemeToggle));
+    }
 }
 
 // =============================================
@@ -1229,3 +1294,600 @@ function initializePage() {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', initializePage);
+
+// =============================================
+// SLIDING BANNER FUNCTIONALITY
+// =============================================
+let bannerInterval;
+let currentSlide = 0;
+const slides = document.querySelectorAll('.banner-slide');
+const dots = document.querySelectorAll('.dot');
+const prevBtn = document.querySelector('.banner-arrow.prev');
+const nextBtn = document.querySelector('.banner-arrow.next');
+
+function initSlidingBanner() {
+    // Only initialize if we're on the about page and have banner elements
+    if (!document.querySelector('.sliding-banner-container')) return;
+    
+    const slides = document.querySelectorAll('.banner-slide');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.querySelector('.banner-arrow.prev');
+    const nextBtn = document.querySelector('.banner-arrow.next');
+    
+    if (slides.length === 0) return;
+    
+    // Set first slide as active
+    showSlide(0);
+    
+    // Start auto-sliding
+    startAutoSlide();
+    
+    // Add event listeners for manual controls
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            stopAutoSlide();
+            prevSlide();
+            startAutoSlide();
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            stopAutoSlide();
+            nextSlide();
+            startAutoSlide();
+        });
+    }
+    
+    // Add event listeners for dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            stopAutoSlide();
+            showSlide(index);
+            startAutoSlide();
+        });
+    });
+    
+    // Pause on hover
+    const bannerContainer = document.querySelector('.sliding-banner-container');
+    if (bannerContainer) {
+        bannerContainer.addEventListener('mouseenter', stopAutoSlide);
+        bannerContainer.addEventListener('mouseleave', startAutoSlide);
+    }
+    
+    // Handle touch events for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    bannerContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        stopAutoSlide();
+    }, { passive: true });
+    
+    bannerContainer.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+        startAutoSlide();
+    }, { passive: true });
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                // Swipe left, go to next slide
+                nextSlide();
+            } else {
+                // Swipe right, go to previous slide
+                prevSlide();
+            }
+        }
+    }
+}
+
+function showSlide(index) {
+    const slides = document.querySelectorAll('.banner-slide');
+    const dots = document.querySelectorAll('.dot');
+    
+    if (slides.length === 0) return;
+    
+    // Remove active class from all slides and dots
+    slides.forEach(slide => {
+        slide.classList.remove('active', 'prev');
+    });
+    
+    dots.forEach(dot => {
+        dot.classList.remove('active');
+    });
+    
+    // Handle index wrapping
+    if (index >= slides.length) {
+        currentSlide = 0;
+    } else if (index < 0) {
+        currentSlide = slides.length - 1;
+    } else {
+        currentSlide = index;
+    }
+    
+    // Add active class to current slide
+    slides[currentSlide].classList.add('active');
+    
+    // Add prev class to slide before current for smooth transition
+    const prevIndex = currentSlide === 0 ? slides.length - 1 : currentSlide - 1;
+    slides[prevIndex].classList.add('prev');
+    
+    // Add active class to current dot
+    if (dots[currentSlide]) {
+        dots[currentSlide].classList.add('active');
+    }
+}
+
+function nextSlide() {
+    const slides = document.querySelectorAll('.banner-slide');
+    if (slides.length === 0) return;
+    
+    showSlide(currentSlide + 1);
+}
+
+function prevSlide() {
+    const slides = document.querySelectorAll('.banner-slide');
+    if (slides.length === 0) return;
+    
+    showSlide(currentSlide - 1);
+}
+
+function startAutoSlide() {
+    stopAutoSlide(); // Clear any existing interval
+    bannerInterval = setInterval(() => {
+        nextSlide();
+    }, 5000); // Change slide every 5 seconds
+}
+
+function stopAutoSlide() {
+    if (bannerInterval) {
+        clearInterval(bannerInterval);
+        bannerInterval = null;
+    }
+}
+
+// Initialize sliding banner when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    initSlidingBanner();
+});
+
+// Also initialize when navigating to about page (for single-page applications)
+window.addEventListener('popstate', () => {
+    setTimeout(initSlidingBanner, 100);
+});
+
+// Cleanup on page unload
+window.addEventListener('beforeunload', () => {
+    stopAutoSlide();
+});
+
+// SETTINGS DROPDOWN FUNCTIONALITY
+// =============================================
+function initializeSettingsDropdown() {
+    const settingsBtn = document.getElementById('settingsBtn');
+    const settingsDropdown = document.getElementById('settingsDropdown');
+    
+    if (!settingsBtn || !settingsDropdown) return;
+    
+    // Toggle dropdown on settings button click
+    settingsBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const isOpen = settingsDropdown.classList.contains('show');
+        
+        // Close all other dropdowns
+        closeAllDropdowns();
+        
+        if (!isOpen) {
+            settingsDropdown.classList.add('show');
+            settingsBtn.setAttribute('aria-expanded', 'true');
+        } else {
+            settingsDropdown.classList.remove('show');
+            settingsBtn.setAttribute('aria-expanded', 'false');
+        }
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!settingsBtn.contains(e.target) && !settingsDropdown.contains(e.target)) {
+            settingsDropdown.classList.remove('show');
+            settingsBtn.setAttribute('aria-expanded', 'false');
+        }
+    });
+    
+    // Close dropdown on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && settingsDropdown.classList.contains('show')) {
+            settingsDropdown.classList.remove('show');
+            settingsBtn.setAttribute('aria-expanded', 'false');
+        }
+    });
+    
+    // Note: Theme and language toggles are handled by setupThemeToggle() and setupLanguageSwitcher()
+    // We just need to handle dropdown closing when they're clicked
+    
+    // Handle theme toggle click to close dropdown
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', (e) => {
+            // Close dropdown after toggle
+            setTimeout(() => {
+                settingsDropdown.classList.remove('show');
+                settingsBtn.setAttribute('aria-expanded', 'false');
+            }, 100);
+        });
+    }
+    
+    // Handle language toggle click to close dropdown
+    const langToggle = document.getElementById('langToggle');
+    if (langToggle) {
+        langToggle.addEventListener('click', (e) => {
+            // Close dropdown after toggle
+            setTimeout(() => {
+                settingsDropdown.classList.remove('show');
+                settingsBtn.setAttribute('aria-expanded', 'false');
+            }, 100);
+        });
+    }
+}
+
+// Helper function to close all dropdowns
+function closeAllDropdowns() {
+    const dropdowns = document.querySelectorAll('.settings-dropdown');
+    dropdowns.forEach(dropdown => {
+        dropdown.classList.remove('show');
+    });
+    
+    const settingsBtns = document.querySelectorAll('.settings-btn');
+    settingsBtns.forEach(btn => {
+        btn.setAttribute('aria-expanded', 'false');
+    });
+}
+
+// Initialize settings dropdown when DOM is loaded
+document.addEventListener('DOMContentLoaded', initializeSettingsDropdown);
+
+// ENHANCED ABOUT PAGE FUNCTIONALITY
+// =============================================
+
+// Enhanced About Page Features
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize counters
+    initializeCounters();
+    
+    // Initialize horizontal timeline animations
+    initializeTimeline();
+    
+    // Initialize scroll effects
+    initializeScrollEffects();
+    
+    // Initialize smooth scrolling
+    initializeSmoothScrolling();
+    
+    // Initialize community events
+    initializeCommunityEvents();
+    
+    // Initialize progress bars
+    initializeProgressBars();
+    
+    console.log('About page initialized successfully');
+});
+
+// Counter Animation Function
+function initializeCounters() {
+    const counters = document.querySelectorAll('.stat-number, .achievement-number');
+    
+    const animateCounter = (counter) => {
+        const target = parseFloat(counter.getAttribute('data-target'));
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        let current = 0;
+        
+        const updateCounter = () => {
+            current += increment;
+            if (current < target) {
+                counter.textContent = Math.floor(current);
+                requestAnimationFrame(updateCounter);
+            } else {
+                counter.textContent = target;
+            }
+        };
+        
+        updateCounter();
+    };
+    
+    // Intersection Observer for counter animation
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                entry.target.classList.add('animated');
+                animateCounter(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    counters.forEach(counter => {
+        counterObserver.observe(counter);
+    });
+}
+
+// Timeline Animations
+function initializeTimelineAnimations() {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    
+    const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    timelineItems.forEach(item => {
+        timelineObserver.observe(item);
+    });
+}
+
+// Testimonial Carousel
+function initializeTestimonialCarousel() {
+    const testimonialContainer = document.querySelector('.testimonial-container');
+    const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+    const prevBtn = document.querySelector('.testimonial-prev');
+    const nextBtn = document.querySelector('.testimonial-next');
+    const dots = document.querySelectorAll('.testimonial-dot');
+    
+    if (!testimonialContainer || testimonialSlides.length === 0) return;
+    
+    let currentSlide = 0;
+    
+    function showSlide(index) {
+        // Remove active class from all slides and dots
+        testimonialSlides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        // Add active class to current slide and dot
+        testimonialSlides[index].classList.add('active');
+        if (dots[index]) dots[index].classList.add('active');
+        
+        // Update container transform
+        testimonialContainer.style.transform = `translateX(-${index * 100}%)`;
+    }
+    
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % testimonialSlides.length;
+        showSlide(currentSlide);
+    }
+    
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + testimonialSlides.length) % testimonialSlides.length;
+        showSlide(currentSlide);
+    }
+    
+    // Event listeners
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            showSlide(currentSlide);
+        });
+    });
+    
+    // Auto-play
+    setInterval(nextSlide, 5000);
+    
+    // Initialize first slide
+    showSlide(0);
+}
+
+// Enhanced Sliding Banner
+function initializeEnhancedSlidingBanner() {
+    const banner = document.querySelector('.sliding-banner-enhanced .sliding-banner');
+    const slides = document.querySelectorAll('.sliding-banner-enhanced .banner-slide');
+    const dots = document.querySelectorAll('.banner-dots .dot');
+    const prevBtn = document.querySelector('.banner-arrow.prev');
+    const nextBtn = document.querySelector('.banner-arrow.next');
+    
+    if (!banner || slides.length === 0) return;
+    
+    let currentSlide = 0;
+    
+    function showSlide(index) {
+        // Remove active class from all dots
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        // Add active class to current dot
+        if (dots[index]) dots[index].classList.add('active');
+        
+        // Update banner transform
+        banner.style.transform = `translateX(-${index * 100}%)`;
+    }
+    
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+    
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+    }
+    
+    // Event listeners
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            showSlide(currentSlide);
+        });
+    });
+    
+    // Auto-play
+    setInterval(nextSlide, 6000);
+    
+    // Initialize first slide
+    showSlide(0);
+}
+
+// Scroll Effects
+function initializeScrollEffects() {
+    // Parallax effect for hero section
+    const heroSection = document.querySelector('.about-hero-enhanced');
+    if (heroSection) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = scrolled * 0.5;
+            heroSection.style.transform = `translateY(${parallax}px)`;
+        });
+    }
+    
+    // Fade in animations for sections
+    const sections = document.querySelectorAll('.timeline-section, .facilities-section, .achievements-section, .testimonials-section, .community-section');
+    
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    sections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(50px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        sectionObserver.observe(section);
+    });
+}
+
+// Smooth Scrolling
+function initializeSmoothScrolling() {
+    const heroButtons = document.querySelectorAll('.hero-btn');
+    
+    heroButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = button.getAttribute('href');
+            if (targetId && targetId.startsWith('#')) {
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+    });
+}
+
+// Community Events
+function initializeCommunityEvents() {
+    const calendarNav = document.querySelector('.calendar-nav');
+    const calendarMonth = document.querySelector('.calendar-month');
+    
+    if (!calendarNav || !calendarMonth) return;
+    
+    const months = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    
+    let currentMonth = new Date().getMonth();
+    let currentYear = new Date().getFullYear();
+    
+    function updateCalendarMonth() {
+        calendarMonth.textContent = `${months[currentMonth]} ${currentYear}`;
+    }
+    
+    calendarNav.addEventListener('click', (e) => {
+        if (e.target.tagName === 'BUTTON') {
+            if (e.target.classList.contains('prev') || e.target.textContent.includes('fa-chevron-left')) {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+            } else if (e.target.classList.contains('next') || e.target.textContent.includes('fa-chevron-right')) {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+            }
+            updateCalendarMonth();
+        }
+    });
+    
+    // Initialize calendar
+    updateCalendarMonth();
+}
+
+// Progress Bar Animation
+function initializeProgressBars() {
+    const progressBars = document.querySelectorAll('.progress-bar');
+    
+    const progressObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                entry.target.classList.add('animated');
+                const width = entry.target.getAttribute('data-width') || '75%';
+                entry.target.style.width = width;
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    progressBars.forEach(bar => {
+        progressObserver.observe(bar);
+    });
+}
+
+// Initialize progress bars when DOM is loaded
+document.addEventListener('DOMContentLoaded', initializeProgressBars);
+
+// =============================================
+// END OF ENHANCED ABOUT PAGE FUNCTIONALITY
+// =============================================
+
+// Cleanup on page unload
+window.addEventListener('beforeunload', () => {
+    stopAutoSlide();
+});
+
+// =============================================
+// BACK TO TOP BUTTON FUNCTIONALITY
+// =============================================
+
+// Initialize back to top button
+document.addEventListener('DOMContentLoaded', function() {
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    if (backToTopBtn) {
+        // Show/hide button based on scroll position
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) { // Show after scrolling 300px
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        // Scroll to top when clicked
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+});

@@ -34,29 +34,38 @@
                 <a href="shop.html">Shop</a>
                 <a href="membership.html">Membership</a>
                 <a href="contact.html" class="active">Contact</a>
+                
+                <!-- Search bar in navigation -->
+                <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search" id="searchInput" />
+                
+                <!-- Settings dropdown -->
+                <div class="settings-container">
+                    <button class="settings-btn" id="settingsBtn" aria-expanded="false" aria-haspopup="true" title="Settings">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    <div class="settings-dropdown" id="settingsDropdown">
+                        <div class="settings-dropdown-item" id="themeToggle" aria-pressed="false" title="Switch theme">
+                            <i class="fas fa-moon"></i>
+                            <span>Theme</span>
+                        </div>
+                        <div class="settings-dropdown-item" id="langToggle" data-lang="en" title="Switch language">
+                            <i class="fas fa-globe"></i>
+                            <span class="btn-label">English</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cart button -->
+                <button id="cartBtn" class="cart-btn" title="View your cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cartCount" class="cart-badge">0</span>
+                </button>
             </nav>
 
-            <div class="controls">
-                <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search"
-                    id="searchInput" />
-                
-                <!-- Cart and theme buttons in header -->
-                <div class="header-buttons">
-                    <button id="cartBtn" class="cart-toggle-btn" title="View your cart">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="btn-label">My Cart</span>
-                        <span id="cartCount" class="cart-badge">0</span>
-                    </button>
-                    <button id="themeToggle" class="theme-toggle-btn" aria-pressed="false" title="Switch theme">
-                        <i class="fas fa-moon"></i>
-                        <span class="btn-label">Theme</span>
-                    </button>
-                    <button id="langToggle" class="lang-toggle-btn" title="Switch language" data-lang="en">
-                        <i class="fas fa-globe"></i>
-                        <span class="btn-label">EN</span>
-                    </button>
-                </div>
-            </div>
+            <!-- Back to top button -->
+            <button id="backToTop" class="back-to-top-btn" aria-label="Back to top" title="Back to top">
+                <i class="fas fa-arrow-up"></i>
+            </button>
 
             <!-- Mobile menu button -->
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
@@ -95,6 +104,12 @@
                 <div class="mobile-controls">
                     <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search" />
                     
+                    <!-- Mobile theme button -->
+                    <button id="mobileThemeToggle" class="theme-toggle-btn" aria-pressed="false" title="Switch theme">
+                        <i class="fas fa-moon"></i>
+                        <span>Switch Theme</span>
+                    </button>
+                    
                     <div class="mobile-buttons">
                         <button id="cartBtn" class="mobile-btn" title="View your cart">
                             <i class="fas fa-shopping-cart"></i>
@@ -102,15 +117,9 @@
                             <span id="cartCount" class="cart-badge">0</span>
                         </button>
                         
-                        <button id="themeToggle" class="mobile-btn theme-btn" aria-pressed="false" title="Switch theme">
-                            <i class="fas fa-moon theme-icon"></i>
-                            <span class="btn-label">Theme</span>
-                        </button>
-                        
-                        <button id="langToggle" class="mobile-btn lang-btn" title="Switch language" data-lang="en">
-                            <i class="fas fa-globe"></i>
-                            <span class="btn-label">Language</span>
-                            <span class="lang-text">EN</span>
+                        <button id="mobileLangToggle" class="mobile-btn lang-btn" title="Switch language" data-lang="en">
+                            <i class="fas fa-globe lang-icon"></i>
+                            <span class="btn-label">EN</span>
                         </button>
                     </div>
                 </div>
@@ -122,10 +131,12 @@
 
                 <!-- Contact -->
                 <article id="contact" class="page" role="region" aria-label="Contact">
-                    <h2>Contact & Location</h2>
-                    <p class="muted small">Phone and address pulled from public listings and socials.</p>
+                    <div class="contact-hero">
+                        <h2>Contact & Location</h2>
+                        <p class="muted small">Phone and address pulled from public listings and socials.</p>
+                    </div>
 
-                    <div class="gallery">
+                    <div class="contact-gallery">
                         <div class="gallery-item">
                             <img src="https://images.unsplash.com/photo-1569336415964-4f2d4e62c903?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGd5bSUyMGxvYmJ5fGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80"
                                 alt="Sweat Box APG location">
@@ -136,18 +147,18 @@
                         </div>
                     </div>
 
-                    <div style="display:flex; gap:12px; margin-top:12px; flex-wrap:wrap;">
-                        <div class="panel" style="flex:1; min-width:260px">
+                    <div class="contact-info-grid">
+                        <div class="contact-info-card">
                             <h4>Contact</h4>
-                            <p class="small">Phone: <strong>+251 11 639 2624</strong></p>
-                            <p class="small">Email: <strong>contact@sweatboxapg.com</strong></p>
+                            <p>Phone: <strong>+251 11 639 2624</strong></p>
+                            <p>Email: <strong>contact@sweatboxapg.com</strong></p>
                         </div>
 
-                        <div class="panel" style="flex:1; min-width:260px">
+                        <div class="contact-info-card">
                             <h4>Address & hours</h4>
-                            <p class="small">XPVJ+C48, Lesotho St, Addis Ababa, Ethiopia</p>
-                            <p class="small">Daily: 5:00 AM – 10:00 PM</p>
-                            <p class="small muted">Sources: public listings and the gym's social pages.</p>
+                            <p>XPVJ+C48, Lesotho St, Addis Ababa, Ethiopia</p>
+                            <p>Daily: 5:00 AM – 10:00 PM</p>
+                            <p class="muted">Sources: public listings and the gym's social pages.</p>
                         </div>
                     </div>
                 </article>
@@ -206,6 +217,24 @@
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
                     <a href="#">Contact Support</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/sweatboxapg/" target="_blank" rel="noopener noreferrer" class="footer-social-link instagram">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://www.facebook.com/p/sweatboxapg-100063940720079/" target="_blank" rel="noopener noreferrer" class="footer-social-link facebook">
+                        <i class="fab fa-facebook"></i>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="footer-social-link tiktok">
+                        <i class="fab fa-tiktok"></i>
+                        <span>TikTok</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="footer-social-link telegram">
+                        <i class="fab fa-telegram"></i>
+                        <span>Telegram</span>
+                    </a>
                 </div>
             </div>
         </footer>

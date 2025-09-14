@@ -34,29 +34,38 @@
                 <a href="shop.html">Shop</a>
                 <a href="membership.html" class="active">Membership</a>
                 <a href="contact.html">Contact</a>
+                
+                <!-- Search bar in navigation -->
+                <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search" id="searchInput" />
+                
+                <!-- Settings dropdown -->
+                <div class="settings-container">
+                    <button class="settings-btn" id="settingsBtn" aria-expanded="false" aria-haspopup="true" title="Settings">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    <div class="settings-dropdown" id="settingsDropdown">
+                        <div class="settings-dropdown-item" id="themeToggle" aria-pressed="false" title="Switch theme">
+                            <i class="fas fa-moon"></i>
+                            <span>Theme</span>
+                        </div>
+                        <div class="settings-dropdown-item" id="langToggle" data-lang="en" title="Switch language">
+                            <i class="fas fa-globe"></i>
+                            <span class="btn-label">English</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cart button -->
+                <button id="cartBtn" class="cart-btn" title="View your cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cartCount" class="cart-badge">0</span>
+                </button>
             </nav>
 
-            <div class="controls">
-                <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search"
-                    id="searchInput" />
-                
-                <!-- Cart and theme buttons in header -->
-                <div class="header-buttons">
-                    <button id="cartBtn" class="cart-toggle-btn" title="View your cart">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="btn-label">My Cart</span>
-                        <span id="cartCount" class="cart-badge">0</span>
-                    </button>
-                    <button id="themeToggle" class="theme-toggle-btn" aria-pressed="false" title="Switch theme">
-                        <i class="fas fa-moon"></i>
-                        <span class="btn-label">Theme</span>
-                    </button>
-                    <button id="langToggle" class="lang-toggle-btn" title="Switch language" data-lang="en">
-                        <i class="fas fa-globe"></i>
-                        <span class="btn-label">EN</span>
-                    </button>
-                </div>
-            </div>
+            <!-- Back to top button -->
+            <button id="backToTop" class="back-to-top-btn" aria-label="Back to top" title="Back to top">
+                <i class="fas fa-arrow-up"></i>
+            </button>
 
             <!-- Mobile menu button -->
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
@@ -95,6 +104,12 @@
                 <div class="mobile-controls">
                     <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search" />
                     
+                    <!-- Mobile theme button -->
+                    <button id="mobileThemeToggle" class="theme-toggle-btn" aria-pressed="false" title="Switch theme">
+                        <i class="fas fa-moon"></i>
+                        <span>Switch Theme</span>
+                    </button>
+                    
                     <div class="mobile-buttons">
                         <button id="cartBtn" class="mobile-btn" title="View your cart">
                             <i class="fas fa-shopping-cart"></i>
@@ -102,15 +117,9 @@
                             <span id="cartCount" class="cart-badge">0</span>
                         </button>
                         
-                        <button id="themeToggle" class="mobile-btn theme-btn" aria-pressed="false" title="Switch theme">
-                            <i class="fas fa-moon theme-icon"></i>
-                            <span class="btn-label">Theme</span>
-                        </button>
-                        
-                        <button id="langToggle" class="mobile-btn lang-btn" title="Switch language" data-lang="en">
-                            <i class="fas fa-globe"></i>
-                            <span class="btn-label">Language</span>
-                            <span class="lang-text">EN</span>
+                        <button id="mobileLangToggle" class="mobile-btn lang-btn" title="Switch language" data-lang="en">
+                            <i class="fas fa-globe lang-icon"></i>
+                            <span class="btn-label">EN</span>
                         </button>
                     </div>
                 </div>
@@ -122,40 +131,82 @@
 
                 <!-- Membership -->
                 <article id="membership" class="page" role="region" aria-label="Membership">
-                    <h2>Membership</h2>
-                    <p class="muted small">Sample sign-up form (demo). Connect to your backend to persist memberships.
-                    </p>
+                    <div class="membership-hero">
+                        <h2>Membership Plans</h2>
+                        <p class="muted small">Flexible membership options to fit your fitness journey.</p>
+                    </div>
 
-                    <div class="gallery">
-                        <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNyb3NzZml0fGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80"
-                                alt="Join our membership">
+                    <div class="membership-plans">
+                        <div class="membership-card">
+                            <h3>Basic</h3>
+                            <div class="price">ETB 1,500<span>/month</span></div>
+                            <ul class="features">
+                                <li>✓ Gym access</li>
+                                <li>✓ Group classes</li>
+                                <li>✓ Basic equipment</li>
+                                <li>✓ Locker room access</li>
+                            </ul>
+                            <button class="submit-btn">Choose Basic</button>
+                        </div>
+
+                        <div class="membership-card featured">
+                            <h3>Premium</h3>
+                            <div class="price">ETB 2,500<span>/month</span></div>
+                            <ul class="features">
+                                <li>✓ All Basic features</li>
+                                <li>✓ Personal training sessions</li>
+                                <li>✓ Nutrition consultation</li>
+                                <li>✓ Priority booking</li>
+                                <li>✓ Premium equipment access</li>
+                            </ul>
+                            <button class="submit-btn">Choose Premium</button>
+                        </div>
+
+                        <div class="membership-card">
+                            <h3>VIP</h3>
+                            <div class="price">ETB 4,000<span>/month</span></div>
+                            <ul class="features">
+                                <li>✓ All Premium features</li>
+                                <li>✓ Unlimited personal training</li>
+                                <li>✓ Spa & sauna access</li>
+                                <li>✓ VIP lounge access</li>
+                                <li>✓ 24/7 gym access</li>
+                            </ul>
+                            <button class="submit-btn">Choose VIP</button>
                         </div>
                     </div>
 
-                    <form id="memberForm" class="panel" style="margin-top:12px">
-                        <div class="form-row">
-                            <input name="first" placeholder="First name" required />
-                            <input name="last" placeholder="Last name" required />
-                        </div>
-                        <div style="margin-top:8px">
-                            <input name="email" placeholder="Email" required />
-                        </div>
-
-                        <div style="margin-top:8px">
-                            <select name="plan" required>
-                                <option value="">Select plan</option>
-                                <option value="monthly">Monthly — 3,999 ETB</option>
-                                <option value="quarter">Quarterly — 10,999 ETB</option>
-                                <option value="year">Year — 39,999 ETB</option>
-                            </select>
-                        </div>
-
-                        <div style="margin-top:10px; display:flex; gap:8px;">
-                            <button type="submit" class="btn primary">Sign up (demo)</button>
-                            <button type="reset" class="btn">Reset</button>
-                        </div>
-                    </form>
+                    <div class="membership-form-container">
+                        <h3>Sign Up for Membership</h3>
+                        <form class="membership-form">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="plan">Membership Plan</label>
+                                <select id="plan" name="plan" required>
+                                    <option value="">Select a plan</option>
+                                    <option value="basic">Basic - ETB 1,500/month</option>
+                                    <option value="premium">Premium - ETB 2,500/month</option>
+                                    <option value="vip">VIP - ETB 4,000/month</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Additional Information</label>
+                                <textarea id="message" name="message" placeholder="Tell us about your fitness goals..."></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Submit Application</button>
+                        </form>
+                    </div>
                 </article>
 
             </section>
@@ -213,6 +264,24 @@
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Service</a>
                 <a href="#">Contact Support</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/sweatboxapg/" target="_blank" rel="noopener noreferrer" class="footer-social-link instagram">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://www.facebook.com/p/sweatboxapg-100063940720079/" target="_blank" rel="noopener noreferrer" class="footer-social-link facebook">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="footer-social-link tiktok">
+                    <i class="fab fa-tiktok"></i>
+                    <span>TikTok</span>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="footer-social-link telegram">
+                    <i class="fab fa-telegram"></i>
+                    <span>Telegram</span>
+                </a>
             </div>
         </div>
     </footer>

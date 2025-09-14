@@ -34,29 +34,38 @@
                 <a href="shop.html">Shop</a>
                 <a href="membership.html">Membership</a>
                 <a href="contact.html">Contact</a>
+                
+                <!-- Search bar in navigation -->
+                <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search" id="searchInput" />
+                
+                <!-- Settings dropdown -->
+                <div class="settings-container">
+                    <button class="settings-btn" id="settingsBtn" aria-expanded="false" aria-haspopup="true" title="Settings">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    <div class="settings-dropdown" id="settingsDropdown">
+                        <div class="settings-dropdown-item" id="themeToggle" aria-pressed="false" title="Switch theme">
+                            <i class="fas fa-moon"></i>
+                            <span>Theme</span>
+                        </div>
+                        <div class="settings-dropdown-item" id="langToggle" data-lang="en" title="Switch language">
+                            <i class="fas fa-globe"></i>
+                            <span class="btn-label">English</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cart button -->
+                <button id="cartBtn" class="cart-btn" title="View your cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cartCount" class="cart-badge">0</span>
+                </button>
             </nav>
 
-            <div class="controls">
-                <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search"
-                    id="searchInput" />
-                
-                <!-- Cart and theme buttons in header -->
-                <div class="header-buttons">
-                    <button id="cartBtn" class="cart-toggle-btn" title="View your cart">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="btn-label">My Cart</span>
-                        <span id="cartCount" class="cart-badge">0</span>
-                    </button>
-                    <button id="themeToggle" class="theme-toggle-btn" aria-pressed="false" title="Switch theme">
-                        <i class="fas fa-moon"></i>
-                        <span class="btn-label">Theme</span>
-                    </button>
-                    <button id="langToggle" class="lang-toggle-btn" title="Switch language" data-lang="en">
-                        <i class="fas fa-globe"></i>
-                        <span class="btn-label">EN</span>
-                    </button>
-                </div>
-            </div>
+            <!-- Back to top button -->
+            <button id="backToTop" class="back-to-top-btn" aria-label="Back to top" title="Back to top">
+                <i class="fas fa-arrow-up"></i>
+            </button>
 
             <!-- Mobile menu button -->
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
@@ -95,6 +104,12 @@
                 <div class="mobile-controls">
                     <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search" />
                     
+                    <!-- Mobile theme button -->
+                    <button id="mobileThemeToggle" class="theme-toggle-btn" aria-pressed="false" title="Switch theme">
+                        <i class="fas fa-moon"></i>
+                        <span>Switch Theme</span>
+                    </button>
+                    
                     <div class="mobile-buttons">
                         <button id="cartBtn" class="mobile-btn" title="View your cart">
                             <i class="fas fa-shopping-cart"></i>
@@ -102,15 +117,9 @@
                             <span id="cartCount" class="cart-badge">0</span>
                         </button>
                         
-                        <button id="themeToggle" class="mobile-btn theme-btn" aria-pressed="false" title="Switch theme">
-                            <i class="fas fa-moon theme-icon"></i>
-                            <span class="btn-label">Theme</span>
-                        </button>
-                        
-                        <button id="langToggle" class="mobile-btn lang-btn" title="Switch language" data-lang="en">
-                            <i class="fas fa-globe"></i>
-                            <span class="btn-label">Language</span>
-                            <span class="lang-text">EN</span>
+                        <button id="mobileLangToggle" class="mobile-btn lang-btn" title="Switch language" data-lang="en">
+                            <i class="fas fa-globe lang-icon"></i>
+                            <span class="btn-label">EN</span>
                         </button>
                     </div>
                 </div>
@@ -122,10 +131,12 @@
 
                 <!-- Trainers -->
                 <article id="trainers" class="page" role="region" aria-label="Trainers">
-                    <h2>Trainers</h2>
-                    <p class="muted small">Certified coaches focused on performance and safety.</p>
+                    <div class="trainers-hero">
+                        <h2>Trainers</h2>
+                        <p class="muted small">Certified coaches focused on performance and safety.</p>
+                    </div>
 
-                    <div class="gallery">
+                    <div class="trainers-gallery">
                         <div class="gallery-item">
                             <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHRyYWluZXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=80"
                                 alt="Trainer at Sweat Box APG">
@@ -136,20 +147,20 @@
                         </div>
                     </div>
 
-                    <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
-                        <div class="panel trainer">
-                            <div class="avatar">AK</div>
-                            <div>
+                    <div class="trainers-list">
+                        <div class="trainer-card">
+                            <div class="trainer-avatar">AK</div>
+                            <div class="trainer-info">
                                 <h4>Abbey K. — Head Coach</h4>
-                                <div class="muted small">CrossFit L1, Strength & Conditioning</div>
+                                <p class="trainer-specialty">CrossFit L1, Strength & Conditioning</p>
                             </div>
                         </div>
 
-                        <div class="panel trainer">
-                            <div class="avatar">MT</div>
-                            <div>
+                        <div class="trainer-card">
+                            <div class="trainer-avatar">MT</div>
+                            <div class="trainer-info">
                                 <h4>Mesa T. — Performance Coach</h4>
-                                <div class="muted small">HIIT, Mobility, Weightlifting</div>
+                                <p class="trainer-specialty">HIIT, Mobility, Weightlifting</p>
                             </div>
                         </div>
                     </div>
@@ -208,6 +219,24 @@
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
                     <a href="#">Contact Support</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/sweatboxapg/" target="_blank" rel="noopener noreferrer" class="footer-social-link instagram">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://www.facebook.com/p/sweatboxapg-100063940720079/" target="_blank" rel="noopener noreferrer" class="footer-social-link facebook">
+                        <i class="fab fa-facebook"></i>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="footer-social-link tiktok">
+                        <i class="fab fa-tiktok"></i>
+                        <span>TikTok</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="footer-social-link telegram">
+                        <i class="fab fa-telegram"></i>
+                        <span>Telegram</span>
+                    </a>
                 </div>
             </div>
         </footer>

@@ -34,29 +34,38 @@
                 <a href="shop.html" class="active">Shop</a>
                 <a href="membership.html">Membership</a>
                 <a href="contact.html">Contact</a>
+                
+                <!-- Search bar in navigation -->
+                <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search" id="searchInput" />
+                
+                <!-- Settings dropdown -->
+                <div class="settings-container">
+                    <button class="settings-btn" id="settingsBtn" aria-expanded="false" aria-haspopup="true" title="Settings">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    <div class="settings-dropdown" id="settingsDropdown">
+                        <div class="settings-dropdown-item" id="themeToggle" aria-pressed="false" title="Switch theme">
+                            <i class="fas fa-moon"></i>
+                            <span>Theme</span>
+                        </div>
+                        <div class="settings-dropdown-item" id="langToggle" data-lang="en" title="Switch language">
+                            <i class="fas fa-globe"></i>
+                            <span class="btn-label">English</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cart button -->
+                <button id="cartBtn" class="cart-btn" title="View your cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cartCount" class="cart-badge">0</span>
+                </button>
             </nav>
 
-            <div class="controls">
-                <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search"
-                    id="searchInput" />
-                
-                <!-- Cart and theme buttons in header -->
-                <div class="header-buttons">
-                    <button id="cartBtn" class="cart-toggle-btn" title="View your cart">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="btn-label">My Cart</span>
-                        <span id="cartCount" class="cart-badge">0</span>
-                    </button>
-                    <button id="themeToggle" class="theme-toggle-btn" aria-pressed="false" title="Switch theme">
-                        <i class="fas fa-moon"></i>
-                        <span class="btn-label">Theme</span>
-                    </button>
-                    <button id="langToggle" class="lang-toggle-btn" title="Switch language" data-lang="en">
-                        <i class="fas fa-globe"></i>
-                        <span class="btn-label">EN</span>
-                    </button>
-                </div>
-            </div>
+            <!-- Back to top button -->
+            <button id="backToTop" class="back-to-top-btn" aria-label="Back to top" title="Back to top">
+                <i class="fas fa-arrow-up"></i>
+            </button>
 
             <!-- Mobile menu button -->
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
@@ -95,6 +104,12 @@
                 <div class="mobile-controls">
                     <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search" />
                     
+                    <!-- Mobile theme button -->
+                    <button id="mobileThemeToggle" class="theme-toggle-btn" aria-pressed="false" title="Switch theme">
+                        <i class="fas fa-moon"></i>
+                        <span>Switch Theme</span>
+                    </button>
+                    
                     <div class="mobile-buttons">
                         <button id="cartBtn" class="mobile-btn" title="View your cart">
                             <i class="fas fa-shopping-cart"></i>
@@ -102,15 +117,9 @@
                             <span id="cartCount" class="cart-badge">0</span>
                         </button>
                         
-                        <button id="themeToggle" class="mobile-btn theme-btn" aria-pressed="false" title="Switch theme">
-                            <i class="fas fa-moon theme-icon"></i>
-                            <span class="btn-label">Theme</span>
-                        </button>
-                        
-                        <button id="langToggle" class="mobile-btn lang-btn" title="Switch language" data-lang="en">
-                            <i class="fas fa-globe"></i>
-                            <span class="btn-label">Language</span>
-                            <span class="lang-text">EN</span>
+                        <button id="mobileLangToggle" class="mobile-btn lang-btn" title="Switch language" data-lang="en">
+                            <i class="fas fa-globe lang-icon"></i>
+                            <span class="btn-label">EN</span>
                         </button>
                     </div>
                 </div>
@@ -122,48 +131,32 @@
 
                 <!-- Shop (e-commerce) -->
                 <article id="shop" class="page" role="region" aria-label="Shop">
-                    <h2>Shop</h2>
-                    <p class="muted small">Gym apparel, supplements, and day passes. (Client-side demo cart)</p>
-
-                    <div class="gallery">
-                        <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1551024593-5ab4b4490a5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjJ8fGd5bSUyMG1lcmNoYW5kaXNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80"
-                                alt="Sweat Box APG merchandise">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHByb3RlaW4lMjBzaGFrZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=80"
-                                alt="Protein supplements">
-                        </div>
+                    <div class="shop-hero">
+                        <h2>Shop</h2>
+                        <p class="muted small">Gym apparel, supplements, and day passes. (Client-side demo cart)</p>
                     </div>
 
-                    <div style="display:flex; gap:12px; margin-top:12px;">
-                        <div style="flex:1">
-                            <div class="products" id="productList">
-                                <!-- Product items injected here by JS -->
-                            </div>
+                    <div class="quick-passes">
+                        <button class="quick-pass-btn" data-buy='{"id":"day-pass","name":"1 Day Pass","price":200}'>1 Day Pass - 200 ETB</button>
+                        <button class="quick-pass-btn" data-buy='{"id":"week-pass","name":"7 Day Pass","price":1200}'>7 Day Pass - 1,200 ETB</button>
+                        <button class="quick-pass-btn" data-buy='{"id":"month-pass","name":"30 Day Pass","price":3500}'>30 Day Pass - 3,500 ETB</button>
+                    </div>
+
+                    <div class="product-grid" id="productList">
+                        <!-- Product items injected here by JS -->
+                    </div>
+
+                    <div class="cart-preview">
+                        <h3>Shopping Cart</h3>
+                        <div id="cartItems" class="cart-items">
+                            <p class="muted small">No items yet.</p>
                         </div>
-
-                        <aside style="width:320px" class="cart-preview">
-                            <div class="panel">
-                                <h3>Cart</h3>
-                                <div id="cartItems" class="muted small">No items yet.</div>
-                                <div style="margin-top:12px; display:flex; gap:8px;">
-                                    <button id="checkoutBtn" class="btn primary">Checkout</button>
-                                    <button id="clearCart" class="btn">Clear</button>
-                                </div>
-                            </div>
-
-                            <div class="panel" style="margin-top:12px">
-                                <h4>Quick passes</h4>
-                                <p class="small muted">Buy a single day pass or 1-week pass instantly.</p>
-                                <div style="display:flex; gap:8px; margin-top:8px;">
-                                    <button class="btn" data-buy='{"id":"day-pass","name":"1 Day Pass","price":200}'>1
-                                        Day (200 ETB)</button>
-                                    <button class="btn" data-buy='{"id":"week-pass","name":"7 Day Pass","price":1200}'>7
-                                        Day (1,200 ETB)</button>
-                                </div>
-                            </div>
-                        </aside>
+                        <div class="cart-total">
+                            <span class="cart-total-label">Total:</span>
+                            <span class="cart-total-amount" id="cartTotal">0 ETB</span>
+                        </div>
+                        <button id="checkoutBtn" class="checkout-btn">Checkout</button>
+                        <button id="clearCart" class="checkout-btn" style="background: var(--muted); margin-top: 10px;">Clear Cart</button>
                     </div>
                 </article>
 
@@ -220,6 +213,24 @@
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
                     <a href="#">Contact Support</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/sweatboxapg/" target="_blank" rel="noopener noreferrer" class="footer-social-link instagram">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://www.facebook.com/p/sweatboxapg-100063940720079/" target="_blank" rel="noopener noreferrer" class="footer-social-link facebook">
+                        <i class="fab fa-facebook"></i>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="footer-social-link tiktok">
+                        <i class="fab fa-tiktok"></i>
+                        <span>TikTok</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="footer-social-link telegram">
+                        <i class="fab fa-telegram"></i>
+                        <span>Telegram</span>
+                    </a>
                 </div>
             </div>
         </footer>

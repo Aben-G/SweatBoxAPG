@@ -34,29 +34,38 @@
                 <a href="shop.html">Shop</a>
                 <a href="membership.html">Membership</a>
                 <a href="contact.html">Contact</a>
+                
+                <!-- Search bar in navigation -->
+                <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search" id="searchInput" />
+                
+                <!-- Settings dropdown -->
+                <div class="settings-container">
+                    <button class="settings-btn" id="settingsBtn" aria-expanded="false" aria-haspopup="true" title="Settings">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    <div class="settings-dropdown" id="settingsDropdown">
+                        <div class="settings-dropdown-item" id="themeToggle" aria-pressed="false" title="Switch theme">
+                            <i class="fas fa-moon"></i>
+                            <span>Theme</span>
+                        </div>
+                        <div class="settings-dropdown-item" id="langToggle" data-lang="en" title="Switch language">
+                            <i class="fas fa-globe"></i>
+                            <span class="btn-label">English</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cart button -->
+                <button id="cartBtn" class="cart-btn" title="View your cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cartCount" class="cart-badge">0</span>
+                </button>
             </nav>
 
-            <div class="controls">
-                <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search"
-                    id="searchInput" />
-                
-                <!-- Cart and theme buttons in header -->
-                <div class="header-buttons">
-                    <button id="cartBtn" class="cart-toggle-btn" title="View your cart">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="btn-label">My Cart</span>
-                        <span id="cartCount" class="cart-badge">0</span>
-                    </button>
-                    <button id="themeToggle" class="theme-toggle-btn" aria-pressed="false" title="Switch theme">
-                        <i class="fas fa-moon"></i>
-                        <span class="btn-label">Theme</span>
-                    </button>
-                    <button id="langToggle" class="lang-toggle-btn" title="Switch language" data-lang="en">
-                        <i class="fas fa-globe"></i>
-                        <span class="btn-label">EN</span>
-                    </button>
-                </div>
-            </div>
+            <!-- Back to top button -->
+            <button id="backToTop" class="back-to-top-btn" aria-label="Back to top" title="Back to top">
+                <i class="fas fa-arrow-up"></i>
+            </button>
 
             <!-- Mobile menu button -->
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
@@ -95,6 +104,12 @@
                 <div class="mobile-controls">
                     <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search" />
                     
+                    <!-- Mobile theme button -->
+                    <button id="mobileThemeToggle" class="theme-toggle-btn" aria-pressed="false" title="Switch theme">
+                        <i class="fas fa-moon"></i>
+                        <span>Switch Theme</span>
+                    </button>
+                    
                     <div class="mobile-buttons">
                         <button id="cartBtn" class="mobile-btn" title="View your cart">
                             <i class="fas fa-shopping-cart"></i>
@@ -102,15 +117,9 @@
                             <span id="cartCount" class="cart-badge">0</span>
                         </button>
                         
-                        <button id="themeToggle" class="mobile-btn theme-btn" aria-pressed="false" title="Switch theme">
-                            <i class="fas fa-moon theme-icon"></i>
-                            <span class="btn-label">Theme</span>
-                        </button>
-                        
-                        <button id="langToggle" class="mobile-btn lang-btn" title="Switch language" data-lang="en">
-                            <i class="fas fa-globe"></i>
-                            <span class="btn-label">Language</span>
-                            <span class="lang-text">EN</span>
+                        <button id="mobileLangToggle" class="mobile-btn lang-btn" title="Switch language" data-lang="en">
+                            <i class="fas fa-globe lang-icon"></i>
+                            <span class="btn-label">EN</span>
                         </button>
                     </div>
                 </div>
@@ -122,131 +131,394 @@
 
                 <!-- About -->
                 <article id="about" class="page" role="region" aria-label="About Sweat Box APG">
-                    <div class="about-hero">
-                        <h2>About SweatBox APG</h2>
-                        <p class="about-intro">
-                            Welcome to <strong>SweatBox APG</strong> - Addis Ababa's premier performance gym and the first CrossFit-accredited box in Ethiopia. We combine internationally-certified training with a vibrant community atmosphere to help you achieve your fitness goals.
-                        </p>
+                    <!-- Enhanced Hero Section -->
+                    <div class="about-hero-enhanced">
+                        <div class="hero-background">
+                            <div class="hero-particles"></div>
+                            <div class="hero-gradient"></div>
+                        </div>
+                        <div class="hero-content">
+                            <div class="hero-badge">ESTABLISHED 2020</div>
+                            <h2 class="hero-title">
+                                <span class="hero-line">Transform Your</span>
+                                <span class="hero-line highlight">Fitness Journey</span>
+                            </h2>
+                            <p class="hero-subtitle">
+                                Welcome to <strong>SweatBox APG</strong> - Ethiopia's premier performance gym and the first CrossFit-accredited box in Addis Ababa. Where excellence meets community.
+                            </p>
+                            <div class="hero-stats">
+                                <div class="hero-stat">
+                                    <span class="stat-number" data-target="500">0</span>
+                                    <span class="stat-label">Members</span>
+                                </div>
+                                <div class="hero-stat">
+                                    <span class="stat-number" data-target="8">0</span>
+                                    <span class="stat-label">Trainers</span>
+                                </div>
+                                <div class="hero-stat">
+                                    <span class="stat-number" data-target="50">0</span>
+                                    <span class="stat-label">Classes/Week</span>
+                                </div>
+                            </div>
+                            <div class="hero-actions">
+                                <button class="hero-btn primary" onclick="scrollToSection('timeline')">
+                                    <i class="fas fa-play"></i>
+                                    Our Story
+                                </button>
+                                <button class="hero-btn secondary" onclick="scrollToSection('facilities')">
+                                    <i class="fas fa-dumbbell"></i>
+                                    Explore Facilities
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="about-content">
-                        <!-- Left Column -->
-                        <div class="about-column">
-                            <div class="info-section">
-                                <h3>Who We Are</h3>
-                                <p>SweatBox APG is Ethiopia's first CrossFit-accredited performance gym, featuring internationally certified trainers and state-of-the-art equipment. Our mission is to deliver exceptional fitness experiences through expert coaching and community support.</p>
-                            </div>
+                    </div>
 
-                            <div class="info-section">
-                                <h3>Our Locations</h3>
-                                <div class="location-cards">
-                                    <div class="location-card">
-                                        <h4>📍 Bole Branch</h4>
-                                        <div class="location-details">
-                                            <p><strong>Main Location</strong></p>
-                                            <p>Lesotho Street, Bole Area</p>
-                                            <p>Addis Ababa, Ethiopia</p>
-                                            <p>📞 0116392624</p>
-                                            <p>⏰ Daily: 5:00 AM – 10:00 PM</p>
+                    <!-- Interactive Timeline Section -->
+                    <section class="timeline-section" id="timeline">
+                        <div class="section-header">
+                            <div class="section-badge">OUR JOURNEY</div>
+                            <h2>From Vision to Reality</h2>
+                            <p>The story of SweatBox APG - Ethiopia's fitness revolution</p>
+                        </div>
+                        <div class="horizontal-timeline-container">
+                            <div class="timeline-path">
+                                <div class="timeline-arrow"></div>
+                            </div>
+                            <div class="timeline-steps">
+                                <div class="timeline-step">
+                                    <div class="step-marker">
+                                        <div class="step-icon"><i class="fas fa-rocket"></i></div>
+                                        <div class="step-year">2020</div>
+                                    </div>
+                                    <div class="step-content">
+                                        <h4>The Beginning</h4>
+                                        <p>Founded with a vision to revolutionize fitness in Ethiopia</p>
+                                        <div class="step-tags">
+                                            <span class="tag">Vision</span>
+                                            <span class="tag">Startup</span>
                                         </div>
                                     </div>
-                                    <div class="location-card">
-                                        <h4>📍 Sarbet Branch</h4>
-                                        <div class="location-details">
-                                            <p><strong>Secondary Location</strong></p>
-                                            <p>Sarbet Area</p>
-                                            <p>Addis Ababa, Ethiopia</p>
-                                            <p>📞 0970657777</p>
-                                            <p>⏰ Daily: 5:00 AM – 10:00 PM</p>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="step-marker">
+                                        <div class="step-icon"><i class="fas fa-certificate"></i></div>
+                                        <div class="step-year">2021</div>
+                                    </div>
+                                    <div class="step-content">
+                                        <h4>CrossFit Accreditation</h4>
+                                        <p>Became Ethiopia's first CrossFit Level 1 certified box</p>
+                                        <div class="step-tags">
+                                            <span class="tag">Certification</span>
+                                            <span class="tag">Milestone</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="step-marker">
+                                        <div class="step-icon"><i class="fas fa-users"></i></div>
+                                        <div class="step-year">2022</div>
+                                    </div>
+                                    <div class="step-content">
+                                        <h4>Community Growth</h4>
+                                        <p>Expanded to 300+ members and built a thriving fitness community</p>
+                                        <div class="step-tags">
+                                            <span class="tag">Growth</span>
+                                            <span class="tag">Community</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="step-marker">
+                                        <div class="step-icon"><i class="fas fa-expand-arrows-alt"></i></div>
+                                        <div class="step-year">2023</div>
+                                    </div>
+                                    <div class="step-content">
+                                        <h4>Expansion</h4>
+                                        <p>Opened second branch and introduced advanced training programs</p>
+                                        <div class="step-tags">
+                                            <span class="tag">Expansion</span>
+                                            <span class="tag">Innovation</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="step-marker">
+                                        <div class="step-icon"><i class="fas fa-crown"></i></div>
+                                        <div class="step-year">2024</div>
+                                    </div>
+                                    <div class="step-content">
+                                        <h4>Excellence</h4>
+                                        <p>Recognized as Ethiopia's premier performance gym with 500+ members</p>
+                                        <div class="step-tags">
+                                            <span class="tag">Excellence</span>
+                                            <span class="tag">Leadership</span>
+                                        </div>
+                                        <span class="tag">Innovation</span>
+                                        <span class="tag">Future</span>
+                                    </div>
+                    </section>
+
+                    <!-- Compact Facility Showcase -->
+                    <section class="facilities-section compact" id="facilities">
+                        <div class="section-header">
+                            <div class="section-badge">WORLD-CLASS FACILITIES</div>
+                            <h2>Explore Our Premium Spaces</h2>
+                            <p>State-of-the-art equipment and thoughtfully designed spaces</p>
+                        </div>
+                        <div class="facilities-grid compact">
+                            <div class="facility-card">
+                                <div class="facility-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                    <div class="facility-overlay">
+                                        <i class="fas fa-dumbbell"></i>
+                                    </div>
+                                </div>
+                                <div class="facility-content">
+                                    <h4>Strength Training</h4>
+                                    <p>Professional weights and resistance equipment</p>
+                                    <div class="facility-tags">
+                                        <span class="tag">Free Weights</span>
+                                        <span class="tag">Machines</span>
+                                    </div>
+                                    <button class="facility-btn" onclick="window.location.href='membership.html'">
+                                        <i class="fas fa-arrow-right"></i>
+                                        Join Now
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="facility-card">
+                                <div class="facility-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                    <div class="facility-overlay">
+                                        <i class="fas fa-heartbeat"></i>
+                                    </div>
+                                </div>
+                                <div class="facility-content">
+                                    <h4>Cardio Zone</h4>
+                                    <p>Modern cardio equipment with entertainment systems</p>
+                                    <div class="facility-tags">
+                                        <span class="tag">Treadmills</span>
+                                        <span class="tag">Bikes</span>
+                                    </div>
+                                    <button class="facility-btn" onclick="window.location.href='membership.html'">
+                                        <i class="fas fa-arrow-right"></i>
+                                        Join Now
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="facility-card">
+                                <div class="facility-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                                    <div class="facility-overlay">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                </div>
+                                <div class="facility-content">
+                                    <h4>Group Classes</h4>
+                                    <p>Spacious studio for group fitness sessions</p>
+                                    <div class="facility-tags">
+                                        <span class="tag">Yoga</span>
+                                        <span class="tag">CrossFit</span>
+                                    </div>
+                                    <button class="facility-btn" onclick="window.location.href='membership.html'">
+                                        <i class="fas fa-arrow-right"></i>
+                                        Join Now
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="facility-card">
+                                <div class="facility-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                                    <div class="facility-overlay">
+                                        <i class="fas fa-spa"></i>
+                                    </div>
+                                </div>
+                                <div class="facility-content">
+                                    <h4>Recovery Center</h4>
+                                    <p>Professional recovery and rehabilitation equipment</p>
+                                    <div class="facility-tags">
+                                        <span class="tag">Sauna</span>
+                                        <span class="tag">Massage</span>
+                                    </div>
+                                    <button class="facility-btn" onclick="window.location.href='contact.html'">
+                                        <i class="fas fa-arrow-right"></i>
+                                        Learn More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Achievement & Badge Section -->
+                    <section class="achievements-section">
+                        <div class="section-header">
+                            <div class="section-badge">RECOGNITION & EXCELLENCE</div>
+                            <h2>Awards & Achievements</h2>
+                            <p>Celebrating our commitment to fitness excellence and community impact</p>
+                        </div>
+                        <div class="achievements-container">
+                            <div class="achievements-showcase">
+                            <div class="main-achievement">
+                                <div class="achievement-badge">
+                                    <div class="badge-icon"><i class="fas fa-trophy"></i></div>
+                                    <div class="badge-text">
+                                        <h4>Premier Gym</h4>
+                                        <p>Ethiopia's #1 Performance Gym</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="achievement-stats">
+                                <div class="stat-card">
+                                    <div class="stat-icon"><i class="fas fa-medal"></i></div>
+                                    <div class="stat-number" data-target="15">0</div>
+                                    <div class="stat-label">Awards Won</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon"><i class="fas fa-star"></i></div>
+                                    <div class="stat-number" data-target="4.9">0</div>
+                                    <div class="stat-label">Member Rating</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon"><i class="fas fa-certificate"></i></div>
+                                    <div class="stat-number" data-target="8">0</div>
+                                    <div class="stat-label">Certifications</div>
+                                </div>
+                            </div>
+                            <div class="achievement-badges">
+                                <div class="badge-item">
+                                    <div class="badge-icon"><i class="fas fa-award"></i></div>
+                                    <span>Excellence</span>
+                                </div>
+                                <div class="badge-item">
+                                    <div class="badge-icon"><i class="fas fa-crown"></i></div>
+                                    <span>Leadership</span>
+                                </div>
+                                <div class="badge-item">
+                                    <div class="badge-icon"><i class="fas fa-gem"></i></div>
+                                    <span>Premium</span>
+                                </div>
+                                <div class="badge-item">
+                                    <div class="badge-icon"><i class="fas fa-fire"></i></div>
+                                    <span>Innovation</span>
+                                </div>
+                            </div>
+                        </div>        </div>
+                                <div class="badge-item">
+                                    <div class="badge-icon"><i class="fas fa-trophy"></i></div>
+                                    <h4>Excellence Award</h4>
+                                    <p>Recognized for service quality</p>
+                                </div>
+{{ ... }}
+                        <div class="section-header">
+                            <div class="section-badge">MEMBER STORIES</div>
+                            <h2>What Our Community Says</h2>
+                            <p>Real stories from real people who transformed their lives at SweatBox APG</p>
+                        </div>
+                        <div class="testimonials-grid">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <div class="testimonial-quote">
+                                        <i class="fas fa-quote-left"></i>
+                                        <p>SweatBox APG transformed my fitness journey. The trainers are incredible and the community is so supportive!</p>
+                                    </div>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                        <div class="author-info">
+                                            <h4>Sarah Johnson</h4>
+                                            <div class="author-rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <div class="testimonial-quote">
+                                        <i class="fas fa-quote-left"></i>
+                                        <p>Best gym in Addis Ababa! World-class equipment and amazing trainers who really care about your progress.</p>
+                                    </div>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                        <div class="author-info">
+                                            <h4>Michael Chen</h4>
+                                            <div class="author-rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <div class="testimonial-quote">
+                                        <i class="fas fa-quote-left"></i>
+                                        <p>The CrossFit program here is outstanding. I've achieved goals I never thought possible!</p>
+                                    </div>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                        <div class="author-info">
+                                            <h4>Hannah Tadesse</h4>
+                                            <div class="author-rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </section>
 
-                        <!-- Right Column -->
-                        <div class="about-column">
-                            <div class="info-section">
-                                <h3>Our Expertise</h3>
-                                <div class="expertise-list">
-                                    <div class="expertise-item">
-                                        <div class="expertise-icon">🏋️</div>
-                                        <div class="expertise-content">
-                                            <h4>CrossFit Level 1 Certified</h4>
-                                            <p>Internationally certified trainers with specialized performance programming</p>
+                    <!-- Community Events Section -->
+{{ ... }}
+                            </div>
+                            <div class="community-highlights">
+                                <div class="highlight-card">
+                                    <div class="highlight-icon"><i class="fas fa-trophy"></i></div>
+                                    <h3>Member Achievements</h3>
+                                    <p>Celebrating our members' milestones and personal records</p>
+                                    <div class="highlight-stats">
+                                        <div class="highlight-stat">
+                                            <span class="stat-number">50+</span>
+                                            <span class="stat-label">PRs This Month</span>
                                         </div>
                                     </div>
-                                    <div class="expertise-item">
-                                        <div class="expertise-icon">⏰</div>
-                                        <div class="expertise-content">
-                                            <h4>Extended Hours</h4>
-                                            <p>Open daily 5:00 AM – 10:00 PM for your convenience</p>
-                                        </div>
-                                    </div>
-                                    <div class="expertise-item">
-                                        <div class="expertise-icon">👥</div>
-                                        <div class="expertise-content">
-                                            <h4>Community Focused</h4>
-                                            <p>Join a supportive fitness community with group classes and personal training</p>
+                                </div>
+                                <div class="highlight-card">
+                                    <div class="highlight-icon"><i class="fas fa-users"></i></div>
+                                    <h3>Community Strength</h3>
+                                    <p>Stronger together, supporting each other's fitness goals</p>
+                                    <div class="highlight-stats">
+                                        <div class="highlight-stat">
+                                            <span class="stat-number">500+</span>
+                                            <span class="stat-label">Active Members</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="info-section">
-                                <h3>Services We Offer</h3>
-                                <div class="services-grid">
-                                    <div class="service-card">
-                                        <h4>🏃‍♂️ Group Classes</h4>
-                                        <p>Multiple CrossFit classes daily with certified coaches</p>
-                                    </div>
-                                    <div class="service-card">
-                                        <h4>💪 Personal Training</h4>
-                                        <p>One-on-one training sessions tailored to your goals</p>
-                                    </div>
-                                    <div class="service-card">
-                                        <h4>🏥 Rehab Programs</h4>
-                                        <p>Specialized rehabilitation and injury prevention programs</p>
-                                    </div>
-                                    <div class="service-card">
-                                        <h4>🎯 Special Sessions</h4>
-                                        <p>Exclusive workshops and specialized training events</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
+{{ ... }}
+                    </section>
 
                 </article>
 
             </section>
 
-            <aside style="position:relative;">
-                <div class="panel">
-                    <h4>Opening Hours</h4>
-                    <p class="small">Mon–Sun: 5:00 AM – 10:00 PM</p>
-                </div>
-
-                <div class="panel" style="margin-top:12px; min-height: 280px;">
-                    <h4>Follow Us</h4>
-                    <p class="muted small">Stay connected with us on social media</p>
-                    <div class="social-list">
-                        <div class="social-item">
-                            <a href="https://www.instagram.com/sweatboxapg/" target="_blank" rel="noopener noreferrer"
-                                class="social-link">
-                                <i class="fab fa-instagram"></i>
-                                <span>Instagram</span>
-                            </a>
-                        </div>
-                        <div class="social-item">
-                            <a href="https://www.facebook.com/p/sweatboxapg-100063940720079/" target="_blank"
-                                rel="noopener noreferrer" class="social-link">
-                                <i class="fab fa-facebook"></i>
-                                <span>Facebook</span>
-                            </a>
-                        </div>
                         <div class="social-item">
                             <a href="#" target="_blank" rel="noopener noreferrer" class="social-link">
                                 <i class="fab fa-tiktok"></i>
@@ -258,21 +530,6 @@
                                 <i class="fab fa-telegram"></i>
                                 <span>Telegram</span>
                             </a>
-                        </div>
-                    </div>
-
-                    <!-- Contact Section -->
-                    <div class="contact-section" style="margin-top: 12px;">
-                        <h4>Contact</h4>
-                        <div class="contact-details">
-                            <p class="small contact-item">
-                                <i class="fas fa-phone"></i>
-                                <span>+251 11 639 2624</span>
-                            </p>
-                            <p class="small contact-item">
-                                <i class="fas fa-envelope"></i>
-                                <span>contact@sweatboxapg.com</span>
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -287,6 +544,24 @@
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
                     <a href="#">Contact Support</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/sweatboxapg/" target="_blank" rel="noopener noreferrer" class="footer-social-link instagram">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://www.facebook.com/p/sweatboxapg-100063940720079/" target="_blank" rel="noopener noreferrer" class="footer-social-link facebook">
+                        <i class="fab fa-facebook"></i>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="footer-social-link tiktok">
+                        <i class="fab fa-tiktok"></i>
+                        <span>TikTok</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="footer-social-link telegram">
+                        <i class="fab fa-telegram"></i>
+                        <span>Telegram</span>
+                    </a>
                 </div>
             </div>
         </footer>
