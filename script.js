@@ -844,154 +844,445 @@ function setupThemeToggle() {
 }
 
 // =============================================
-// CART MANAGEMENT FUNCTIONALITY
+// SHOP PAGE FUNCTIONALITY
 // =============================================
+
+// Banner Functionality
+function initializeBannerSlider() {
+    const bannerSlides = document.querySelectorAll('.banner-slide');
+    const dots = document.querySelectorAll('.banner-dots .dot');
+    
+    if (!bannerSlides.length || !dots.length) return;
+    
+    let currentSlide = 0;
+    const slideCount = bannerSlides.length;
+    
+    // Set first slide as active initially
+    bannerSlides[0].classList.add('active');
+    
+    // Manual navigation with dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            updateSlider();
+            resetInterval();
+        });
+    });
+    
+    function updateSlider() {
+        // Hide all slides
+        bannerSlides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        
+        // Show current slide
+        bannerSlides[currentSlide].classList.add('active');
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+    }
+    
+    // Auto-advance slides
+    function autoAdvance() {
+        currentSlide = (currentSlide + 1) % slideCount;
+        updateSlider();
+    }
+    
+    // Set interval for auto-advance (every 4 seconds)
+    let slideInterval = setInterval(autoAdvance, 4000);
+    
+    // Reset interval function
+    function resetInterval() {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(autoAdvance, 4000);
+    }
+}
 const PRODUCTS = [
-    { id: 'p1', name: 'Sweat Box Tee', price: 650, img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGd5bSUyMHRzaGlydHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60', desc: 'Comfort fit gym tee.' },
-    { id: 'p2', name: 'Protein Shaker', price: 300, img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=60', desc: '700ml shaker bottle.' },
-    { id: 'p3', name: 'Performance Hoodie', price: 2200, img: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aG9vZGllfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60', desc: 'Warm hoodie for training.' },
-    { id: 'p4', name: '1 Month Membership (Digital)', price: 3999, img: 'https://images.unsplash.com/photo-1554284126-aa88f22d8b6f?auto=format&fit=crop&w=800&q=60', desc: 'One month access to all classes.' }
+    // Shoes
+    { id: 'p1', name: 'CrossFit Training Shoes', price: 2500, img: 'https://images.unsplash.com/photo-1556906781-9a412961c28c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60', desc: 'High-performance training shoes for CrossFit.', category: 'shoes' },
+    { id: 'p2', name: 'Running Shoes', price: 1800, img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=60', desc: 'Lightweight running shoes for cardio sessions.', category: 'shoes' },
+    
+    // Top Wear
+    { id: 'p3', name: 'Sweat Box Tee', price: 650, img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGd5bSUyMHRzaGlydHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60', desc: 'Comfort fit gym tee with moisture-wicking fabric.', category: 'tops' },
+    { id: 'p4', name: 'Performance Hoodie', price: 2200, img: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aG9vZGllfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60', desc: 'Warm hoodie for training and recovery.', category: 'tops' },
+    { id: 'p5', name: 'Compression Shirt', price: 950, img: 'https://images.unsplash.com/photo-1503341504253-dff4815485f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGd5bSUyMHNoaXJ0fGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60', desc: 'Tight-fitting shirt for maximum muscle support.', category: 'tops' },
+    
+    // Bottom Wear
+    { id: 'p6', name: 'Training Shorts', price: 850, img: 'https://images.unsplash.com/photo-1562886877-3a0d4d70d9c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Z3ltJTIwc2hvcnRzfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60', desc: 'Flexible shorts for unrestricted movement.', category: 'bottoms' },
+    { id: 'p7', name: 'Compression Leggings', price: 1200, img: 'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGVnZ2luZ3N8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60', desc: 'Full-length leggings for support and comfort.', category: 'bottoms' },
+    
+    // Weights
+    { id: 'p8', name: 'Kettlebell (16kg)', price: 1800, img: 'https://images.unsplash.com/photo-1517344884509-a0c97ec11bcc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8a2V0dGxlYmVsbHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60', desc: '16kg cast iron kettlebell for strength training.', category: 'weights' },
+    { id: 'p9', name: 'Dumbbell Set', price: 3500, img: 'https://images.unsplash.com/photo-1638536532686-d610adfc8e5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8ZHVtYmJlbGx8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60', desc: 'Adjustable dumbbell set (5-25kg).', category: 'weights' },
+    
+    // Materials
+    { id: 'p10', name: 'Yoga Mat', price: 750, img: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8eW9nYSUyMG1hdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60', desc: 'Non-slip yoga mat for floor exercises.', category: 'materials' },
+    { id: 'p11', name: 'Resistance Bands', price: 450, img: 'https://images.unsplash.com/photo-1598550476439-6847785fcea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzaXN0YW5jZSUyMGJhbmRzfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60', desc: 'Set of 5 resistance bands with different strengths.', category: 'materials' },
+    
+    // Supplements
+    { id: 'p12', name: 'Protein Powder (1kg)', price: 1500, img: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvdGVpbiUyMHBvd2RlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60', desc: 'Whey protein powder for muscle recovery.', category: 'supplements' },
+    { id: 'p13', name: 'Protein Shaker', price: 300, img: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvdGVpbiUyMHBvd2RlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60', desc: '700ml shaker bottle with mixing ball.', category: 'supplements' },
+    { id: 'p14', name: 'Pre-Workout (30 servings)', price: 1200, img: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvdGVpbiUyMHBvd2RlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60', desc: 'Energy-boosting pre-workout supplement.', category: 'supplements' },
+    
+    // Digital Products
+    { id: 'p15', name: '1 Month Membership (Digital)', price: 3999, img: 'https://images.unsplash.com/photo-1554284126-aa88f22d8b6f?auto=format&fit=crop&w=800&q=60', desc: 'One month access to all classes and facilities.', category: 'digital' }
 ];
 
 // Cart management functions
 function getCart() {
-    return JSON.parse(localStorage.getItem('sb_cart') || '{}');
+    return JSON.parse(localStorage.getItem('sb_cart') || '[]');
 }
 
-function saveCart(c) {
-    localStorage.setItem('sb_cart', JSON.stringify(c));
+function saveCart(cart) {
+    localStorage.setItem('sb_cart', JSON.stringify(cart));
 }
 
-function addToCart(productId, qty = 1) {
+function addToCart(product, quantity = 1) {
     const cart = getCart();
-    cart[productId] = (cart[productId] || 0) + qty;
+    const existingItemIndex = cart.findIndex(item => item.id === product.id);
+    
+    if (existingItemIndex !== -1) {
+        // Update quantity if product already in cart
+        cart[existingItemIndex].quantity += quantity;
+    } else {
+        // Add new item to cart
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.img,
+            quantity: quantity
+        });
+    }
+    
     saveCart(cart);
     updateCartUI();
-
-    // Show confirmation
-    const product = PRODUCTS.find(p => p.id === productId);
-    if (product) {
-        showNotification(`Added ${product.name} to cart!`);
-    }
+    toggleCartSidebar(true); // Show cart after adding item
+    
+    // Show confirmation notification
+    showNotification(`Added ${product.name} to cart!`);
 }
 
 function removeFromCart(productId) {
-    const cart = getCart();
-    delete cart[productId];
+    let cart = getCart();
+    cart = cart.filter(item => item.id !== productId);
     saveCart(cart);
     updateCartUI();
 }
 
+function updateItemQuantity(productId, newQuantity) {
+    if (newQuantity < 1) return removeFromCart(productId);
+    
+    const cart = getCart();
+    const item = cart.find(item => item.id === productId);
+    
+    if (item) {
+        item.quantity = newQuantity;
+        saveCart(cart);
+        updateCartUI();
+    }
+}
+
 function clearCart() {
-    localStorage.removeItem('sb_cart');
+    saveCart([]);
     updateCartUI();
     showNotification('Cart cleared');
 }
 
-function updateCartUI() {
-    const cartCountEl = document.getElementById('cartCount');
-    const cartItemsEl = document.getElementById('cartItems');
-
-    if (!cartCountEl || !cartItemsEl) return;
-
+function calculateCartTotal() {
     const cart = getCart();
-    const keys = Object.keys(cart);
+    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+}
 
-    if (!keys.length) {
-        cartItemsEl.innerHTML = 'No items yet.';
-        cartCountEl.innerText = '0';
-        return;
+function updateCartUI() {
+    // Update cart count badges
+    const navCartCount = document.getElementById('navCartCount');
+    const mobileCartCount = document.getElementById('mobileCartCount');
+    const cartItems = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+    const orderSummaryItems = document.getElementById('orderSummaryItems');
+    const orderTotal = document.getElementById('orderTotal');
+    
+    const cart = getCart();
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+    
+    // Update cart count badges - ensure they're always visible with correct count
+    if (navCartCount) {
+        navCartCount.textContent = totalItems;
+        navCartCount.style.display = 'flex';
+        if (totalItems === 0) {
+            navCartCount.textContent = '0';
+        }
     }
-
-    let html = '<ul class="muted small">';
-    let total = 0;
-
-    keys.forEach(id => {
-        const qty = cart[id];
-        const p = PRODUCTS.find(x => x.id === id) || { name: id, price: 0 };
-        html += `<li>${p.name} × ${qty} — ${(p.price * qty).toLocaleString()} ETB <button class="btn" data-remove="${id}" style="margin-left:10px">Remove</button></li>`;
-        total += p.price * qty;
-    });
-
-    html += `</ul><div style="margin-top:8px"><strong>Total: ${total.toLocaleString()} ETB</strong></div>`;
-    cartItemsEl.innerHTML = html;
-    cartCountEl.innerText = keys.reduce((s, k) => s + cart[k], 0);
-
-    // Add event listeners to Remove buttons
-    cartItemsEl.querySelectorAll('[data-remove]').forEach(b => {
-        b.addEventListener('click', (e) => {
-            removeFromCart(b.getAttribute('data-remove'));
-        });
-    });
+    
+    if (mobileCartCount) {
+        mobileCartCount.textContent = totalItems;
+        mobileCartCount.style.display = 'flex';
+        if (totalItems === 0) {
+            mobileCartCount.textContent = '0';
+        }
+    }
+    
+    // Update cart sidebar items
+    if (cartItems) {
+        if (cart.length === 0) {
+            cartItems.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
+        } else {
+            cartItems.innerHTML = '';
+            
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-image">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4>${item.name}</h4>
+                        <div class="cart-item-price">${item.price.toLocaleString()} ETB</div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                        </div>
+                    </div>
+                    <button class="remove-item" data-id="${item.id}">&times;</button>
+                `;
+                
+                cartItems.appendChild(cartItem);
+            });
+            
+            // Add event listeners for quantity buttons and remove buttons
+            cartItems.querySelectorAll('.quantity-btn.minus').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.getAttribute('data-id');
+                    const item = cart.find(item => item.id === id);
+                    if (item) updateItemQuantity(id, item.quantity - 1);
+                });
+            });
+            
+            cartItems.querySelectorAll('.quantity-btn.plus').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.getAttribute('data-id');
+                    const item = cart.find(item => item.id === id);
+                    if (item) updateItemQuantity(id, item.quantity + 1);
+                });
+            });
+            
+            cartItems.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.getAttribute('data-id');
+                    removeFromCart(id);
+                });
+            });
+        }
+    }
+    
+    // Update cart total
+    const total = calculateCartTotal();
+    if (cartTotal) cartTotal.textContent = `${total.toLocaleString()} ETB`;
+    
+    // Update order summary in checkout modal
+    if (orderSummaryItems && orderTotal) {
+        if (cart.length === 0) {
+            orderSummaryItems.innerHTML = '<div class="empty-order">No items in cart</div>';
+            orderTotal.textContent = '0 ETB';
+        } else {
+            orderSummaryItems.innerHTML = '';
+            
+            cart.forEach(item => {
+                const orderItem = document.createElement('div');
+                orderItem.className = 'order-item';
+                orderItem.innerHTML = `
+                    <div class="order-item-name">${item.name} × ${item.quantity}</div>
+                    <div class="order-item-price">${(item.price * item.quantity).toLocaleString()} ETB</div>
+                `;
+                
+                orderSummaryItems.appendChild(orderItem);
+            });
+            
+            orderTotal.textContent = `${total.toLocaleString()} ETB`;
+        }
+    }
 }
 
 // Render product list
 function renderProducts() {
-    const productListEl = document.getElementById('productList');
-    if (!productListEl) return;
+    const productsGrid = document.getElementById('productsGrid');
+    if (!productsGrid) return;
 
-    productListEl.innerHTML = '';
-    PRODUCTS.forEach(p => {
-        const item = document.createElement('div');
-        item.className = 'product panel';
-        item.innerHTML = `
-            <img src="${p.img}" alt="${p.name}" loading="lazy" />
-            <div class="product-info">
-                <strong>${p.name}</strong>
-                <div class="muted small">${p.desc}</div>
-                <div style="margin-top:8px; display:flex; gap:8px; align-items:center">
-                    <div class="price">${p.price.toLocaleString()} ETB</div>
-                    <button class="btn" data-add='${p.id}'>Add</button>
-                </div>
+    // Get active category
+    const activeCategory = document.querySelector('.category-tab.active')?.dataset.category || 'all';
+    
+    // Filter products by category
+    const filteredProducts = activeCategory === 'all' 
+        ? PRODUCTS 
+        : PRODUCTS.filter(p => p.category === activeCategory);
+    
+    // Clear existing products
+    productsGrid.innerHTML = '';
+    
+    // Render filtered products
+    filteredProducts.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        productCard.innerHTML = `
+            <div class="product-image">
+                <img src="${product.img}" alt="${product.name}" loading="lazy">
+            </div>
+            <div class="product-details">
+                <h3 class="product-name">${product.name}</h3>
+                <div class="product-price">${product.price.toLocaleString()} ETB</div>
+                <p class="product-description">${product.desc}</p>
+                <button class="add-to-cart-btn" data-product-id="${product.id}">Add to Cart</button>
             </div>
         `;
-        productListEl.appendChild(item);
+        productsGrid.appendChild(productCard);
     });
-
-    // Add event listeners to Add buttons
-    productListEl.querySelectorAll('[data-add]').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const id = btn.getAttribute('data-add');
-            addToCart(id);
+    
+    // Add event listeners to Add to Cart buttons
+    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const productId = button.getAttribute('data-product-id');
+            const product = PRODUCTS.find(p => p.id === productId);
+            if (product) {
+                addToCart(product);
+            }
         });
     });
 }
 
-// Setup cart functionality
-function setupCart() {
-    const clearCartBtn = document.getElementById('clearCart');
-    const checkoutBtn = document.getElementById('checkoutBtn');
-
-    if (clearCartBtn) {
-        clearCartBtn.addEventListener('click', clearCart);
+// Setup shop page functionality
+function setupShopPage() {
+    // Initialize banner slider
+    initializeBannerSlider();
+    
+    // Setup category tabs
+    const categoryTabs = document.querySelectorAll('.category-tab');
+    if (categoryTabs.length > 0) {
+        categoryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                categoryTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                // Render products for selected category
+                renderProducts();
+            });
+        });
     }
-
+    
+    // Setup cart sidebar toggle
+    const navCartBtn = document.getElementById('navCartBtn');
+    const mobileCartBtn = document.getElementById('mobileCartBtn');
+    const closeCartBtn = document.getElementById('closeCart');
+    const cartSidebar = document.getElementById('cartSidebar');
+    
+    // Function to toggle cart sidebar
+    window.toggleCartSidebar = function(show) {
+        if (!cartSidebar) return;
+        
+        if (show === undefined) {
+            cartSidebar.classList.toggle('active');
+        } else if (show) {
+            cartSidebar.classList.add('active');
+        } else {
+            cartSidebar.classList.remove('active');
+        }
+    };
+    
+    // Add event listeners for cart buttons
+    if (navCartBtn) {
+        navCartBtn.addEventListener('click', () => toggleCartSidebar());
+    }
+    
+    if (mobileCartBtn) {
+        mobileCartBtn.addEventListener('click', () => toggleCartSidebar());
+    }
+    
+    if (closeCartBtn) {
+        closeCartBtn.addEventListener('click', () => toggleCartSidebar(false));
+    }
+    
+    // Setup checkout functionality
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    const checkoutModal = document.getElementById('checkoutModal');
+    const closeCheckoutBtn = document.getElementById('closeCheckout');
+    
+    // Function to toggle checkout modal
+    function toggleCheckoutModal(show) {
+        if (!checkoutModal) return;
+        
+        if (show === undefined) {
+            checkoutModal.classList.toggle('active');
+        } else if (show) {
+            checkoutModal.classList.add('active');
+        } else {
+            checkoutModal.classList.remove('active');
+        }
+    }
+    
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
             const cart = getCart();
-            if (Object.keys(cart).length === 0) {
-                showNotification('Cart is empty');
+            if (cart.length === 0) {
+                showNotification('Your cart is empty');
                 return;
             }
-            // Demo checkout:
-            alert('Checkout demo — this is client-side only. Implement payment & server to capture orders.');
-            clearCart();
+            toggleCartSidebar(false);
+            toggleCheckoutModal(true);
         });
     }
-
-    // Quick buy buttons (day/week passes)
-    document.querySelectorAll('[data-buy]').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const item = JSON.parse(btn.getAttribute('data-buy'));
-            addToCart(item.id, 1);
-            // Store product details if absent
-            if (!PRODUCTS.find(p => p.id === item.id)) {
-                PRODUCTS.push({ id: item.id, name: item.name, price: item.price, img: '', desc: '' });
+    
+    if (closeCheckoutBtn) {
+        closeCheckoutBtn.addEventListener('click', () => toggleCheckoutModal(false));
+    }
+    
+    // Setup checkout form submission
+    const checkoutForm = document.getElementById('checkoutForm');
+    const orderConfirmation = document.getElementById('orderConfirmation');
+    
+    if (checkoutForm) {
+        checkoutForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show order confirmation
+            if (orderConfirmation) {
+                toggleCheckoutModal(false);
+                orderConfirmation.classList.add('active');
+                
+                // Clear cart after successful order
+                clearCart();
+                
+                // Close confirmation after 5 seconds
+                setTimeout(() => {
+                    orderConfirmation.classList.remove('active');
+                }, 5000);
             }
-            renderProducts();
-            updateCartUI();
         });
-    });
+    }
+    
+    // Setup shop search functionality
+    const shopSearch = document.getElementById('shopSearch');
+    if (shopSearch) {
+        shopSearch.addEventListener('input', () => {
+            const searchTerm = shopSearch.value.toLowerCase().trim();
+            const productCards = document.querySelectorAll('.product-card');
+            
+            productCards.forEach(card => {
+                const productName = card.querySelector('.product-name').textContent.toLowerCase();
+                const productDesc = card.querySelector('.product-description').textContent.toLowerCase();
+                
+                if (productName.includes(searchTerm) || productDesc.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    }
 }
 
 // =============================================
@@ -1274,13 +1565,17 @@ function initializePage() {
     // Setup all functionality
     setupMobileNavigation();
     setupThemeToggle();
-    setupCartFunctionality(); // New cart functionality
-    setupCartButton();
+    setupCartFunctionality(); // Cart functionality
     setupSearch();
     setupMembershipForm();
     setupAnimatedBackground();
     setupKeyboardShortcuts();
     setupLanguageSwitcher();
+    
+    // Setup shop page if on shop.html
+    if (window.location.pathname.includes('shop.html')) {
+        setupShopPage();
+    }
     
     // Apply initial translations
     applyTranslations(savedLanguage);
@@ -1289,7 +1584,9 @@ function initializePage() {
     updateCartUI();
     
     // Render products if on shop page
-    renderProducts();
+    if (window.location.pathname.includes('shop.html')) {
+        renderProducts();
+    }
 }
 
 // Initialize everything when DOM is loaded
@@ -1631,6 +1928,31 @@ function initializeTimelineAnimations() {
     
     timelineItems.forEach(item => {
         timelineObserver.observe(item);
+    });
+}
+
+// Initialize Timeline
+function initializeTimeline() {
+    const timelineSteps = document.querySelectorAll('.timeline-step');
+    
+    if (timelineSteps.length === 0) return;
+    
+    const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // Add a delay based on the index to create a sequential animation
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, index * 200);
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    timelineSteps.forEach(step => {
+        step.style.opacity = '0';
+        step.style.transform = 'translateY(20px)';
+        step.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        timelineObserver.observe(step);
     });
 }
 
