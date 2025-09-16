@@ -1890,4 +1890,120 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+    
+    // Add some interactive effects to trainer cards
+    const trainerCards = document.querySelectorAll('.trainer-card');
+    trainerCards.forEach((card, index) => {
+        // Add random floating animation delays
+        card.style.animationDelay = `${index * 0.1}s`;
+        
+        // Add interactive glow effect on hover
+        card.addEventListener('mouseenter', function() {
+            this.style.boxShadow = '0 0 30px rgba(255, 107, 53, 0.4)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.boxShadow = '';
+        });
+    });
+});
+
+// Initialize banner slider
+function initializeBannerSlider() {
+    const slides = document.querySelectorAll('.banner-slide');
+    
+    let currentSlide = 0;
+    let slideInterval;
+    const slideDelay = 4000; // 4 seconds
+    
+    // Function to show a specific slide
+    function showSlide(index) {
+        // Remove active class from all slides
+        slides.forEach(slide => slide.classList.remove('active'));
+        
+        // Add active class to current slide
+        slides[index].classList.add('active');
+        
+        currentSlide = index;
+    }
+    
+    // Function to go to next slide
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+    
+    // Function to start automatic sliding
+    function startAutoSlide() {
+        slideInterval = setInterval(nextSlide, slideDelay);
+    }
+    
+    // Function to stop automatic sliding
+    function stopAutoSlide() {
+        clearInterval(slideInterval);
+    }
+    
+    // Start automatic sliding
+    startAutoSlide();
+}
+
+// Initialize trainers page
+function initializeTrainersPage() {
+    // Initialize expandable trainer list
+    const trainerListItems = document.querySelectorAll('.trainer-list-item');
+    
+    trainerListItems.forEach(item => {
+        const header = item.querySelector('.trainer-list-header');
+        const content = item.querySelector('.trainer-list-content');
+        const expandIcon = item.querySelector('.expand-icon i');
+        
+        header.addEventListener('click', () => {
+            const isExpanded = item.classList.contains('expanded');
+            
+            // Close all other items
+            trainerListItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('expanded');
+                    const otherContent = otherItem.querySelector('.trainer-list-content');
+                    const otherIcon = otherItem.querySelector('.expand-icon i');
+                    otherContent.style.maxHeight = '0';
+                    otherIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            // Toggle current item
+            if (isExpanded) {
+                item.classList.remove('expanded');
+                content.style.maxHeight = '0';
+                expandIcon.style.transform = 'rotate(0deg)';
+            } else {
+                item.classList.add('expanded');
+                content.style.maxHeight = content.scrollHeight + 'px';
+                expandIcon.style.transform = 'rotate(180deg)';
+            }
+        });
+    });
+    
+    // Add smooth scroll for CTA button
+    const ctaButton = document.querySelector('.cta-button');
+    if (ctaButton) {
+        ctaButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = ctaButton.getAttribute('href');
+            if (targetId && targetId.startsWith('#')) {
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    initializeBannerSlider();
+    initializeTrainersPage();
 });
