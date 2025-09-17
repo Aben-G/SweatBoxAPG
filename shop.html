@@ -1,328 +1,509 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>SweatboxAPG | CrossFit 1109</title>
-    <meta name="description"
-        content="Shop Sweat Box APG merchandise, supplements, and gym passes. Apparel, protein shakers, and membership options available.">
-    <meta name="keywords" content="gym merchandise, workout apparel, protein supplements, gym passes">
-    <meta name="author" content="Sweat Box APG">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
+    <meta
+      name="description"
+      content="Shop Sweat Box APG merchandise, supplements, and gym passes. Apparel, protein shakers, and membership options available."
+    />
+    <meta
+      name="keywords"
+      content="gym merchandise, workout apparel, protein supplements, gym passes"
+    />
+    <meta name="author" content="Sweat Box APG" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
-
+  <body>
     <canvas id="bgCanvas" aria-hidden="true"></canvas>
 
     <div class="site" role="application" aria-label="Sweat Box APG website">
-        <header>
+      <header>
+        <a href="index.html" class="brand">
+          <img src="images/image.png" alt="SweatBox APG Logo" class="logo" />
+          <div>
+            <h1>Sweat Box APG</h1>
+            <div class="muted small">Addis Ababa • Performance Gym</div>
+          </div>
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="trainers.html">Trainers</a>
+          <a href="shop.html" class="active">Store</a>
+          <a href="membership.html">Membership</a>
+          <a href="contact.html">Contact</a>
+
+          <!-- Search bar in navigation -->
+          <input
+            class="searchbar"
+            placeholder="Search trainers, products…"
+            aria-label="Search"
+            id="searchInput"
+          />
+
+          <!-- Settings dropdown -->
+          <div class="settings-container">
+            <button
+              class="settings-btn"
+              id="settingsBtn"
+              aria-expanded="false"
+              aria-haspopup="true"
+              title="Settings"
+            >
+              <i class="fas fa-cog"></i>
+            </button>
+            <div class="settings-dropdown" id="settingsDropdown">
+              <div
+                class="settings-dropdown-item"
+                id="themeToggle"
+                aria-pressed="false"
+                title="Switch theme"
+              >
+                <i class="fas fa-moon"></i>
+                <span>Theme</span>
+              </div>
+              <div
+                class="settings-dropdown-item"
+                id="langToggle"
+                data-lang="en"
+                title="Switch language"
+              >
+                <i class="fas fa-globe"></i>
+                <span class="btn-label">English</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cart button -->
+          <button id="navCartBtn" class="cart-btn" title="View your cart">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="navCartCount" class="cart-badge">0</span>
+          </button>
+        </nav>
+
+        <!-- Back to top button -->
+        <button
+          id="backToTop"
+          class="back-to-top-btn"
+          aria-label="Back to top"
+          title="Back to top"
+        >
+          <i class="fas fa-arrow-up"></i>
+        </button>
+
+        <!-- Mobile menu button -->
+        <button
+          class="mobile-menu-btn"
+          id="mobileMenuBtn"
+          aria-label="Toggle mobile menu"
+          aria-expanded="false"
+        >
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </header>
+
+      <!-- Mobile navigation overlay -->
+      <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <div class="mobile-nav-content">
+          <button
+            class="mobile-close-btn"
+            id="mobileCloseBtn"
+            aria-label="Close mobile menu"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+
+          <div class="mobile-nav-header">
             <a href="index.html" class="brand">
-                <img src="images/image.png" alt="SweatBox APG Logo" class="logo">
-                <div>
-                    <h1>Sweat Box APG</h1>
-                    <div class="muted small">Addis Ababa • Performance Gym</div>
-                </div>
+              <img
+                src="images/image.png"
+                alt="SweatBox APG Logo"
+                class="logo"
+              />
+              <div>
+                <h1>Sweat Box APG</h1>
+                <div class="muted small">Addis Ababa • Performance Gym</div>
+              </div>
             </a>
+          </div>
 
-            <nav class="nav-links" aria-label="Main navigation">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="trainers.html">Trainers</a>
-                <a href="shop.html" class="active">Shop</a>
-                <a href="membership.html">Membership</a>
-                <a href="contact.html">Contact</a>
-                
-                <!-- Search bar in navigation -->
-                <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search" id="searchInput" />
-                
-                <!-- Settings dropdown -->
-                <div class="settings-container">
-                    <button class="settings-btn" id="settingsBtn" aria-expanded="false" aria-haspopup="true" title="Settings">
-                        <i class="fas fa-cog"></i>
-                    </button>
-                    <div class="settings-dropdown" id="settingsDropdown">
-                        <div class="settings-dropdown-item" id="themeToggle" aria-pressed="false" title="Switch theme">
-                            <i class="fas fa-moon"></i>
-                            <span>Theme</span>
-                        </div>
-                        <div class="settings-dropdown-item" id="langToggle" data-lang="en" title="Switch language">
-                            <i class="fas fa-globe"></i>
-                            <span class="btn-label">English</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Cart button -->
-                <button id="navCartBtn" class="cart-btn" title="View your cart">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span id="navCartCount" class="cart-badge">0</span>
-                </button>
-            </nav>
+          <nav class="mobile-nav-links" aria-label="Mobile navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="trainers.html">Trainers</a>
+            <a href="shop.html" class="active">Store</a>
+            <a href="membership.html">Membership</a>
+            <a href="contact.html">Contact</a>
+          </nav>
 
-            <!-- Back to top button -->
-            <button id="backToTop" class="back-to-top-btn" aria-label="Back to top" title="Back to top">
-                <i class="fas fa-arrow-up"></i>
+          <div class="mobile-controls">
+            <input
+              class="searchbar"
+              placeholder="Search trainers, products…"
+              aria-label="Search"
+            />
+
+            <!-- Mobile theme button -->
+            <button
+              id="mobileThemeToggle"
+              class="theme-toggle-btn"
+              aria-pressed="false"
+              title="Switch theme"
+            >
+              <i class="fas fa-moon"></i>
+              <span>Switch Theme</span>
             </button>
 
-            <!-- Mobile menu button -->
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-        </header>
+            <div class="mobile-buttons">
+              <button
+                id="mobileCartBtn"
+                class="mobile-btn"
+                title="View your cart"
+              >
+                <i class="fas fa-shopping-cart"></i>
+                <span class="btn-label">My Cart</span>
+                <span id="mobileCartCount" class="cart-badge">0</span>
+              </button>
 
-        <!-- Mobile navigation overlay -->
-        <div class="mobile-nav-overlay" id="mobileNavOverlay">
-            <div class="mobile-nav-content">
-                <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close mobile menu">
-                    <i class="fas fa-times"></i>
-                </button>
-                
-                <div class="mobile-nav-header">
-                    <a href="index.html" class="brand">
-                        <img src="images/image.png" alt="SweatBox APG Logo" class="logo">
-                        <div>
-                            <h1>Sweat Box APG</h1>
-                            <div class="muted small">Addis Ababa • Performance Gym</div>
-                        </div>
-                    </a>
-                </div>
-                
-                <nav class="mobile-nav-links" aria-label="Mobile navigation">
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About</a>
-                    <a href="trainers.html">Trainers</a>
-                    <a href="shop.html" class="active">Shop</a>
-                    <a href="membership.html">Membership</a>
-                    <a href="contact.html">Contact</a>
-                </nav>
-                
-                <div class="mobile-controls">
-                    <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search" />
-                    
-                    <!-- Mobile theme button -->
-                    <button id="mobileThemeToggle" class="theme-toggle-btn" aria-pressed="false" title="Switch theme">
-                        <i class="fas fa-moon"></i>
-                        <span>Switch Theme</span>
-                    </button>
-                    
-                    <div class="mobile-buttons">
-                        <button id="mobileCartBtn" class="mobile-btn" title="View your cart">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span class="btn-label">My Cart</span>
-                            <span id="mobileCartCount" class="cart-badge">0</span>
-                        </button>
-                        
-                        <button id="mobileLangToggle" class="mobile-btn lang-btn" title="Switch language" data-lang="en">
-                            <i class="fas fa-globe lang-icon"></i>
-                            <span class="btn-label">EN</span>
-                        </button>
-                    </div>
-                </div>
+              <button
+                id="mobileLangToggle"
+                class="mobile-btn lang-btn"
+                title="Switch language"
+                data-lang="en"
+              >
+                <i class="fas fa-globe lang-icon"></i>
+                <span class="btn-label">EN</span>
+              </button>
             </div>
+          </div>
         </div>
+      </div>
 
-        <main>
-            <section id="pageContainer">
-                <!-- Shop Hero Section -->
-                <div class="shop-hero">
-                    <div class="shop-hero-content">
-                        <h1>SweatBox APG Store</h1>
-                        <p>Premium fitness gear, supplements, and apparel for your journey</p>
-                        <div class="shop-search-bar">
-                            <input type="text" id="shopSearch" placeholder="Search products..." class="shop-search-input">
-                            <button class="shop-search-btn"><i class="fas fa-search"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Category Tabs -->
-                <div class="shop-categories">
-                    <div class="category-tabs">
-                        <button class="category-tab active" data-category="all">All Products</button>
-                        <button class="category-tab" data-category="shoes">Shoes</button>
-                        <button class="category-tab" data-category="tops">Top Wear</button>
-                        <button class="category-tab" data-category="bottoms">Bottom Wear</button>
-                        <button class="category-tab" data-category="weights">Weights</button>
-                        <button class="category-tab" data-category="materials">Materials</button>
-                        <button class="category-tab" data-category="supplements">Supplements</button>
-                    </div>
-                </div>
-
-                <!-- Gym Advertisement Banners -->
-                <div class="banner-container">
-                    <div class="banner-slide" data-index="0">
-                        <h3>Summer Fitness Challenge</h3>
-                        <p>Join our 30-day transformation program and win exciting prizes!</p>
-                        <a href="#" class="banner-btn">Learn More</a>
-                    </div>
-                    <div class="banner-slide" data-index="1">
-                        <h3>Personal Training Special</h3>
-                        <p>Get 20% off on all personal training packages this month!</p>
-                        <a href="#" class="banner-btn">Book Now</a>
-                    </div>
-                    <div class="banner-slide" data-index="2">
-                        <h3>New Equipment Arrived</h3>
-                        <p>Check out our newly installed state-of-the-art fitness equipment!</p>
-                        <a href="#" class="banner-btn">See Gallery</a>
-                    </div>
-                    <div class="banner-slide" data-index="3">
-                        <h3>Group Classes</h3>
-                        <p>Join our high-intensity group workouts led by expert trainers!</p>
-                        <a href="#" class="banner-btn">View Schedule</a>
-                    </div>
-                    <div class="banner-slide" data-index="4">
-                        <h3>Nutrition Consultation</h3>
-                        <p>Get personalized nutrition plans to complement your fitness journey</p>
-                        <a href="#" class="banner-btn">Book Consultation</a>
-                    </div>
-                    <div class="banner-dots">
-                        <span class="dot active"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                    </div>
-                </div>
-
-                <!-- Products Grid -->
-                <div class="products-section">
-                    <div class="products-grid" id="productsGrid">
-                        <!-- Products will be dynamically loaded here -->
-                    </div>
-                </div>
-
-                <!-- Shopping Cart Sidebar -->
-                <div class="cart-sidebar" id="cartSidebar">
-                    <div class="cart-header">
-                        <h3>Shopping Cart</h3>
-                        <button class="close-cart" id="closeCart">&times;</button>
-                    </div>
-                    <div class="cart-items" id="cartItems">
-                        <!-- Cart items will be dynamically loaded here -->
-                    </div>
-                    <div class="cart-summary">
-                        <div class="cart-total">
-                            <span>Total:</span>
-                            <span id="cartTotal">$0.00</span>
-                        </div>
-                        <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
-                    </div>
-                </div>
-
-                <!-- Checkout Modal -->
-                <div class="checkout-modal" id="checkoutModal">
-                    <div class="checkout-content">
-                        <div class="checkout-header">
-                            <h3>Checkout</h3>
-                            <button class="close-checkout" id="closeCheckout">&times;</button>
-                        </div>
-                        <form class="checkout-form" id="checkoutForm">
-                            <div class="form-section">
-                                <h4>Personal Information</h4>
-                                <div class="form-row">
-                                    <input type="text" name="firstName" placeholder="First Name" required>
-                                    <input type="text" name="lastName" placeholder="Last Name" required>
-                                </div>
-                                <input type="email" name="email" placeholder="Email Address" required>
-                                <input type="tel" name="phone" placeholder="Phone Number" required>
-                            </div>
-                            <div class="form-section">
-                                <h4>Shipping Address</h4>
-                                <input type="text" name="address" placeholder="Street Address" required>
-                                <div class="form-row">
-                                    <input type="text" name="city" placeholder="City" required>
-                                    <input type="text" name="state" placeholder="State" required>
-                                </div>
-                                <div class="form-row">
-                                    <input type="text" name="zipCode" placeholder="ZIP Code" required>
-                                    <input type="text" name="country" placeholder="Country" required>
-                                </div>
-                            </div>
-                            <div class="form-section">
-                                <h4>Payment Information</h4>
-                                <input type="text" name="cardNumber" placeholder="Card Number" required>
-                                <div class="form-row">
-                                    <input type="text" name="expiryDate" placeholder="MM/YY" required>
-                                    <input type="text" name="cvv" placeholder="CVV" required>
-                                </div>
-                                <input type="text" name="cardName" placeholder="Name on Card" required>
-                            </div>
-                            <div class="order-summary">
-                                <h4>Order Summary</h4>
-                                <div id="orderSummaryItems"></div>
-                                <div class="order-total">
-                                    <span>Total:</span>
-                                    <span id="orderTotal">$0.00</span>
-                                </div>
-                            </div>
-                            <button type="submit" class="place-order-btn">Place Order</button>
-                        </form>
-                    </div>
-                </div>
-
-                <!-- Order Confirmation Modal -->
-                <div class="order-confirmation" id="orderConfirmation">
-                    <div class="confirmation-content">
-                        <div class="success-icon">✓</div>
-                        <h3>Order Confirmed!</h3>
-                        <p>Thank you for your purchase. Your order has been successfully placed.</p>
-                        <div class="order-details">
-                            <h4>Order Details</h4>
-                            <p><strong>Order ID:</strong> <span id="orderId"></span></p>
-                            <p><strong>Date:</strong> <span id="orderDate"></span></p>
-                            <p><strong>Total:</strong> <span id="orderTotalAmount"></span></p>
-                        </div>
-                        <div class="qr-section">
-                            <h4>Order QR Code</h4>
-                            <div id="qrcode"></div>
-                            <p>Scan this QR code to track your order</p>
-                        </div>
-                        <div class="receipt-actions">
-                            <button class="download-receipt" id="downloadReceipt">Download Receipt</button>
-                            <button class="close-confirmation" id="closeConfirmation">Continue Shopping</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <div class="footer-content">
-                <div class="footer-logo">SweatBox<span>APG</span></div>
-                <p>&copy; 2025 Sweat Box APG. All Rights Reserved.</p>
-                <div class="footer-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Contact Support</a>
-                </div>
-                <div class="footer-social">
-                    <a href="https://www.instagram.com/sweatboxapg/" target="_blank" rel="noopener noreferrer" class="footer-social-link instagram">
-                        <i class="fab fa-instagram"></i>
-                        <span>Instagram</span>
-                    </a>
-                    <a href="https://www.facebook.com/p/sweatboxapg-100063940720079/" target="_blank" rel="noopener noreferrer" class="footer-social-link facebook">
-                        <i class="fab fa-facebook"></i>
-                        <span>Facebook</span>
-                    </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="footer-social-link tiktok">
-                        <i class="fab fa-tiktok"></i>
-                        <span>TikTok</span>
-                    </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="footer-social-link telegram">
-                        <i class="fab fa-telegram"></i>
-                        <span>Telegram</span>
-                    </a>
-                </div>
+      <main>
+        <section id="pageContainer">
+          <!-- Shop Hero Section -->
+          <div class="shop-hero">
+            <div class="shop-hero-content">
+              <h1>SweatBox APG Store</h1>
+              <p>
+                Premium fitness gear, supplements, and apparel for your journey
+              </p>
+              <div class="shop-search-bar">
+                <input
+                  type="text"
+                  id="shopSearch"
+                  placeholder="Search products..."
+                  class="shop-search-input"
+                />
+                <button class="shop-search-btn">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
             </div>
-        </footer>
+          </div>
+
+          <!-- Category Tabs -->
+          <div class="shop-categories">
+            <div class="category-tabs">
+              <button class="category-tab active" data-category="all">
+                All Products
+              </button>
+              <button class="category-tab" data-category="shoes">Shoes</button>
+              <button class="category-tab" data-category="tops">
+                Top Wear
+              </button>
+              <button class="category-tab" data-category="bottoms">
+                Bottom Wear
+              </button>
+              <button class="category-tab" data-category="weights">
+                Weights
+              </button>
+              <button class="category-tab" data-category="materials">
+                Materials
+              </button>
+              <button class="category-tab" data-category="supplements">
+                Supplements
+              </button>
+            </div>
+          </div>
+
+          <!-- Gym Advertisement Banners -->
+          <div class="banner-container">
+            <div class="banner-slide" data-index="0">
+              <h3>Summer Fitness Challenge</h3>
+              <p>
+                Join our 30-day transformation program and win exciting prizes!
+              </p>
+              <a href="#" class="banner-btn">Learn More</a>
+            </div>
+            <div class="banner-slide" data-index="1">
+              <h3>Personal Training Special</h3>
+              <p>Get 20% off on all personal training packages this month!</p>
+              <a href="#" class="banner-btn">Book Now</a>
+            </div>
+            <div class="banner-slide" data-index="2">
+              <h3>New Equipment Arrived</h3>
+              <p>
+                Check out our newly installed state-of-the-art fitness
+                equipment!
+              </p>
+              <a href="#" class="banner-btn">See Gallery</a>
+            </div>
+            <div class="banner-slide" data-index="3">
+              <h3>Group Classes</h3>
+              <p>
+                Join our high-intensity group workouts led by expert trainers!
+              </p>
+              <a href="#" class="banner-btn">View Schedule</a>
+            </div>
+            <div class="banner-slide" data-index="4">
+              <h3>Nutrition Consultation</h3>
+              <p>
+                Get personalized nutrition plans to complement your fitness
+                journey
+              </p>
+              <a href="#" class="banner-btn">Book Consultation</a>
+            </div>
+          </div>
+
+          <!-- Products Grid -->
+          <div class="products-section">
+            <div class="products-grid" id="productsGrid">
+              <!-- Products will be dynamically loaded here -->
+            </div>
+          </div>
+
+          <!-- Shopping Cart Sidebar -->
+          <div class="cart-sidebar" id="cartSidebar">
+            <div class="cart-header">
+              <h3>Shopping Cart</h3>
+              <button class="close-cart" id="closeCart">&times;</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+              <!-- Cart items will be dynamically loaded here -->
+            </div>
+            <div class="cart-summary">
+              <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">$0.00</span>
+              </div>
+              <button class="checkout-btn" id="checkoutBtn">
+                Proceed to Checkout
+              </button>
+            </div>
+          </div>
+
+          <!-- Checkout Modal -->
+          <div class="checkout-modal" id="checkoutModal">
+            <div class="checkout-content">
+              <div class="checkout-header">
+                <h3>Checkout</h3>
+                <button class="close-checkout" id="closeCheckout">
+                  &times;
+                </button>
+              </div>
+              <form class="checkout-form" id="checkoutForm">
+                <div class="form-section">
+                  <h4>Personal Information</h4>
+                  <div class="form-row">
+                    <input
+                      type="text"
+                      name="firstName"
+                      placeholder="First Name"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="lastName"
+                      placeholder="Last Name"
+                      required
+                    />
+                  </div>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    required
+                  />
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone Number"
+                    required
+                  />
+                </div>
+                <div class="form-section">
+                  <h4>Shipping Address</h4>
+                  <input
+                    type="text"
+                    name="address"
+                    placeholder="Street Address"
+                    required
+                  />
+                  <div class="form-row">
+                    <input
+                      type="text"
+                      name="city"
+                      placeholder="City"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="state"
+                      placeholder="State"
+                      required
+                    />
+                  </div>
+                  <div class="form-row">
+                    <input
+                      type="text"
+                      name="zipCode"
+                      placeholder="ZIP Code"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="country"
+                      placeholder="Country"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-section">
+                  <h4>Payment Information</h4>
+                  <input
+                    type="text"
+                    name="cardNumber"
+                    placeholder="Card Number"
+                    required
+                  />
+                  <div class="form-row">
+                    <input
+                      type="text"
+                      name="expiryDate"
+                      placeholder="MM/YY"
+                      required
+                    />
+                    <input type="text" name="cvv" placeholder="CVV" required />
+                  </div>
+                  <input
+                    type="text"
+                    name="cardName"
+                    placeholder="Name on Card"
+                    required
+                  />
+                </div>
+                <div class="order-summary">
+                  <h4>Order Summary</h4>
+                  <div id="orderSummaryItems"></div>
+                  <div class="order-total">
+                    <span>Total:</span>
+                    <span id="orderTotal">$0.00</span>
+                  </div>
+                </div>
+                <button type="submit" class="place-order-btn">
+                  Place Order
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Order Confirmation Modal -->
+          <div class="order-confirmation" id="orderConfirmation">
+            <div class="confirmation-content">
+              <div class="success-icon">✓</div>
+              <h3>Order Confirmed!</h3>
+              <p>
+                Thank you for your purchase. Your order has been successfully
+                placed.
+              </p>
+              <div class="order-details">
+                <h4>Order Details</h4>
+                <p><strong>Order ID:</strong> <span id="orderId"></span></p>
+                <p><strong>Date:</strong> <span id="orderDate"></span></p>
+                <p>
+                  <strong>Total:</strong> <span id="orderTotalAmount"></span>
+                </p>
+              </div>
+              <div class="qr-section">
+                <h4>Order QR Code</h4>
+                <div id="qrcode"></div>
+                <p>Scan this QR code to track your order</p>
+              </div>
+              <div class="receipt-actions">
+                <button class="download-receipt" id="downloadReceipt">
+                  Download Receipt
+                </button>
+                <button class="close-confirmation" id="closeConfirmation">
+                  Continue Shopping
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="footer-content">
+          <div class="footer-logo">SweatBox<span>APG</span></div>
+          <p>&copy; 2025 Sweat Box APG. All Rights Reserved.</p>
+          <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Support</a>
+          </div>
+          <div class="footer-social">
+            <a
+              href="https://www.instagram.com/sweatboxapg/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-social-link instagram"
+            >
+              <i class="fab fa-instagram"></i>
+              <span>Instagram</span>
+            </a>
+            <a
+              href="https://www.facebook.com/p/sweatboxapg-100063940720079/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-social-link facebook"
+            >
+              <i class="fab fa-facebook"></i>
+              <span>Facebook</span>
+            </a>
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-social-link tiktok"
+            >
+              <i class="fab fa-tiktok"></i>
+              <span>TikTok</span>
+            </a>
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-social-link telegram"
+            >
+              <i class="fab fa-telegram"></i>
+              <span>Telegram</span>
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
 
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>

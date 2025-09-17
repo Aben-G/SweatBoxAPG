@@ -1159,6 +1159,9 @@ function setupShopPage() {
     // Initialize banner slider
     initializeBannerSlider();
     
+    // Render products initially so they appear automatically
+    renderProducts();
+    
     // Setup category tabs
     const categoryTabs = document.querySelectorAll('.category-tab');
     if (categoryTabs.length > 0) {
