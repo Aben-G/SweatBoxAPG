@@ -6,69 +6,6 @@
    SHOP PAGE STYLES
    ======================================================== */
 
-/* Shop Hero Section */
-.shop-hero {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/image.png');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 30px;
-    border-radius: var(--card-radius);
-    overflow: hidden;
-}
-
-.shop-hero-content {
-    text-align: center;
-    color: #fff;
-    padding: 20px;
-    max-width: 800px;
-}
-
-.shop-hero-content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.shop-hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.shop-search-bar {
-    display: flex;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.shop-search-input {
-    flex: 1;
-    padding: 12px 15px;
-    border: none;
-    border-radius: 25px 0 0 25px;
-    font-size: 1rem;
-    outline: none;
-}
-
-.shop-search-btn {
-    background: var(--accent);
-    color: white;
-    border: none;
-    padding: 0 20px;
-    border-radius: 0 25px 25px 0;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.shop-search-btn:hover {
-    background: var(--accent-2);
-}
 
 /* Category Tabs */
 .shop-categories {
@@ -105,12 +42,12 @@
 
 /* Gym Advertisement Banners */
 .banner-container {
-    margin: 0 20px 10px 20px;
+    margin: 0 20px 20px 20px;
     position: relative;
-    height: 30px;
+    height: 150px;
     overflow: hidden;
-    border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: var(--card-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .banner-slide {
@@ -160,35 +97,35 @@
 }
 
 .banner-slide h3 {
-    font-size: 0.8rem;
-    margin-bottom: 2px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.5px;
 }
 
 .banner-slide p {
-    font-size: 0.65rem;
-    margin-bottom: 3px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    max-width: 300px;
-    line-height: 1.1;
+    font-size: 1rem;
+    margin-bottom: 12px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    max-width: 450px;
+    line-height: 1.4;
 }
 
 .banner-btn {
     background: rgba(255, 255, 255, 0.2);
     color: white;
-    padding: 2px 6px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
+    padding: 8px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
     text-transform: uppercase;
-    letter-spacing: 0.2px;
-    font-size: 0.55rem;
+    letter-spacing: 0.5px;
+    font-size: 0.85rem;
 }
 
 .banner-btn:hover {
@@ -735,17 +672,6 @@
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .shop-hero {
-        height: 250px;
-    }
-    
-    .shop-hero-content h1 {
-        font-size: 2rem;
-    }
-    
-    .shop-hero-content p {
-        font-size: 1rem;
-    }
     
     .products-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -768,13 +694,6 @@
 }
 
 @media (max-width: 480px) {
-    .shop-hero {
-        height: 200px;
-    }
-    
-    .shop-hero-content h1 {
-        font-size: 1.8rem;
-    }
     
     .category-tabs {
         gap: 5px;

@@ -521,11 +521,6 @@ function updateMembershipPage(lang) {
 
 function updateShopPage(lang) {
     const t = translations[lang];
-    const shopTitle = document.querySelector('.shop-hero h2');
-    const shopSubtitle = document.querySelector('.shop-hero .muted');
-    
-    if (shopTitle) shopTitle.textContent = t.shopTitle;
-    if (shopSubtitle) shopSubtitle.textContent = t.shopSubtitle;
     
     // Update product cards
     const addToCartButtons = document.querySelectorAll('.product-card .btn');
