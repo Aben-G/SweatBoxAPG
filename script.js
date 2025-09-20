@@ -7,19 +7,19 @@ const translations = {
         home: "Home",
         about: "About",
         trainers: "Trainers",
-        shop: "Shop",
+        shop: "Store",
         membership: "Membership",
         contact: "Contact",
         myCart: "My Cart",
         theme: "Theme",
         language: "Language",
-        
+
         // Hero Section
         heroTitle: "Welcome to Sweat Box APG",
         heroSubtitle: "Addis Ababa's Premier Performance Gym",
         heroDescription: "Transform your fitness journey with state-of-the-art equipment, expert trainers, and a community that pushes you to be your best.",
         getStarted: "Get Started",
-        
+
         // Common
         searchPlaceholder: "Search trainers, products…",
         viewMore: "View More",
@@ -27,7 +27,7 @@ const translations = {
         readMore: "Read More",
         submit: "Submit",
         close: "Close",
-        
+
         // About Page
         aboutTitle: "About Sweat Box APG",
         aboutSubtitle: "Your Fitness Journey Starts Here",
@@ -42,7 +42,7 @@ const translations = {
         email: "Email",
         phoneValue: "+251 11 639 2624",
         emailValue: "contact@sweatboxapg.com",
-        
+
         // Trainers Page
         trainersTitle: "Expert Trainers",
         trainersSubtitle: "Meet Our Certified Fitness Professionals",
@@ -50,7 +50,7 @@ const translations = {
         experience: "Experience",
         certification: "Certification",
         bio: "Bio",
-        
+
         // Contact Page
         contactTitle: "Contact Us",
         contactSubtitle: "Get in Touch with Sweat Box APG",
@@ -60,7 +60,7 @@ const translations = {
         message: "Message",
         location: "Location",
         hours: "Hours",
-        
+
         // Membership Page
         membershipTitle: "Membership Plans",
         membershipSubtitle: "Choose Your Fitness Journey",
@@ -71,9 +71,9 @@ const translations = {
         features: "Features",
         price: "Price",
         signUp: "Sign Up",
-        
+
         // Shop Page
-        shopTitle: "Fitness Shop",
+        shopTitle: "Fitness Store",
         shopSubtitle: "Premium Fitness Equipment & Supplements",
         addToCart: "Add to Cart",
         price: "Price",
@@ -81,18 +81,18 @@ const translations = {
         cart: "Cart",
         checkout: "Checkout",
         total: "Total",
-        
+
         // Footer
         aboutUs: "About Us",
         services: "Services",
         quickLinks: "Quick Links",
         followUs: "Follow Us",
         allRightsReserved: "All Rights Reserved",
-        
+
         // Mobile Navigation
         menu: "Menu",
         search: "Search",
-        
+
         // Form Validation
         required: "This field is required",
         invalidEmail: "Please enter a valid email",
@@ -109,13 +109,13 @@ const translations = {
         myCart: "የእኔ ጋሪ",
         theme: "ገጽታ",
         language: "ቋንቋ",
-        
+
         // Hero Section
         heroTitle: "እንኳን ወደ ስዌት ቦክስ ኤፒጂ በደህና መጡ",
         heroSubtitle: "የአዲስ አበባ ቀዳሚ የፍትህ ጉዞ ማእበቻ",
         heroDescription: "የዘመናዊ መሳሪያዎች፣ የባለሙያ ስልጠና ሰጪዎች እና የሚያስተውልዎ ማህበረሰብ በመጠቀም የፍትህ ጉዞዎን ይለውጡ።",
         getStarted: "ይጀምሩ",
-        
+
         // Common
         searchPlaceholder: "ስልጠና ሰጪዎች፣ ምርቶችን ይፈልጉ…",
         viewMore: "ተጨማሪ ይመልከቱ",
@@ -123,7 +123,7 @@ const translations = {
         readMore: "ተጨማሪ ያንብቡ",
         submit: "ያስገቡ",
         close: "ዝጋ",
-        
+
         // About Page
         aboutTitle: "ስለ ስዌት ቦክስ ኤፒጂ",
         aboutSubtitle: "የፍትህ ጉዎዎ እዚህ ይጀምራል",
@@ -138,7 +138,7 @@ const translations = {
         email: "ኢሜይል",
         phoneValue: "+251 11 639 2624",
         emailValue: "contact@sweatboxapg.com",
-        
+
         // Trainers Page
         trainersTitle: "የባለሙያ ስልጠና ሰጪዎች",
         trainersSubtitle: "የተረጋገጡ የፍትህ ሙያተኞችን ይገኙባቸው",
@@ -146,7 +146,7 @@ const translations = {
         experience: "ልምድ",
         certification: "የምስክር ወረቀት",
         bio: "ታሪክ",
-        
+
         // Contact Page
         contactTitle: "ያግኙን",
         contactSubtitle: "ከስዌት ቦክስ ኤፒጂ ጋር ይገናኙ",
@@ -156,7 +156,7 @@ const translations = {
         message: "መልዕክት",
         location: "አካባቢ",
         hours: "ሰዓታት",
-        
+
         // Membership Page
         membershipTitle: "የአባልነት እቅዶች",
         membershipSubtitle: "የፍትህ ጉዎዎን ይምረጡ",
@@ -167,7 +167,7 @@ const translations = {
         features: "ባህሪያት",
         price: "ዋጋ",
         signUp: "ይመዝገቡ",
-        
+
         // Shop Page
         shopTitle: "የፍትህ ሱቅ",
         shopSubtitle: "የፍትህ መሳሪያዎች እና ተጨማሪ ምግቦች",
@@ -177,18 +177,18 @@ const translations = {
         cart: "ጋሪ",
         checkout: "ይክፈሉ",
         total: "ድምር",
-        
+
         // Footer
         aboutUs: "ስለ እኛ",
         services: "አገልግሎቶች",
         quickLinks: "ፈጣን አገናኞች",
         followUs: "ይከተሉን",
         allRightsReserved: "ሁሉም መብቶች የተጠበቁ ናቸው",
-        
+
         // Mobile Navigation
         menu: "ዝርዝር",
         search: "ፈልግ",
-        
+
         // Form Validation
         required: "ይህ መስክ ያስፈልጋል",
         invalidEmail: "እባክዎ ትክክለኛ ኢሜይል ያስገቡ",
@@ -201,36 +201,36 @@ function setupLanguageSwitcher() {
     const langToggle = document.getElementById('langToggle');
     // Mobile language toggle
     const mobileLangToggle = document.getElementById('mobileLangToggle');
-    
+
     if (!langToggle && !mobileLangToggle) return;
-    
+
     // Load saved language or default to English
     let currentLang = localStorage.getItem('preferredLanguage') || 'en';
-    
+
     const handleLanguageToggle = (toggle) => {
         currentLang = currentLang === 'en' ? 'am' : 'en';
-        
+
         // Save preference
         localStorage.setItem('preferredLanguage', currentLang);
-        
+
         // Update all language toggles
         updateAllLanguageToggles(currentLang);
-        
+
         // Apply translations
         applyTranslations(currentLang);
     };
-    
+
     // Initialize both toggles
     updateAllLanguageToggles(currentLang);
-    
+
     // Apply translations
     applyTranslations(currentLang);
-    
+
     // Add event listeners
     if (langToggle) {
         langToggle.addEventListener('click', () => handleLanguageToggle(langToggle));
     }
-    
+
     if (mobileLangToggle) {
         mobileLangToggle.addEventListener('click', () => handleLanguageToggle(mobileLangToggle));
     }
@@ -240,7 +240,7 @@ function setupLanguageSwitcher() {
 function updateAllLanguageToggles(lang) {
     // Calculate the opposite language (what we will switch TO)
     const oppositeLang = lang === 'en' ? 'am' : 'en';
-    
+
     // Desktop language toggle
     const desktopLangToggle = document.getElementById('langToggle');
     if (desktopLangToggle) {
@@ -250,7 +250,7 @@ function updateAllLanguageToggles(lang) {
             desktopLabel.textContent = oppositeLang.toUpperCase();
         }
     }
-    
+
     // Mobile language toggle
     const mobileLangToggle = document.getElementById('mobileLangToggle');
     if (mobileLangToggle) {
@@ -264,7 +264,7 @@ function updateAllLanguageToggles(lang) {
 
 function applyTranslations(lang) {
     const t = translations[lang];
-    
+
     // Update navigation links
     const navLinks = document.querySelectorAll('.nav-links a');
     if (navLinks.length >= 6) {
@@ -275,7 +275,7 @@ function applyTranslations(lang) {
         navLinks[4].textContent = t.membership;
         navLinks[5].textContent = t.contact;
     }
-    
+
     // Update mobile navigation links
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-content .nav-links a');
     if (mobileNavLinks.length >= 6) {
@@ -286,43 +286,43 @@ function applyTranslations(lang) {
         mobileNavLinks[4].textContent = t.membership;
         mobileNavLinks[5].textContent = t.contact;
     }
-    
+
     // Update header buttons
     const cartLabel = document.querySelector('#cartBtn .btn-label');
     const themeLabel = document.querySelector('#themeToggle .btn-label');
     if (cartLabel) cartLabel.textContent = t.myCart;
     if (themeLabel) themeLabel.textContent = t.theme;
-    
+
     // Update mobile header buttons
     const mobileCartLabel = document.querySelector('.mobile-controls #cartBtn .btn-label');
     const mobileThemeLabel = document.querySelector('.mobile-controls #mobileThemeToggle .btn-label');
     if (mobileCartLabel) mobileCartLabel.textContent = t.myCart;
     if (mobileThemeLabel) mobileThemeLabel.textContent = t.theme;
-    
+
     // Update language toggles using the centralized function
     updateAllLanguageToggles(lang);
-    
+
     // Update search placeholder
     const searchInput = document.getElementById('searchInput');
     if (searchInput) searchInput.placeholder = t.searchPlaceholder;
-    
+
     // Update mobile search placeholder
     const mobileSearchInput = document.querySelector('.mobile-search input');
     if (mobileSearchInput) mobileSearchInput.placeholder = t.searchPlaceholder;
-    
+
     // Update page titles based on current page
     updatePageContent(lang);
-    
+
     // Update footer content
     updateFooterContent(lang);
-    
+
     // Update mobile menu button text
     const menuBtn = document.querySelector('.menu-btn');
     if (menuBtn) {
         const menuText = menuBtn.querySelector('.menu-text');
         if (menuText) menuText.textContent = t.menu;
     }
-    
+
     // Update close button text
     const closeBtn = document.querySelector('.close-btn');
     if (closeBtn) {
@@ -333,18 +333,18 @@ function applyTranslations(lang) {
 
 function updateFooterContent(lang) {
     const t = translations[lang];
-    
+
     // Update footer headings
     const aboutUsHeadings = document.querySelectorAll('.footer-col h3');
     const servicesHeadings = document.querySelectorAll('.footer-col:nth-child(2) h3');
     const quickLinksHeadings = document.querySelectorAll('.footer-col:nth-child(3) h3');
     const followUsHeadings = document.querySelectorAll('.footer-col:nth-child(4) h3');
-    
+
     if (aboutUsHeadings.length > 0) aboutUsHeadings[0].textContent = t.aboutUs;
     if (servicesHeadings.length > 0) servicesHeadings[0].textContent = t.services;
     if (quickLinksHeadings.length > 0) quickLinksHeadings[0].textContent = t.quickLinks;
     if (followUsHeadings.length > 0) followUsHeadings[0].textContent = t.followUs;
-    
+
     // Update copyright text
     const copyright = document.querySelector('.footer-bottom p');
     if (copyright) {
@@ -356,18 +356,18 @@ function updateFooterContent(lang) {
 function updatePageContent(lang) {
     const t = translations[lang];
     const path = window.location.pathname;
-    
+
     // Update hero section
     const heroTitle = document.querySelector('.hero-text h2');
     const heroSubtitle = document.querySelector('.hero-text .muted');
     const heroDescription = document.querySelector('.hero-text p');
     const getStartedBtn = document.querySelector('.hero-text .btn');
-    
+
     if (heroTitle) heroTitle.textContent = t.heroTitle;
     if (heroSubtitle) heroSubtitle.textContent = t.heroSubtitle;
     if (heroDescription) heroDescription.textContent = t.heroDescription;
     if (getStartedBtn) getStartedBtn.textContent = t.getStarted;
-    
+
     // Update page-specific content
     if (path.includes('about.html')) {
         updateAboutPage(lang);
@@ -386,19 +386,19 @@ function updateAboutPage(lang) {
     const t = translations[lang];
     const aboutTitle = document.querySelector('.about-hero h2');
     const aboutSubtitle = document.querySelector('.about-hero .muted');
-    
+
     if (aboutTitle) aboutTitle.textContent = t.aboutTitle;
     if (aboutSubtitle) aboutSubtitle.textContent = t.aboutSubtitle;
-    
+
     // Update about content sections
     const storyHeadings = document.querySelectorAll('h3');
     const missionHeadings = document.querySelectorAll('h3');
     const valuesHeadings = document.querySelectorAll('h3');
-    
+
     // Update contact info
     const phoneLabels = document.querySelectorAll('.contact-info p');
     const emailLabels = document.querySelectorAll('.contact-info p');
-    
+
     // Update buttons
     const contactButtons = document.querySelectorAll('.btn');
     contactButtons.forEach(btn => {
@@ -412,27 +412,27 @@ function updateTrainersPage(lang) {
     const t = translations[lang];
     const trainersTitle = document.querySelector('.trainers-hero h2');
     const trainersSubtitle = document.querySelector('.trainers-hero .muted');
-    
+
     if (trainersTitle) trainersTitle.textContent = t.trainersTitle;
     if (trainersSubtitle) trainersSubtitle.textContent = t.trainersSubtitle;
-    
+
     // Update trainer cards
     const specialtyLabels = document.querySelectorAll('.trainer-card h4');
     const experienceLabels = document.querySelectorAll('.trainer-card p');
     const bioLabels = document.querySelectorAll('.trainer-card .bio h4');
-    
+
     specialtyLabels.forEach(label => {
         if (label.textContent.includes('Specialties') || label.textContent.includes('ልምዶች')) {
             label.textContent = t.specialties;
         }
     });
-    
+
     experienceLabels.forEach(label => {
         if (label.textContent.includes('Experience') || label.textContent.includes('ልምድ')) {
             label.textContent = t.experience;
         }
     });
-    
+
     bioLabels.forEach(label => {
         if (label.textContent.includes('Bio') || label.textContent.includes('ታሪክ')) {
             label.textContent = t.bio;
@@ -444,42 +444,42 @@ function updateContactPage(lang) {
     const t = translations[lang];
     const contactTitle = document.querySelector('.contact-hero h2');
     const contactSubtitle = document.querySelector('.contact-hero .muted');
-    
+
     if (contactTitle) contactTitle.textContent = t.contactTitle;
     if (contactSubtitle) contactSubtitle.textContent = t.contactSubtitle;
-    
+
     // Update form labels
     const nameLabel = document.querySelector('label[for="name"]');
     const emailLabel = document.querySelector('label[for="email"]');
     const messageLabel = document.querySelector('label[for="message"]');
-    
+
     if (nameLabel) nameLabel.textContent = t.name;
     if (emailLabel) emailLabel.textContent = t.email;
     if (messageLabel) messageLabel.textContent = t.message;
-    
+
     // Update form placeholders
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
     const messageInput = document.getElementById('message');
-    
+
     if (nameInput) nameInput.placeholder = t.name;
     if (emailInput) emailInput.placeholder = t.email;
     if (messageInput) messageInput.placeholder = t.message;
-    
+
     // Update submit button
     const submitBtn = document.querySelector('.contact-form .btn');
     if (submitBtn) submitBtn.textContent = t.send;
-    
+
     // Update contact info
     const locationHeadings = document.querySelectorAll('.contact-info h3');
     const hoursHeadings = document.querySelectorAll('.contact-info h3');
-    
+
     locationHeadings.forEach(heading => {
         if (heading.textContent.includes('Location') || heading.textContent.includes('አካባቢ')) {
             heading.textContent = t.location;
         }
     });
-    
+
     hoursHeadings.forEach(heading => {
         if (heading.textContent.includes('Hours') || heading.textContent.includes('ሰዓታት')) {
             heading.textContent = t.hours;
@@ -491,27 +491,27 @@ function updateMembershipPage(lang) {
     const t = translations[lang];
     const membershipTitle = document.querySelector('.membership-hero h2');
     const membershipSubtitle = document.querySelector('.membership-hero .muted');
-    
+
     if (membershipTitle) membershipTitle.textContent = t.membershipTitle;
     if (membershipSubtitle) membershipSubtitle.textContent = t.membershipSubtitle;
-    
+
     // Update membership cards
     const selectPlanButtons = document.querySelectorAll('.membership-card .btn');
     const featuresHeadings = document.querySelectorAll('.membership-card h4');
     const priceLabels = document.querySelectorAll('.membership-card .price');
-    
+
     selectPlanButtons.forEach(btn => {
         if (btn.textContent.includes('Select') || btn.textContent.includes('ይምረጡ')) {
             btn.textContent = t.selectPlan;
         }
     });
-    
+
     featuresHeadings.forEach(heading => {
         if (heading.textContent.includes('Features') || heading.textContent.includes('ባህሪያት')) {
             heading.textContent = t.features;
         }
     });
-    
+
     priceLabels.forEach(label => {
         if (label.textContent.includes('Price') || label.textContent.includes('ዋጋ')) {
             label.textContent = t.price;
@@ -521,47 +521,47 @@ function updateMembershipPage(lang) {
 
 function updateShopPage(lang) {
     const t = translations[lang];
-    
+
     // Update product cards
     const addToCartButtons = document.querySelectorAll('.product-card .btn');
     const priceLabels = document.querySelectorAll('.product-card .price');
     const descriptionLabels = document.querySelectorAll('.product-card .description h4');
-    
+
     addToCartButtons.forEach(btn => {
         if (btn.textContent.includes('Add to Cart') || btn.textContent.includes('ወደ ጋሪ')) {
             btn.textContent = t.addToCart;
         }
     });
-    
+
     priceLabels.forEach(label => {
         if (label.textContent.includes('Price') || label.textContent.includes('ዋጋ')) {
             label.textContent = t.price;
         }
     });
-    
+
     descriptionLabels.forEach(label => {
         if (label.textContent.includes('Description') || label.textContent.includes('መግለጫ')) {
             label.textContent = t.description;
         }
     });
-    
+
     // Update cart section
     const cartHeadings = document.querySelectorAll('.cart-section h2');
     const checkoutButtons = document.querySelectorAll('.cart-section .btn');
     const totalLabels = document.querySelectorAll('.cart-section .total');
-    
+
     cartHeadings.forEach(heading => {
         if (heading.textContent.includes('Cart') || heading.textContent.includes('ጋሪ')) {
             heading.textContent = t.cart;
         }
     });
-    
+
     checkoutButtons.forEach(btn => {
         if (btn.textContent.includes('Checkout') || btn.textContent.includes('ይክፈሉ')) {
             btn.textContent = t.checkout;
         }
     });
-    
+
     totalLabels.forEach(label => {
         if (label.textContent.includes('Total') || label.textContent.includes('ድምር')) {
             label.textContent = t.total;
@@ -592,7 +592,7 @@ function setupMobileNavigation() {
         mobileNavOverlay.classList.add('active');
         mobileMenuBtn.setAttribute('aria-expanded', 'true');
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        
+
         // Animate hamburger to X
         mobileMenuBtn.classList.add('active');
     });
@@ -602,7 +602,7 @@ function setupMobileNavigation() {
         mobileNavOverlay.classList.remove('active');
         mobileMenuBtn.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = ''; // Restore scrolling
-        
+
         // Reset hamburger animation
         mobileMenuBtn.classList.remove('active');
     }
@@ -626,7 +626,7 @@ function setupMobileNavigation() {
     mobileButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             e.stopPropagation(); // Prevent menu from closing
-            
+
             // Handle specific button functionality
             if (button.id === 'cartBtn') {
                 // Cart functionality - navigate to shop page
@@ -635,20 +635,20 @@ function setupMobileNavigation() {
                 // Theme toggle functionality
                 const currentTheme = document.documentElement.getAttribute('data-theme');
                 const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-                
+
                 // Update theme
                 document.documentElement.setAttribute('data-theme', newTheme);
                 localStorage.setItem('sb_theme', newTheme); // Use same key as desktop
-                
+
                 // Update button icon
                 const icon = button.querySelector('.theme-icon');
                 if (icon) {
                     icon.className = newTheme === 'light' ? 'fas fa-sun theme-icon' : 'fas fa-moon theme-icon';
                 }
-                
+
                 // Update aria-pressed
                 button.setAttribute('aria-pressed', newTheme === 'light' ? 'true' : 'false');
-                
+
                 // Update canvas colors if animated background exists
                 const canvas = document.getElementById('bgCanvas');
                 if (canvas && window.updateCanvasColors) {
@@ -658,18 +658,18 @@ function setupMobileNavigation() {
                 // Language toggle functionality
                 const currentLang = button.getAttribute('data-lang') || 'en';
                 const newLang = currentLang === 'en' ? 'am' : 'en';
-                
+
                 // Update language
                 button.setAttribute('data-lang', newLang);
                 document.documentElement.setAttribute('data-lang', newLang);
                 localStorage.setItem('preferredLanguage', newLang); // Use same key as desktop
-                
+
                 // Update button text
                 const langText = button.querySelector('.lang-text');
                 if (langText) {
                     langText.textContent = newLang.toUpperCase();
                 }
-                
+
                 // Apply translations
                 applyTranslations(newLang);
             }
@@ -738,7 +738,7 @@ function updateAllThemeIcons(theme) {
     if (desktopIcon) {
         desktopIcon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
     }
-    
+
     // Mobile theme icon
     const mobileIcon = document.querySelector('#mobileThemeToggle i');
     if (mobileIcon) {
@@ -754,7 +754,7 @@ function setupThemeToggle() {
     const themeToggle = document.getElementById('themeToggle');
     // Mobile theme toggle
     const mobileThemeToggle = document.getElementById('mobileThemeToggle');
-    
+
     if (!themeToggle && !mobileThemeToggle) return;
 
     const handleThemeToggle = (toggle) => {
@@ -764,15 +764,15 @@ function setupThemeToggle() {
         localStorage.setItem('sb_theme', next);
         toggle.setAttribute('aria-pressed', next === 'light');
         updateThemeIcon(next);
-        
+
         // Update all theme toggle icons
         updateAllThemeIcons(next);
     };
-    
+
     if (themeToggle) {
         themeToggle.addEventListener('click', () => handleThemeToggle(themeToggle));
     }
-    
+
     if (mobileThemeToggle) {
         mobileThemeToggle.addEventListener('click', () => handleThemeToggle(mobileThemeToggle));
     }
@@ -786,15 +786,15 @@ function setupThemeToggle() {
 function initializeBannerSlider() {
     const bannerSlides = document.querySelectorAll('.banner-slide');
     const dots = document.querySelectorAll('.banner-dots .dot');
-    
+
     if (!bannerSlides.length || !dots.length) return;
-    
+
     let currentSlide = 0;
     const slideCount = bannerSlides.length;
-    
+
     // Set first slide as active initially
     bannerSlides[0].classList.add('active');
-    
+
     // Manual navigation with dots
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
@@ -803,31 +803,31 @@ function initializeBannerSlider() {
             resetInterval();
         });
     });
-    
+
     function updateSlider() {
         // Hide all slides
         bannerSlides.forEach(slide => {
             slide.classList.remove('active');
         });
-        
+
         // Show current slide
         bannerSlides[currentSlide].classList.add('active');
-        
+
         // Update dots
         dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === currentSlide);
         });
     }
-    
+
     // Auto-advance slides
     function autoAdvance() {
         currentSlide = (currentSlide + 1) % slideCount;
         updateSlider();
     }
-    
+
     // Set interval for auto-advance (every 4 seconds)
     let slideInterval = setInterval(autoAdvance, 4000);
-    
+
     // Reset interval function
     function resetInterval() {
         clearInterval(slideInterval);
@@ -879,7 +879,7 @@ function saveCart(cart) {
 function addToCart(product, quantity = 1) {
     const cart = getCart();
     const existingItemIndex = cart.findIndex(item => item.id === product.id);
-    
+
     if (existingItemIndex !== -1) {
         // Update quantity if product already in cart
         cart[existingItemIndex].quantity += quantity;
@@ -893,12 +893,12 @@ function addToCart(product, quantity = 1) {
             quantity: quantity
         });
     }
-    
+
     saveCart(cart);
     updateCartUI();
     // If we're on the shop page and have the sidebar toggle, open it
     if (typeof toggleCartSidebar === 'function') toggleCartSidebar(true);
-    
+
     // Show confirmation notification
     showNotification(`Added ${product.name} to cart!`);
 }
@@ -912,10 +912,10 @@ function removeFromCart(productId) {
 
 function updateItemQuantity(productId, newQuantity) {
     if (newQuantity < 1) return removeFromCart(productId);
-    
+
     const cart = getCart();
     const item = cart.find(item => item.id === productId);
-    
+
     if (item) {
         item.quantity = newQuantity;
         saveCart(cart);
@@ -943,10 +943,10 @@ function updateCartUI() {
     const cartTotal = document.getElementById('cartTotal');
     const orderSummaryItems = document.getElementById('orderSummaryItems');
     const orderTotal = document.getElementById('orderTotal');
-    
+
     const cart = getCart();
     const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-    
+
     // Update cart count badges - ensure they're always visible with correct count
     if (navCartCount) {
         navCartCount.textContent = totalItems;
@@ -955,7 +955,7 @@ function updateCartUI() {
             navCartCount.textContent = '0';
         }
     }
-    
+
     if (mobileCartCount) {
         mobileCartCount.textContent = totalItems;
         mobileCartCount.style.display = 'flex';
@@ -972,14 +972,14 @@ function updateCartUI() {
             if (totalItems === 0) badge.textContent = '0';
         });
     }
-    
+
     // Update cart sidebar items
     if (cartItems) {
         if (cart.length === 0) {
             cartItems.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
         } else {
             cartItems.innerHTML = '';
-            
+
             cart.forEach(item => {
                 const cartItem = document.createElement('div');
                 cartItem.className = 'cart-item';
@@ -998,10 +998,10 @@ function updateCartUI() {
                     </div>
                     <button class="remove-item" data-id="${item.id}">&times;</button>
                 `;
-                
+
                 cartItems.appendChild(cartItem);
             });
-            
+
             // Add event listeners for quantity buttons and remove buttons
             cartItems.querySelectorAll('.quantity-btn.minus').forEach(btn => {
                 btn.addEventListener('click', () => {
@@ -1010,7 +1010,7 @@ function updateCartUI() {
                     if (item) updateItemQuantity(id, item.quantity - 1);
                 });
             });
-            
+
             cartItems.querySelectorAll('.quantity-btn.plus').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const id = btn.getAttribute('data-id');
@@ -1018,7 +1018,7 @@ function updateCartUI() {
                     if (item) updateItemQuantity(id, item.quantity + 1);
                 });
             });
-            
+
             cartItems.querySelectorAll('.remove-item').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const id = btn.getAttribute('data-id');
@@ -1027,11 +1027,11 @@ function updateCartUI() {
             });
         }
     }
-    
+
     // Update cart total
     const total = calculateCartTotal();
     if (cartTotal) cartTotal.textContent = `${total.toLocaleString()} ETB`;
-    
+
     // Update order summary in checkout modal
     if (orderSummaryItems && orderTotal) {
         if (cart.length === 0) {
@@ -1039,7 +1039,7 @@ function updateCartUI() {
             orderTotal.textContent = '0 ETB';
         } else {
             orderSummaryItems.innerHTML = '';
-            
+
             cart.forEach(item => {
                 const orderItem = document.createElement('div');
                 orderItem.className = 'order-item';
@@ -1047,10 +1047,10 @@ function updateCartUI() {
                     <div class="order-item-name">${item.name} × ${item.quantity}</div>
                     <div class="order-item-price">${(item.price * item.quantity).toLocaleString()} ETB</div>
                 `;
-                
+
                 orderSummaryItems.appendChild(orderItem);
             });
-            
+
             orderTotal.textContent = `${total.toLocaleString()} ETB`;
         }
     }
@@ -1063,15 +1063,15 @@ function renderProducts() {
 
     // Get active category
     const activeCategory = document.querySelector('.category-tab.active')?.dataset.category || 'all';
-    
+
     // Filter products by category
-    const filteredProducts = activeCategory === 'all' 
-        ? PRODUCTS 
+    const filteredProducts = activeCategory === 'all'
+        ? PRODUCTS
         : PRODUCTS.filter(p => p.category === activeCategory);
-    
+
     // Clear existing products
     productsGrid.innerHTML = '';
-    
+
     // Render filtered products
     filteredProducts.forEach(product => {
         const productCard = document.createElement('div');
@@ -1094,7 +1094,7 @@ function renderProducts() {
         `;
         productsGrid.appendChild(productCard);
     });
-    
+
     // Add event listeners to Add to Cart buttons only if no inline handler
     document.querySelectorAll('.add-to-cart-btn').forEach(button => {
         if (!button.hasAttribute('onclick')) {
@@ -1113,10 +1113,10 @@ function renderProducts() {
 function setupShopPage() {
     // Initialize banner slider
     initializeBannerSlider();
-    
+
     // Render products initially so they appear automatically
     renderProducts();
-    
+
     // Setup category tabs
     const categoryTabs = document.querySelectorAll('.category-tab');
     if (categoryTabs.length > 0) {
@@ -1131,17 +1131,17 @@ function setupShopPage() {
             });
         });
     }
-    
+
     // Setup cart sidebar toggle
     const navCartBtn = document.getElementById('navCartBtn');
     const mobileCartBtn = document.getElementById('mobileCartBtn');
     const closeCartBtn = document.getElementById('closeCart');
     const cartSidebar = document.getElementById('cartSidebar');
-    
+
     // Function to toggle cart sidebar
-    window.toggleCartSidebar = function(show) {
+    window.toggleCartSidebar = function (show) {
         if (!cartSidebar) return;
-        
+
         if (show === undefined) {
             cartSidebar.classList.toggle('active');
         } else if (show) {
@@ -1150,29 +1150,29 @@ function setupShopPage() {
             cartSidebar.classList.remove('active');
         }
     };
-    
+
     // Add event listeners for cart buttons
     if (navCartBtn) {
         navCartBtn.addEventListener('click', () => toggleCartSidebar());
     }
-    
+
     if (mobileCartBtn) {
         mobileCartBtn.addEventListener('click', () => toggleCartSidebar());
     }
-    
+
     if (closeCartBtn) {
         closeCartBtn.addEventListener('click', () => toggleCartSidebar(false));
     }
-    
+
     // Setup checkout functionality
     const checkoutBtn = document.getElementById('checkoutBtn');
     const checkoutModal = document.getElementById('checkoutModal');
     const closeCheckoutBtn = document.getElementById('closeCheckout');
-    
+
     // Function to toggle checkout modal
     function toggleCheckoutModal(show) {
         if (!checkoutModal) return;
-        
+
         if (show === undefined) {
             checkoutModal.classList.toggle('open');
         } else if (show) {
@@ -1181,7 +1181,7 @@ function setupShopPage() {
             checkoutModal.classList.remove('open');
         }
     }
-    
+
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
             const cart = getCart();
@@ -1193,20 +1193,20 @@ function setupShopPage() {
             toggleCheckoutModal(true);
         });
     }
-    
+
     if (closeCheckoutBtn) {
         closeCheckoutBtn.addEventListener('click', () => toggleCheckoutModal(false));
     }
-    
+
     // Setup checkout form submission
     const checkoutForm = document.getElementById('checkoutForm');
     const orderConfirmation = document.getElementById('orderConfirmation');
     const closeConfirmationBtn = document.getElementById('closeConfirmation');
-    
+
     if (checkoutForm) {
         checkoutForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             // Show order confirmation
             if (orderConfirmation) {
                 toggleCheckoutModal(false);
@@ -1234,18 +1234,18 @@ function setupShopPage() {
             orderConfirmation.classList.remove('open');
         });
     }
-    
+
     // Setup shop search functionality
     const shopSearch = document.getElementById('shopSearch');
     if (shopSearch) {
         shopSearch.addEventListener('input', () => {
             const searchTerm = shopSearch.value.toLowerCase().trim();
             const productCards = document.querySelectorAll('.product-card');
-            
+
             productCards.forEach(card => {
                 const productName = card.querySelector('.product-name').textContent.toLowerCase();
                 const productDesc = card.querySelector('.product-description').textContent.toLowerCase();
-                
+
                 if (productName.includes(searchTerm) || productDesc.includes(searchTerm)) {
                     card.style.display = 'flex';
                 } else {
@@ -1352,31 +1352,31 @@ function setupAnimatedBackground() {
         if (resizeTimeout) {
             clearTimeout(resizeTimeout);
         }
-        
+
         resizeTimeout = setTimeout(() => {
             // Get current device pixel ratio
             deviceScale = Math.max(1, window.devicePixelRatio || 1);
-            
+
             // Get actual viewport dimensions
             const viewportWidth = window.innerWidth;
             const viewportHeight = window.innerHeight;
-            
+
             // Set canvas internal resolution (for high DPI displays)
             w = canvas.width = Math.floor(viewportWidth * deviceScale);
             h = canvas.height = Math.floor(viewportHeight * deviceScale);
-            
+
             // Set canvas CSS dimensions (for layout)
             canvas.style.width = viewportWidth + 'px';
             canvas.style.height = viewportHeight + 'px';
-            
+
             // Scale the context to match device pixel ratio
             ctx.setTransform(deviceScale, 0, 0, deviceScale, 0, 0);
-            
+
             // Update wave base positions for new viewport size
             waves.forEach((wave, index) => {
                 wave.baseY = viewportHeight * (0.7 + index * 0.1);
             });
-            
+
             // Clear any existing animation and restart
             if (animationId) {
                 cancelAnimationFrame(animationId);
@@ -1387,12 +1387,12 @@ function setupAnimatedBackground() {
 
     // Enhanced resize event listener with passive option for better performance
     window.addEventListener('resize', resize, { passive: true });
-    
+
     // Also listen for orientation changes on mobile devices
     window.addEventListener('orientationchange', () => {
         setTimeout(resize, 100); // Small delay to ensure viewport has updated
     }, { passive: true });
-    
+
     // Initial resize
     resize();
 
@@ -1416,23 +1416,23 @@ function setupAnimatedBackground() {
             this.offset = index * Math.PI / 3;
             this.baseY = window.innerHeight * (0.7 + index * 0.1);
         }
-        
+
         draw(ctx, colors, time) {
             const viewportWidth = window.innerWidth;
             const viewportHeight = window.innerHeight;
-            
+
             ctx.beginPath();
             ctx.moveTo(0, this.baseY);
-            
+
             for (let x = 0; x <= viewportWidth; x += 5) {
                 const y = this.baseY + Math.sin(x * this.frequency + time * this.speed + this.offset) * this.amplitude;
                 ctx.lineTo(x, y);
             }
-            
+
             ctx.lineTo(viewportWidth, viewportHeight);
             ctx.lineTo(0, viewportHeight);
             ctx.closePath();
-            
+
             const waveColor = this.index === 0 ? colors.wave1 : this.index === 1 ? colors.wave2 : colors.wave3;
             ctx.fillStyle = waveColor;
             ctx.fill();
@@ -1446,7 +1446,7 @@ function setupAnimatedBackground() {
         const viewportWidth = window.innerWidth;
         const mouseX = e.clientX;
         const mouseY = e.clientY;
-        
+
         waves.forEach((wave, index) => {
             const distance = Math.abs(mouseX - viewportWidth / 2);
             const influence = Math.max(0, 1 - distance / (viewportWidth / 2));
@@ -1463,22 +1463,22 @@ function setupAnimatedBackground() {
     function loop() {
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
-        
+
         ctx.clearRect(0, 0, viewportWidth, viewportHeight);
         const col = themeColors();
-        
+
         // subtle background overlay
         ctx.fillStyle = `rgba(0,0,0,${col.bgAlpha})`;
         ctx.fillRect(0, 0, viewportWidth, viewportHeight);
 
         // update time
         time += 1;
-        
+
         // draw ocean waves from back to front
         waves.forEach(wave => {
             wave.draw(ctx, col, time);
         });
-        
+
         animationId = requestAnimationFrame(loop);
     }
 
@@ -1489,7 +1489,7 @@ function setupAnimatedBackground() {
         attributes: true,
         attributeFilter: ['data-theme']
     });
-    
+
     // Cleanup function to prevent memory leaks
     return function cleanup() {
         if (animationId) {
@@ -1533,11 +1533,11 @@ function initializePage() {
     const savedTheme = localStorage.getItem('sb_theme') || 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme);
-    
+
     // Initialize language
     const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
     document.documentElement.setAttribute('data-lang', savedLanguage);
-    
+
     // Setup all functionality
     setupMobileNavigation();
     setupThemeToggle();
@@ -1548,18 +1548,18 @@ function initializePage() {
     setupAnimatedBackground();
     setupKeyboardShortcuts();
     setupLanguageSwitcher();
-    
+
     // Setup shop page if on shop.html
     if (window.location.pathname.includes('shop.html')) {
         setupShopPage();
     }
-    
+
     // Apply initial translations
     applyTranslations(savedLanguage);
-    
+
     // Update cart UI
     updateCartUI();
-    
+
     // Render products if on shop page
     if (window.location.pathname.includes('shop.html')) {
         renderProducts();
@@ -1582,20 +1582,20 @@ const nextBtn = document.querySelector('.banner-arrow.next');
 function initSlidingBanner() {
     // Only initialize if we're on the about page and have banner elements
     if (!document.querySelector('.sliding-banner-container')) return;
-    
+
     const slides = document.querySelectorAll('.banner-slide');
     const dots = document.querySelectorAll('.dot');
     const prevBtn = document.querySelector('.banner-arrow.prev');
     const nextBtn = document.querySelector('.banner-arrow.next');
-    
+
     if (slides.length === 0) return;
-    
+
     // Set first slide as active
     showSlide(0);
-    
+
     // Start auto-sliding
     startAutoSlide();
-    
+
     // Add event listeners for manual controls
     if (prevBtn) {
         prevBtn.addEventListener('click', () => {
@@ -1604,7 +1604,7 @@ function initSlidingBanner() {
             startAutoSlide();
         });
     }
-    
+
     if (nextBtn) {
         nextBtn.addEventListener('click', () => {
             stopAutoSlide();
@@ -1612,7 +1612,7 @@ function initSlidingBanner() {
             startAutoSlide();
         });
     }
-    
+
     // Add event listeners for dots
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
@@ -1621,33 +1621,33 @@ function initSlidingBanner() {
             startAutoSlide();
         });
     });
-    
+
     // Pause on hover
     const bannerContainer = document.querySelector('.sliding-banner-container');
     if (bannerContainer) {
         bannerContainer.addEventListener('mouseenter', stopAutoSlide);
         bannerContainer.addEventListener('mouseleave', startAutoSlide);
     }
-    
+
     // Handle touch events for mobile
     let touchStartX = 0;
     let touchEndX = 0;
-    
+
     bannerContainer.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
         stopAutoSlide();
     }, { passive: true });
-    
+
     bannerContainer.addEventListener('touchend', (e) => {
         touchEndX = e.changedTouches[0].screenX;
         handleSwipe();
         startAutoSlide();
     }, { passive: true });
-    
+
     function handleSwipe() {
         const swipeThreshold = 50;
         const diff = touchStartX - touchEndX;
-        
+
         if (Math.abs(diff) > swipeThreshold) {
             if (diff > 0) {
                 // Swipe left, go to next slide
@@ -1663,18 +1663,18 @@ function initSlidingBanner() {
 function showSlide(index) {
     const slides = document.querySelectorAll('.banner-slide');
     const dots = document.querySelectorAll('.dot');
-    
+
     if (slides.length === 0) return;
-    
+
     // Remove active class from all slides and dots
     slides.forEach(slide => {
         slide.classList.remove('active', 'prev');
     });
-    
+
     dots.forEach(dot => {
         dot.classList.remove('active');
     });
-    
+
     // Handle index wrapping
     if (index >= slides.length) {
         currentSlide = 0;
@@ -1683,14 +1683,14 @@ function showSlide(index) {
     } else {
         currentSlide = index;
     }
-    
+
     // Add active class to current slide
     slides[currentSlide].classList.add('active');
-    
+
     // Add prev class to slide before current for smooth transition
     const prevIndex = currentSlide === 0 ? slides.length - 1 : currentSlide - 1;
     slides[prevIndex].classList.add('prev');
-    
+
     // Add active class to current dot
     if (dots[currentSlide]) {
         dots[currentSlide].classList.add('active');
@@ -1700,14 +1700,14 @@ function showSlide(index) {
 function nextSlide() {
     const slides = document.querySelectorAll('.banner-slide');
     if (slides.length === 0) return;
-    
+
     showSlide(currentSlide + 1);
 }
 
 function prevSlide() {
     const slides = document.querySelectorAll('.banner-slide');
     if (slides.length === 0) return;
-    
+
     showSlide(currentSlide - 1);
 }
 
@@ -1745,19 +1745,19 @@ window.addEventListener('beforeunload', () => {
 function initializeSettingsDropdown() {
     const settingsBtn = document.getElementById('settingsBtn');
     const settingsDropdown = document.getElementById('settingsDropdown');
-    
+
     if (!settingsBtn || !settingsDropdown) return;
-    
+
     // Toggle dropdown on settings button click
     settingsBtn.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        
+
         const isOpen = settingsDropdown.classList.contains('show');
-        
+
         // Close all other dropdowns
         closeAllDropdowns();
-        
+
         if (!isOpen) {
             settingsDropdown.classList.add('show');
             settingsBtn.setAttribute('aria-expanded', 'true');
@@ -1766,7 +1766,7 @@ function initializeSettingsDropdown() {
             settingsBtn.setAttribute('aria-expanded', 'false');
         }
     });
-    
+
     // Close dropdown when clicking outside
     document.addEventListener('click', (e) => {
         if (!settingsBtn.contains(e.target) && !settingsDropdown.contains(e.target)) {
@@ -1774,7 +1774,7 @@ function initializeSettingsDropdown() {
             settingsBtn.setAttribute('aria-expanded', 'false');
         }
     });
-    
+
     // Close dropdown on escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && settingsDropdown.classList.contains('show')) {
@@ -1782,10 +1782,10 @@ function initializeSettingsDropdown() {
             settingsBtn.setAttribute('aria-expanded', 'false');
         }
     });
-    
+
     // Note: Theme and language toggles are handled by setupThemeToggle() and setupLanguageSwitcher()
     // We just need to handle dropdown closing when they're clicked
-    
+
     // Handle theme toggle click to close dropdown
     const themeToggle = document.getElementById('themeToggle');
     if (themeToggle) {
@@ -1797,7 +1797,7 @@ function initializeSettingsDropdown() {
             }, 100);
         });
     }
-    
+
     // Handle language toggle click to close dropdown
     const langToggle = document.getElementById('langToggle');
     if (langToggle) {
@@ -1817,7 +1817,7 @@ function closeAllDropdowns() {
     dropdowns.forEach(dropdown => {
         dropdown.classList.remove('show');
     });
-    
+
     const settingsBtns = document.querySelectorAll('.settings-btn');
     settingsBtns.forEach(btn => {
         btn.setAttribute('aria-expanded', 'false');
@@ -1831,38 +1831,38 @@ document.addEventListener('DOMContentLoaded', initializeSettingsDropdown);
 // =============================================
 
 // Enhanced About Page Features
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Initialize counters
     initializeCounters();
-    
+
     // Initialize horizontal timeline animations
     initializeTimeline();
-    
+
     // Initialize scroll effects
     initializeScrollEffects();
-    
+
     // Initialize smooth scrolling
     initializeSmoothScrolling();
-    
+
     // Initialize community events
     initializeCommunityEvents();
-    
+
     // Initialize progress bars
     initializeProgressBars();
-    
+
     console.log('About page initialized successfully');
 });
 
 // Counter Animation Function
 function initializeCounters() {
     const counters = document.querySelectorAll('.stat-number, .achievement-number');
-    
+
     const animateCounter = (counter) => {
         const target = parseFloat(counter.getAttribute('data-target'));
         const duration = 2000;
         const increment = target / (duration / 16);
         let current = 0;
-        
+
         const updateCounter = () => {
             current += increment;
             if (current < target) {
@@ -1872,10 +1872,10 @@ function initializeCounters() {
                 counter.textContent = target;
             }
         };
-        
+
         updateCounter();
     };
-    
+
     // Intersection Observer for counter animation
     const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -1885,7 +1885,7 @@ function initializeCounters() {
             }
         });
     }, { threshold: 0.5 });
-    
+
     counters.forEach(counter => {
         counterObserver.observe(counter);
     });
@@ -1894,7 +1894,7 @@ function initializeCounters() {
 // Timeline Animations
 function initializeTimelineAnimations() {
     const timelineItems = document.querySelectorAll('.timeline-item');
-    
+
     const timelineObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -1902,7 +1902,7 @@ function initializeTimelineAnimations() {
             }
         });
     }, { threshold: 0.3 });
-    
+
     timelineItems.forEach(item => {
         timelineObserver.observe(item);
     });
@@ -1911,9 +1911,9 @@ function initializeTimelineAnimations() {
 // Initialize Timeline
 function initializeTimeline() {
     const timelineSteps = document.querySelectorAll('.timeline-step');
-    
+
     if (timelineSteps.length === 0) return;
-    
+
     const timelineObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
@@ -1924,7 +1924,7 @@ function initializeTimeline() {
             }
         });
     }, { threshold: 0.2 });
-    
+
     timelineSteps.forEach(step => {
         step.style.opacity = '0';
         step.style.transform = 'translateY(20px)';
@@ -1940,48 +1940,48 @@ function initializeTestimonialCarousel() {
     const prevBtn = document.querySelector('.testimonial-prev');
     const nextBtn = document.querySelector('.testimonial-next');
     const dots = document.querySelectorAll('.testimonial-dot');
-    
+
     if (!testimonialContainer || testimonialSlides.length === 0) return;
-    
+
     let currentSlide = 0;
-    
+
     function showSlide(index) {
         // Remove active class from all slides and dots
         testimonialSlides.forEach(slide => slide.classList.remove('active'));
         dots.forEach(dot => dot.classList.remove('active'));
-        
+
         // Add active class to current slide and dot
         testimonialSlides[index].classList.add('active');
         if (dots[index]) dots[index].classList.add('active');
-        
+
         // Update container transform
         testimonialContainer.style.transform = `translateX(-${index * 100}%)`;
     }
-    
+
     function nextSlide() {
         currentSlide = (currentSlide + 1) % testimonialSlides.length;
         showSlide(currentSlide);
     }
-    
+
     function prevSlide() {
         currentSlide = (currentSlide - 1 + testimonialSlides.length) % testimonialSlides.length;
         showSlide(currentSlide);
     }
-    
+
     // Event listeners
     if (nextBtn) nextBtn.addEventListener('click', nextSlide);
     if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-    
+
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             currentSlide = index;
             showSlide(currentSlide);
         });
     });
-    
+
     // Auto-play
     setInterval(nextSlide, 5000);
-    
+
     // Initialize first slide
     showSlide(0);
 }
@@ -1993,65 +1993,66 @@ function initializeEnhancedSlidingBanner() {
     const dots = document.querySelectorAll('.banner-dots .dot');
     const prevBtn = document.querySelector('.banner-arrow.prev');
     const nextBtn = document.querySelector('.banner-arrow.next');
-    
+
     if (!banner || slides.length === 0) return;
-    
+
     let currentSlide = 0;
-    
+
     function showSlide(index) {
         // Remove active class from all dots
         dots.forEach(dot => dot.classList.remove('active'));
-        
+
         // Add active class to current dot
         if (dots[index]) dots[index].classList.add('active');
-        
+
         // Update banner transform
         banner.style.transform = `translateX(-${index * 100}%)`;
     }
-    
+
     function nextSlide() {
         currentSlide = (currentSlide + 1) % slides.length;
         showSlide(currentSlide);
     }
-    
+
     function prevSlide() {
         currentSlide = (currentSlide - 1 + slides.length) % slides.length;
         showSlide(currentSlide);
     }
-    
+
     // Event listeners
     if (nextBtn) nextBtn.addEventListener('click', nextSlide);
     if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-    
+
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             currentSlide = index;
             showSlide(currentSlide);
         });
     });
-    
+
     // Auto-play
     setInterval(nextSlide, 6000);
-    
+
     // Initialize first slide
     showSlide(0);
 }
 
 // Scroll Effects
 function initializeScrollEffects() {
-    // Parallax effect for hero section
+    // Parallax effect for hero section - DISABLED to prevent layering issues
     const heroSection = document.querySelector('.about-hero-enhanced');
     if (heroSection) {
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallax = scrolled * 0.5;
-            heroSection.style.transform = `translateY(${parallax}px)`;
-        });
+        // Remove parallax effect that causes sections to go under each other
+        // window.addEventListener('scroll', () => {
+        //     const scrolled = window.pageYOffset;
+        //     const parallax = scrolled * 0.5;
+        //     heroSection.style.transform = `translateY(${parallax}px)`;
+        // });
     }
-    
+
     // Fade in animations for sections
     const sections = document.querySelectorAll('.timeline-section, .facilities-section, .achievements-section, .testimonials-section, .community-section');
-    
+
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -2060,7 +2061,7 @@ function initializeScrollEffects() {
             }
         });
     }, { threshold: 0.1 });
-    
+
     sections.forEach(section => {
         section.style.opacity = '0';
         section.style.transform = 'translateY(50px)';
@@ -2072,7 +2073,7 @@ function initializeScrollEffects() {
 // Smooth Scrolling
 function initializeSmoothScrolling() {
     const heroButtons = document.querySelectorAll('.hero-btn');
-    
+
     heroButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             e.preventDefault();
@@ -2094,21 +2095,21 @@ function initializeSmoothScrolling() {
 function initializeCommunityEvents() {
     const calendarNav = document.querySelector('.calendar-nav');
     const calendarMonth = document.querySelector('.calendar-month');
-    
+
     if (!calendarNav || !calendarMonth) return;
-    
+
     const months = [
         'January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December'
     ];
-    
+
     let currentMonth = new Date().getMonth();
     let currentYear = new Date().getFullYear();
-    
+
     function updateCalendarMonth() {
         calendarMonth.textContent = `${months[currentMonth]} ${currentYear}`;
     }
-    
+
     calendarNav.addEventListener('click', (e) => {
         if (e.target.tagName === 'BUTTON') {
             if (e.target.classList.contains('prev') || e.target.textContent.includes('fa-chevron-left')) {
@@ -2127,7 +2128,7 @@ function initializeCommunityEvents() {
             updateCalendarMonth();
         }
     });
-    
+
     // Initialize calendar
     updateCalendarMonth();
 }
@@ -2135,7 +2136,7 @@ function initializeCommunityEvents() {
 // Progress Bar Animation
 function initializeProgressBars() {
     const progressBars = document.querySelectorAll('.progress-bar');
-    
+
     const progressObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
@@ -2145,7 +2146,7 @@ function initializeProgressBars() {
             }
         });
     }, { threshold: 0.5 });
-    
+
     progressBars.forEach(bar => {
         progressObserver.observe(bar);
     });
@@ -2168,40 +2169,40 @@ window.addEventListener('beforeunload', () => {
 // =============================================
 
 // Initialize back to top button
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const backToTopBtn = document.getElementById('backToTop');
-    
+
     if (backToTopBtn) {
         // Show/hide button based on scroll position
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             if (window.pageYOffset > 300) { // Show after scrolling 300px
                 backToTopBtn.classList.add('visible');
             } else {
                 backToTopBtn.classList.remove('visible');
             }
         });
-        
+
         // Scroll to top when clicked
-        backToTopBtn.addEventListener('click', function() {
+        backToTopBtn.addEventListener('click', function () {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
     }
-    
+
     // Add some interactive effects to trainer cards
     const trainerCards = document.querySelectorAll('.trainer-card');
     trainerCards.forEach((card, index) => {
         // Add random floating animation delays
         card.style.animationDelay = `${index * 0.1}s`;
-        
+
         // Add interactive glow effect on hover
-        card.addEventListener('mouseenter', function() {
+        card.addEventListener('mouseenter', function () {
             this.style.boxShadow = '0 0 30px rgba(255, 107, 53, 0.4)';
         });
-        
-        card.addEventListener('mouseleave', function() {
+
+        card.addEventListener('mouseleave', function () {
             this.style.boxShadow = '';
         });
     });
@@ -2210,38 +2211,38 @@ document.addEventListener('DOMContentLoaded', function() {
 // Initialize banner slider
 function initializeBannerSlider() {
     const slides = document.querySelectorAll('.banner-slide');
-    
+
     let currentSlide = 0;
     let slideInterval;
     const slideDelay = 4000; // 4 seconds
-    
+
     // Function to show a specific slide
     function showSlide(index) {
         // Remove active class from all slides
         slides.forEach(slide => slide.classList.remove('active'));
-        
+
         // Add active class to current slide
         slides[index].classList.add('active');
-        
+
         currentSlide = index;
     }
-    
+
     // Function to go to next slide
     function nextSlide() {
         currentSlide = (currentSlide + 1) % slides.length;
         showSlide(currentSlide);
     }
-    
+
     // Function to start automatic sliding
     function startAutoSlide() {
         slideInterval = setInterval(nextSlide, slideDelay);
     }
-    
+
     // Function to stop automatic sliding
     function stopAutoSlide() {
         clearInterval(slideInterval);
     }
-    
+
     // Start automatic sliding
     startAutoSlide();
 }
@@ -2250,15 +2251,15 @@ function initializeBannerSlider() {
 function initializeTrainersPage() {
     // Initialize expandable trainer list
     const trainerListItems = document.querySelectorAll('.trainer-list-item');
-    
+
     trainerListItems.forEach(item => {
         const header = item.querySelector('.trainer-list-header');
         const content = item.querySelector('.trainer-list-content');
         const expandIcon = item.querySelector('.expand-icon i');
-        
+
         header.addEventListener('click', () => {
             const isExpanded = item.classList.contains('expanded');
-            
+
             // Close all other items
             trainerListItems.forEach(otherItem => {
                 if (otherItem !== item) {
@@ -2269,7 +2270,7 @@ function initializeTrainersPage() {
                     otherIcon.style.transform = 'rotate(0deg)';
                 }
             });
-            
+
             // Toggle current item
             if (isExpanded) {
                 item.classList.remove('expanded');
@@ -2282,7 +2283,7 @@ function initializeTrainersPage() {
             }
         });
     });
-    
+
     // Add smooth scroll for CTA button
     const ctaButton = document.querySelector('.cta-button');
     if (ctaButton) {
@@ -2307,35 +2308,35 @@ function initializeTrainersPage() {
 // =============================================
 function initializeAdBannerSlider() {
     const slides = document.querySelectorAll('.ad-banner-slider .banner-slide');
-    
+
     if (slides.length === 0) return;
-    
+
     let currentSlide = 0;
-    
+
     function showSlide(index) {
         // Remove active class from all slides
         slides.forEach(slide => slide.classList.remove('active'));
-        
+
         // Add active class to current slide
         slides[index].classList.add('active');
-        
+
         // Force a reflow to ensure the slide is visible
         slides[index].offsetHeight;
     }
-    
+
     function nextSlide() {
         currentSlide = (currentSlide + 1) % slides.length;
         showSlide(currentSlide);
     }
-    
+
     // Initialize first slide immediately
     showSlide(0);
-    
+
     // Auto-play with 8-second interval
     setInterval(nextSlide, 8000);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initializeBannerSlider();
     initializeTrainersPage();
     initializeAdBannerSlider();
