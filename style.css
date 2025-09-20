@@ -1363,6 +1363,14 @@ main aside {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
+.btn-shop:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
 
 .btn-get-started:hover {
     transform: translateY(-2px);
@@ -4597,7 +4605,7 @@ nav .lang-toggle-btn i {
 .trainers-list-header h3 {
     font-size: 2.5rem;
     font-weight: 800;
-    color: white;
+    color: var(--text);
     margin-bottom: 10px;
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     text-transform: uppercase;
@@ -4606,7 +4614,7 @@ nav .lang-toggle-btn i {
 
 .trainers-list-header p {
     font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--muted);
     max-width: 500px;
     margin: 0 auto;
     font-weight: 400;
