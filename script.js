@@ -2340,4 +2340,220 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeBannerSlider();
     initializeTrainersPage();
     initializeAdBannerSlider();
+    initializeMembershipPage();
 });
+
+// =============================================
+// MEMBERSHIP PAGE FUNCTIONALITY
+// =============================================
+
+function initializeMembershipPage() {
+    // Plan selection functionality
+    const planButtons = document.querySelectorAll('.plan-select-btn');
+    const selectedPlanSelect = document.getElementById('selectedPlan');
+
+    planButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const planType = this.getAttribute('data-plan');
+
+            // Update the form select
+            if (selectedPlanSelect) {
+                selectedPlanSelect.value = planType;
+            }
+
+            // Scroll to registration form
+            const registrationSection = document.querySelector('.registration-section');
+            if (registrationSection) {
+                registrationSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+
+            // Visual feedback
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+        });
+    });
+
+    // Form validation and submission
+    const membershipForm = document.getElementById('membershipForm');
+    if (membershipForm) {
+        membershipForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+
+            // Basic validation
+            if (!data.firstName || !data.lastName || !data.email || !data.phone || !data.selectedPlan || !data.startDate) {
+                showNotification('Please fill in all required fields', 'error');
+                return;
+            }
+
+            if (!data.terms) {
+                showNotification('Please accept the terms and conditions', 'error');
+                return;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                showNotification('Please enter a valid email address', 'error');
+                return;
+            }
+
+            // Phone validation (basic)
+            const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
+            if (!phoneRegex.test(data.phone)) {
+                showNotification('Please enter a valid phone number', 'error');
+                return;
+            }
+
+            // Date validation
+            const startDate = new Date(data.startDate);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            if (startDate < today) {
+                showNotification('Start date cannot be in the past', 'error');
+                return;
+            }
+
+            // Simulate form submission
+            showNotification('Registration submitted successfully! We will contact you soon.', 'success');
+
+            // Reset form
+            this.reset();
+        });
+    }
+
+    // Form field focus effects
+    const formInputs = document.querySelectorAll('.registration-form input, .registration-form select');
+    formInputs.forEach(input => {
+        input.addEventListener('focus', function () {
+            this.parentElement.classList.add('focused');
+        });
+
+        input.addEventListener('blur', function () {
+            if (!this.value) {
+                this.parentElement.classList.remove('focused');
+            }
+        });
+    });
+
+    // Plan card hover effects
+    const planCards = document.querySelectorAll('.plan-card');
+    planCards.forEach(card => {
+        card.addEventListener('mouseenter', function () {
+            this.style.transform = 'translateY(-8px) scale(1.02)';
+        });
+
+        card.addEventListener('mouseleave', function () {
+            if (!this.classList.contains('featured')) {
+                this.style.transform = 'translateY(0) scale(1)';
+            } else {
+                this.style.transform = 'translateY(0) scale(1.05)';
+            }
+        });
+    });
+}
+
+// Notification system
+function showNotification(message, type = 'info') {
+    // Remove existing notifications
+    const existingNotifications = document.querySelectorAll('.notification');
+    existingNotifications.forEach(notification => notification.remove());
+
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+            <span>${message}</span>
+        </div>
+        <button class="notification-close" onclick="this.parentElement.remove()">
+            <i class="fas fa-times"></i>
+        </button>
+    `;
+
+    // Add styles
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        max-width: 400px;
+        animation: slideInRight 0.3s ease;
+    `;
+
+    // Add to page
+    document.body.appendChild(notification);
+
+    // Auto remove after 5 seconds
+    setTimeout(() => {
+        if (notification.parentElement) {
+            notification.style.animation = 'slideOutRight 0.3s ease';
+            setTimeout(() => notification.remove(), 300);
+        }
+    }, 5000);
+}
+
+// Add CSS for notifications
+const notificationStyles = document.createElement('style');
+notificationStyles.textContent = `
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOutRight {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+    
+    .notification-content {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .notification-close {
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        padding: 0.25rem;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+    }
+    
+    .notification-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+`;
+document.head.appendChild(notificationStyles);

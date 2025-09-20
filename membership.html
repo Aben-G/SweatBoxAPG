@@ -34,13 +34,15 @@
                 <a href="shop.html">Store</a>
                 <a href="membership.html" class="active">Membership</a>
                 <a href="contact.html">Contact</a>
-                
+
                 <!-- Search bar in navigation -->
-                <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search" id="searchInput" />
-                
+                <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search"
+                    id="searchInput" />
+
                 <!-- Settings dropdown -->
                 <div class="settings-container">
-                    <button class="settings-btn" id="settingsBtn" aria-expanded="false" aria-haspopup="true" title="Settings">
+                    <button class="settings-btn" id="settingsBtn" aria-expanded="false" aria-haspopup="true"
+                        title="Settings">
                         <i class="fas fa-cog"></i>
                     </button>
                     <div class="settings-dropdown" id="settingsDropdown">
@@ -54,7 +56,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Cart button -->
                 <button id="cartBtn" class="cart-btn" title="View your cart">
                     <i class="fas fa-shopping-cart"></i>
@@ -81,7 +83,7 @@
                 <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close mobile menu">
                     <i class="fas fa-times"></i>
                 </button>
-                
+
                 <div class="mobile-nav-header">
                     <a href="index.html" class="brand">
                         <img src="images/image.png" alt="SweatBox APG Logo" class="logo">
@@ -91,7 +93,7 @@
                         </div>
                     </a>
                 </div>
-                
+
                 <nav class="mobile-nav-links" aria-label="Mobile navigation">
                     <a href="index.html">Home</a>
                     <a href="about.html">About</a>
@@ -100,24 +102,25 @@
                     <a href="membership.html" class="active">Membership</a>
                     <a href="contact.html">Contact</a>
                 </nav>
-                
+
                 <div class="mobile-controls">
                     <input class="searchbar" placeholder="Search trainers, products…" aria-label="Search" />
-                    
+
                     <!-- Mobile theme button -->
                     <button id="mobileThemeToggle" class="theme-toggle-btn" aria-pressed="false" title="Switch theme">
                         <i class="fas fa-moon"></i>
                         <span>Switch Theme</span>
                     </button>
-                    
+
                     <div class="mobile-buttons">
                         <button id="cartBtn" class="mobile-btn" title="View your cart">
                             <i class="fas fa-shopping-cart"></i>
                             <span class="btn-label">My Cart</span>
                             <span id="cartCount" class="cart-badge">0</span>
                         </button>
-                        
-                        <button id="mobileLangToggle" class="mobile-btn lang-btn" title="Switch language" data-lang="en">
+
+                        <button id="mobileLangToggle" class="mobile-btn lang-btn" title="Switch language"
+                            data-lang="en">
                             <i class="fas fa-globe lang-icon"></i>
                             <span class="btn-label">EN</span>
                         </button>
@@ -128,39 +131,241 @@
 
         <main>
             <section id="pageContainer">
-                <!-- Content removed -->
+                <!-- Membership Hero Section -->
+                <div class="membership-hero">
+                    <div class="membership-hero-content">
+                        <h1 class="membership-title">Join SweatBox APG</h1>
+                        <p class="membership-subtitle">Transform your fitness journey with our premium gym membership
+                        </p>
+                        <div class="membership-badges">
+                            <span class="badge">24/7 Access</span>
+                            <span class="badge">Premium Equipment</span>
+                            <span class="badge">Expert Trainers</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Membership Plans Section -->
+                <div class="membership-plans-section">
+                    <div class="plans-container">
+                        <h2 class="plans-title">Choose Your Plan</h2>
+                        <p class="plans-subtitle">Flexible membership options to fit your lifestyle</p>
+
+                        <div class="plans-grid">
+                            <!-- Monthly Plan -->
+                            <div class="plan-card">
+                                <div class="plan-header">
+                                    <h3 class="plan-name">Monthly</h3>
+                                    <div class="plan-price">
+                                        <span class="currency">ETB</span>
+                                        <span class="amount">3,999</span>
+                                        <span class="period">/month</span>
+                                    </div>
+                                </div>
+                                <div class="plan-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>24/7 Gym Access</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>All Equipment Included</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Group Classes</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Locker Access</span>
+                                    </div>
+                                </div>
+                                <button class="plan-select-btn" data-plan="monthly">Select Plan</button>
+                            </div>
+
+                            <!-- Quarterly Plan -->
+                            <div class="plan-card featured">
+                                <div class="plan-badge">Most Popular</div>
+                                <div class="plan-header">
+                                    <h3 class="plan-name">Quarterly</h3>
+                                    <div class="plan-price">
+                                        <span class="currency">ETB</span>
+                                        <span class="amount">10,999</span>
+                                        <span class="period">/3 months</span>
+                                    </div>
+                                    <div class="plan-savings">Save 8%</div>
+                                </div>
+                                <div class="plan-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>24/7 Gym Access</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>All Equipment Included</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Group Classes</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Locker Access</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>1 Free Personal Training</span>
+                                    </div>
+                                </div>
+                                <button class="plan-select-btn" data-plan="quarterly">Select Plan</button>
+                            </div>
+
+                            <!-- Annual Plan -->
+                            <div class="plan-card">
+                                <div class="plan-header">
+                                    <h3 class="plan-name">Annual</h3>
+                                    <div class="plan-price">
+                                        <span class="currency">ETB</span>
+                                        <span class="amount">39,999</span>
+                                        <span class="period">/year</span>
+                                    </div>
+                                    <div class="plan-savings">Save 17%</div>
+                                </div>
+                                <div class="plan-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>24/7 Gym Access</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>All Equipment Included</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Group Classes</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Locker Access</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>3 Free Personal Training</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Nutrition Consultation</span>
+                                    </div>
+                                </div>
+                                <button class="plan-select-btn" data-plan="annual">Select Plan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Registration Form Section -->
+                <div class="registration-section">
+                    <div class="registration-container">
+                        <div class="registration-header">
+                            <h2 class="registration-title">Complete Your Registration</h2>
+                            <p class="registration-subtitle">Fill out the form below to get started</p>
+                        </div>
+
+                        <form class="registration-form" id="membershipForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="selectedPlan">Selected Plan</label>
+                                <select id="selectedPlan" name="selectedPlan" required>
+                                    <option value="">Choose a plan</option>
+                                    <option value="monthly">Monthly - ETB 3,999/month</option>
+                                    <option value="quarterly">Quarterly - ETB 10,999/3 months</option>
+                                    <option value="annual">Annual - ETB 39,999/year</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="startDate">Preferred Start Date</label>
+                                <input type="date" id="startDate" name="startDate" required>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="terms" name="terms" required>
+                                    <span class="checkmark"></span>
+                                    I agree to the <a href="#" class="terms-link">Terms and Conditions</a>
+                                </label>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="newsletter" name="newsletter">
+                                    <span class="checkmark"></span>
+                                    Subscribe to our fitness newsletter
+                                </label>
+                            </div>
+
+                            <button type="submit" class="registration-submit-btn">
+                                <span class="btn-text">Complete Registration</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </section>
         </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">SweatBox<span>APG</span></div>
-            <p>&copy; 2025 Sweat Box APG. All Rights Reserved.</p>
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Contact Support</a>
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">SweatBox<span>APG</span></div>
+                <p>&copy; 2025 Sweat Box APG. All Rights Reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Contact Support</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/sweatboxapg/" target="_blank" rel="noopener noreferrer"
+                        class="footer-social-link instagram">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://www.facebook.com/p/sweatboxapg-100063940720079/" target="_blank"
+                        rel="noopener noreferrer" class="footer-social-link facebook">
+                        <i class="fab fa-facebook"></i>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="footer-social-link tiktok">
+                        <i class="fab fa-tiktok"></i>
+                        <span>TikTok</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="footer-social-link telegram">
+                        <i class="fab fa-telegram"></i>
+                        <span>Telegram</span>
+                    </a>
+                </div>
             </div>
-            <div class="footer-social">
-                <a href="https://www.instagram.com/sweatboxapg/" target="_blank" rel="noopener noreferrer" class="footer-social-link instagram">
-                    <i class="fab fa-instagram"></i>
-                    <span>Instagram</span>
-                </a>
-                <a href="https://www.facebook.com/p/sweatboxapg-100063940720079/" target="_blank" rel="noopener noreferrer" class="footer-social-link facebook">
-                    <i class="fab fa-facebook"></i>
-                    <span>Facebook</span>
-                </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" class="footer-social-link tiktok">
-                    <i class="fab fa-tiktok"></i>
-                    <span>TikTok</span>
-                </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" class="footer-social-link telegram">
-                    <i class="fab fa-telegram"></i>
-                    <span>Telegram</span>
-                </a>
-            </div>
-        </div>
-    </footer>
+        </footer>
     </div>
 
     <script src="script.js"></script>
