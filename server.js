@@ -7,6 +7,9 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 require('dotenv').config();
 
+// For Vercel serverless functions
+const serverless = require('serverless-http');
+
 // Database setup
 const dbPath = path.join(__dirname, 'sweatbox.db');
 const db = new sqlite3.Database(dbPath, (err) => {
@@ -620,13 +623,21 @@ app.get('/admin/logout', (req, res) => {
 
 // --- Server Start ---
 
-app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
-    console.log(`🔐 Admin panel available at http://localhost:${PORT}/admin`);
-    console.log(`---`);
-    console.log(`Admin Username: ${ADMIN_USERNAME}`);
-    console.log(`Admin Password: ${ADMIN_PASSWORD}`);
-    console.log(`---`);
-    console.log(`📱 Telegram Bot Token: ${TELEGRAM_BOT_TOKEN ? 'Configured' : 'Missing'}`);
-    console.log(`💬 Telegram Chat ID: ${TELEGRAM_CHAT_ID ? 'Configured' : 'Missing'}`);
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+        console.log(`🔐 Admin panel available at http://localhost:${PORT}/admin`);
+        console.log(`---`);
+        console.log(`Admin Username: ${ADMIN_USERNAME}`);
+        console.log(`Admin Password: ${ADMIN_PASSWORD}`);
+        console.log(`---`);
+        console.log(`📱 Telegram Bot Token: ${TELEGRAM_BOT_TOKEN ? 'Configured' : 'Missing'}`);
+        console.log(`💬 Telegram Chat ID: ${TELEGRAM_CHAT_ID ? 'Configured' : 'Missing'}`);
+    });
+}
+
+// For Vercel serverless functions
+module.exports = app;
+module.exports.handler = serverless(app);
 });
