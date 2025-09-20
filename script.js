@@ -573,68 +573,8 @@ function updateShopPage(lang) {
 // CART FUNCTIONALITY
 // =============================================
 function setupCartFunctionality() {
-    // Initialize cart from localStorage
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
-    // Update cart count for all cart badges
-    function updateCartCount() {
-        const cartBadges = document.querySelectorAll('#cartCount');
-        const totalItems = cart.reduce((total, item) => total + (item.quantity || 1), 0);
-        
-        cartBadges.forEach(badge => {
-            badge.textContent = totalItems;
-            badge.style.display = totalItems > 0 ? 'inline-flex' : 'none';
-        });
-    }
-    
-    // Add to cart function
-    window.addToCart = function(product) {
-        const existingItem = cart.find(item => item.id === product.id);
-        
-        if (existingItem) {
-            existingItem.quantity = (existingItem.quantity || 1) + 1;
-        } else {
-            cart.push({ ...product, quantity: 1 });
-        }
-        
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateCartCount();
-        
-        // Show notification
-        showNotification(`${product.name} added to cart!`);
-    };
-    
-    // Remove from cart function
-    window.removeFromCart = function(productId) {
-        cart = cart.filter(item => item.id !== productId);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateCartCount();
-    };
-    
-    // Get cart function
-    window.getCart = function() {
-        return cart;
-    };
-    
-    // Clear cart function
-    window.clearCart = function() {
-        cart = [];
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateCartCount();
-    };
-    
-    // Initial cart count update
-    updateCartCount();
-    
-    // Set up cart button clicks
-    const cartButtons = document.querySelectorAll('#cartBtn');
-    cartButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            window.location.href = 'shop.html';
-        });
-    });
+    // Ensure badges reflect current cart state on load (all pages)
+    updateCartUI();
 }
 
 // =============================================
@@ -894,35 +834,37 @@ function initializeBannerSlider() {
         slideInterval = setInterval(autoAdvance, 4000);
     }
 }
+
 const PRODUCTS = [
     // Shoes
-    { id: 'p1', name: 'CrossFit Training Shoes', price: 2500, img: 'https://images.unsplash.com/photo-1556906781-9a412961c28c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60', desc: 'High-performance training shoes for CrossFit.', category: 'shoes' },
-    { id: 'p2', name: 'Running Shoes', price: 1800, img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=60', desc: 'Lightweight running shoes for cardio sessions.', category: 'shoes' },
-    
-    // Top Wear
-    { id: 'p3', name: 'Sweat Box Tee', price: 650, img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGd5bSUyMHRzaGlydHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60', desc: 'Comfort fit gym tee with moisture-wicking fabric.', category: 'tops' },
-    { id: 'p4', name: 'Performance Hoodie', price: 2200, img: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aG9vZGllfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60', desc: 'Warm hoodie for training and recovery.', category: 'tops' },
-    { id: 'p5', name: 'Compression Shirt', price: 950, img: 'https://images.unsplash.com/photo-1503341504253-dff4815485f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGd5bSUyMHNoaXJ0fGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60', desc: 'Tight-fitting shirt for maximum muscle support.', category: 'tops' },
-    
-    // Bottom Wear
-    { id: 'p6', name: 'Training Shorts', price: 850, img: 'https://images.unsplash.com/photo-1562886877-3a0d4d70d9c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Z3ltJTIwc2hvcnRzfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60', desc: 'Flexible shorts for unrestricted movement.', category: 'bottoms' },
-    { id: 'p7', name: 'Compression Leggings', price: 1200, img: 'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGVnZ2luZ3N8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60', desc: 'Full-length leggings for support and comfort.', category: 'bottoms' },
-    
+    { id: 'p1', name: 'CrossFit Training Shoes', price: 2500, image: 'https://images.unsplash.com/photo-1605348532760-6753d2c43329?auto=format&fit=crop&w=800&q=60', description: 'High-performance training shoes for CrossFit.', category: 'shoes' },
+    { id: 'p2', name: 'Running Shoes', price: 1800, image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=60', description: 'Lightweight running shoes for cardio sessions.', category: 'shoes' },
+    { id: 'p3', name: 'Weightlifting Shoes', price: 3200, image: 'https://images.unsplash.com/photo-1596461404969-9372132a134a?auto=format&fit=crop&w=800&q=60', description: 'Stable and supportive shoes for heavy lifts.', category: 'shoes' },
+
+    // Tops
+    { id: 'p4', name: 'Performance T-Shirt', price: 800, image: 'https://images.unsplash.com/photo-1581655353564-df123a1642b1?auto=format&fit=crop&w=800&q=60', description: 'Moisture-wicking t-shirt for intense workouts.', category: 'tops' },
+    { id: 'p5', name: 'Tank Top', price: 650, image: 'https://images.unsplash.com/photo-1611312449412-6cefac5dc2d0?auto=format&fit=crop&w=800&q=60', description: 'Breathable tank top for maximum mobility.', category: 'tops' },
+    { id: 'p6', name: 'Hoodie', price: 1500, image: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=60', description: 'Comfortable hoodie for warm-ups and cool-downs.', category: 'tops' },
+
+    // Bottoms
+    { id: 'p7', name: 'Training Shorts', price: 900, image: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=800&q=60', description: 'Flexible and durable shorts for all types of training.', category: 'bottoms' },
+    { id: 'p8', name: 'Joggers', price: 1200, image: 'https://images.unsplash.com/photo-1563389234822-1b0529798c73?auto=format&fit=crop&w=800&q=60', description: 'Stylish and comfortable joggers for gym and casual wear.', category: 'bottoms' },
+    { id: 'p9', name: 'Compression Pants', price: 1100, image: 'https://images.unsplash.com/photo-1612871689353-ccc5b033aaac?auto=format&fit=crop&w=800&q=60', description: 'Supportive compression pants for improved performance.', category: 'bottoms' },
+
     // Weights
-    { id: 'p8', name: 'Kettlebell (16kg)', price: 1800, img: 'https://images.unsplash.com/photo-1517344884509-a0c97ec11bcc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8a2V0dGxlYmVsbHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60', desc: '16kg cast iron kettlebell for strength training.', category: 'weights' },
-    { id: 'p9', name: 'Dumbbell Set', price: 3500, img: 'https://images.unsplash.com/photo-1638536532686-d610adfc8e5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8ZHVtYmJlbGx8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60', desc: 'Adjustable dumbbell set (5-25kg).', category: 'weights' },
-    
+    { id: 'p10', name: 'Dumbbell Set', price: 5000, image: 'https://images.unsplash.com/photo-1584735935639-c09f2e571c37?auto=format&fit=crop&w=800&q=60', description: 'Adjustable dumbbell set for a variety of exercises.', category: 'weights' },
+    { id: 'p11', name: 'Kettlebell', price: 2000, image: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=60', description: 'Versatile kettlebell for strength and conditioning.', category: 'weights' },
+    { id: 'p12', name: 'Barbell', price: 8000, image: 'https://images.unsplash.com/photo-1547919343-035b7185e6a8?auto=format&fit=crop&w=800&q=60', description: 'Olympic barbell for heavy lifting.', category: 'weights' },
+
     // Materials
-    { id: 'p10', name: 'Yoga Mat', price: 750, img: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8eW9nYSUyMG1hdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60', desc: 'Non-slip yoga mat for floor exercises.', category: 'materials' },
-    { id: 'p11', name: 'Resistance Bands', price: 450, img: 'https://images.unsplash.com/photo-1598550476439-6847785fcea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzaXN0YW5jZSUyMGJhbmRzfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60', desc: 'Set of 5 resistance bands with different strengths.', category: 'materials' },
-    
+    { id: 'p13', name: 'Yoga Mat', price: 700, image: 'https://images.unsplash.com/photo-1591291621229-a1d7c3b22b4a?auto=format&fit=crop&w=800&q=60', description: 'Non-slip yoga mat for stretching and floor exercises.', category: 'materials' },
+    { id: 'p14', name: 'Resistance Bands', price: 500, image: 'https://images.unsplash.com/photo-1607962837359-5e7e8438a7da?auto=format&fit=crop&w=800&q=60', description: 'Set of resistance bands for strength and mobility.', category: 'materials' },
+    { id: 'p15', name: 'Gymnastic Rings', price: 1500, image: 'https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=800&q=60', description: 'Wooden gymnastic rings for bodyweight training.', category: 'materials' },
+
     // Supplements
-    { id: 'p12', name: 'Protein Powder (1kg)', price: 1500, img: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvdGVpbiUyMHBvd2RlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60', desc: 'Whey protein powder for muscle recovery.', category: 'supplements' },
-    { id: 'p13', name: 'Protein Shaker', price: 300, img: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvdGVpbiUyMHBvd2RlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60', desc: '700ml shaker bottle with mixing ball.', category: 'supplements' },
-    { id: 'p14', name: 'Pre-Workout (30 servings)', price: 1200, img: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvdGVpbiUyMHBvd2RlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60', desc: 'Energy-boosting pre-workout supplement.', category: 'supplements' },
-    
-    // Digital Products
-    { id: 'p15', name: '1 Month Membership (Digital)', price: 3999, img: 'https://images.unsplash.com/photo-1554284126-aa88f22d8b6f?auto=format&fit=crop&w=800&q=60', desc: 'One month access to all classes and facilities.', category: 'digital' }
+    { id: 'p16', name: 'Whey Protein', price: 3500, image: 'https://images.unsplash.com/photo-1579783902614-a345cd077227?auto=format&fit=crop&w=800&q=60', description: 'High-quality whey protein for muscle recovery.', category: 'supplements' },
+    { id: 'p17', name: 'Creatine', price: 1200, image: 'https://images.unsplash.com/photo-1639413665432-8c17555f75f3?auto=format&fit=crop&w=800&q=60', description: 'Micronized creatine for increased strength and power.', category: 'supplements' },
+    { id: 'p18', name: 'Pre-Workout', price: 1800, image: 'https://images.unsplash.com/photo-1623382121394-84c9b46a0691?auto=format&fit=crop&w=800&q=60', description: 'Energy-boosting pre-workout for intense training sessions.', category: 'supplements' }
 ];
 
 // Cart management functions
@@ -947,14 +889,15 @@ function addToCart(product, quantity = 1) {
             id: product.id,
             name: product.name,
             price: product.price,
-            image: product.img,
+            image: product.image,
             quantity: quantity
         });
     }
     
     saveCart(cart);
     updateCartUI();
-    toggleCartSidebar(true); // Show cart after adding item
+    // If we're on the shop page and have the sidebar toggle, open it
+    if (typeof toggleCartSidebar === 'function') toggleCartSidebar(true);
     
     // Show confirmation notification
     showNotification(`Added ${product.name} to cart!`);
@@ -995,6 +938,7 @@ function updateCartUI() {
     // Update cart count badges
     const navCartCount = document.getElementById('navCartCount');
     const mobileCartCount = document.getElementById('mobileCartCount');
+    const generalCartBadges = document.querySelectorAll('#cartCount');
     const cartItems = document.getElementById('cartItems');
     const cartTotal = document.getElementById('cartTotal');
     const orderSummaryItems = document.getElementById('orderSummaryItems');
@@ -1018,6 +962,15 @@ function updateCartUI() {
         if (totalItems === 0) {
             mobileCartCount.textContent = '0';
         }
+    }
+
+    // Also update any generic cart badges (used on non-shop pages)
+    if (generalCartBadges && generalCartBadges.length) {
+        generalCartBadges.forEach(badge => {
+            badge.textContent = totalItems;
+            badge.style.display = 'flex';
+            if (totalItems === 0) badge.textContent = '0';
+        });
     }
     
     // Update cart sidebar items
@@ -1123,15 +1076,20 @@ function renderProducts() {
     filteredProducts.forEach(product => {
         const productCard = document.createElement('div');
         productCard.className = 'product-card';
+        productCard.dataset.category = product.category;
+
         productCard.innerHTML = `
-            <div class="product-image">
-                <img src="${product.img}" alt="${product.name}" loading="lazy">
+            <div class="product-image-container">
+                <img src="${product.image}" alt="${product.name}" class="product-image">
             </div>
-            <div class="product-details">
+            <div class="product-info">
                 <h3 class="product-name">${product.name}</h3>
-                <div class="product-price">${product.price.toLocaleString()} ETB</div>
-                <p class="product-description">${product.desc}</p>
-                <button class="add-to-cart-btn" data-product-id="${product.id}">Add to Cart</button>
+                <div class="product-details">
+                    <span class="product-price">$${product.price.toFixed(2)}</span>
+                    <button class="add-to-cart-btn" data-product-id="${product.id}" onclick='addToCart(${JSON.stringify(product)})'>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
             </div>
         `;
         productsGrid.appendChild(productCard);
@@ -1214,11 +1172,11 @@ function setupShopPage() {
         if (!checkoutModal) return;
         
         if (show === undefined) {
-            checkoutModal.classList.toggle('active');
+            checkoutModal.classList.toggle('open');
         } else if (show) {
-            checkoutModal.classList.add('active');
+            checkoutModal.classList.add('open');
         } else {
-            checkoutModal.classList.remove('active');
+            checkoutModal.classList.remove('open');
         }
     }
     
@@ -1241,6 +1199,7 @@ function setupShopPage() {
     // Setup checkout form submission
     const checkoutForm = document.getElementById('checkoutForm');
     const orderConfirmation = document.getElementById('orderConfirmation');
+    const closeConfirmationBtn = document.getElementById('closeConfirmation');
     
     if (checkoutForm) {
         checkoutForm.addEventListener('submit', (e) => {
@@ -1249,16 +1208,28 @@ function setupShopPage() {
             // Show order confirmation
             if (orderConfirmation) {
                 toggleCheckoutModal(false);
-                orderConfirmation.classList.add('active');
-                
+                orderConfirmation.classList.add('open');
+
+                // Populate simple order details
+                const orderIdEl = document.getElementById('orderId');
+                const orderDateEl = document.getElementById('orderDate');
+                const orderTotalAmountEl = document.getElementById('orderTotalAmount');
+                const total = calculateCartTotal();
+                const orderId = 'SB-' + Math.random().toString(36).slice(2, 8).toUpperCase();
+                if (orderIdEl) orderIdEl.textContent = orderId;
+                if (orderDateEl) orderDateEl.textContent = new Date().toLocaleString();
+                if (orderTotalAmountEl) orderTotalAmountEl.textContent = `${total.toLocaleString()} ETB`;
+
                 // Clear cart after successful order
                 clearCart();
-                
-                // Close confirmation after 5 seconds
-                setTimeout(() => {
-                    orderConfirmation.classList.remove('active');
-                }, 5000);
             }
+        });
+    }
+
+    // Close confirmation handler
+    if (closeConfirmationBtn && orderConfirmation) {
+        closeConfirmationBtn.addEventListener('click', () => {
+            orderConfirmation.classList.remove('open');
         });
     }
     
