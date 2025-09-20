@@ -988,11 +988,11 @@ function updateCartUI() {
                         <img src="${item.image}" alt="${item.name}">
                     </div>
                     <div class="cart-item-details">
-                        <h4>${item.name}</h4>
+                        <h4 class="cart-item-name">${item.name}</h4>
                         <div class="cart-item-price">${item.price.toLocaleString()} ETB</div>
                         <div class="cart-item-quantity">
                             <button class="quantity-btn minus" data-id="${item.id}">-</button>
-                            <span>${item.quantity}</span>
+                            <span class="quantity-value">${item.quantity}</span>
                             <button class="quantity-btn plus" data-id="${item.id}">+</button>
                         </div>
                     </div>
@@ -1085,7 +1085,7 @@ function renderProducts() {
             <div class="product-info">
                 <h3 class="product-name">${product.name}</h3>
                 <div class="product-details">
-                    <span class="product-price">$${product.price.toFixed(2)}</span>
+                    <span class="product-price">${product.price.toLocaleString()} ETB</span>
                     <button class="add-to-cart-btn" data-product-id="${product.id}" onclick='addToCart(${JSON.stringify(product)})'>
                         <i class="fas fa-plus"></i>
                     </button>
@@ -1095,15 +1095,17 @@ function renderProducts() {
         productsGrid.appendChild(productCard);
     });
     
-    // Add event listeners to Add to Cart buttons
+    // Add event listeners to Add to Cart buttons only if no inline handler
     document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-        button.addEventListener('click', () => {
-            const productId = button.getAttribute('data-product-id');
-            const product = PRODUCTS.find(p => p.id === productId);
-            if (product) {
-                addToCart(product);
-            }
-        });
+        if (!button.hasAttribute('onclick')) {
+            button.addEventListener('click', () => {
+                const productId = button.getAttribute('data-product-id');
+                const product = PRODUCTS.find(p => p.id === productId);
+                if (product) {
+                    addToCart(product);
+                }
+            });
+        }
     });
 }
 
@@ -1318,11 +1320,16 @@ function setupMembershipForm() {
 // CART BUTTON FUNCTIONALITY
 // =============================================
 function setupCartButton() {
-    const cartBtn = document.getElementById('cartBtn');
-    if (!cartBtn) return;
+    const cartBtns = document.querySelectorAll('#cartBtn');
+    if (!cartBtns || !cartBtns.length) return;
 
-    cartBtn.addEventListener('click', () => {
-        window.location.href = 'shop.html';
+    cartBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // If on shop page, prefer opening the sidebar (handled elsewhere for shop ids)
+            if (!window.location.pathname.includes('shop.html')) {
+                window.location.href = 'shop.html';
+            }
+        });
     });
 }
 
@@ -1535,6 +1542,7 @@ function initializePage() {
     setupMobileNavigation();
     setupThemeToggle();
     setupCartFunctionality(); // Cart functionality
+    setupCartButton(); // Cart button route to shop on non-shop pages
     setupSearch();
     setupMembershipForm();
     setupAnimatedBackground();
