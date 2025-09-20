@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Settings - SweatBox APG</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Telegram Settings</h1>
+            <div>
+                <a href="/admin/dashboard" class="logout-btn">← Back to Dashboard</a>
+                <a href="/admin/logout" class="logout-btn">Logout</a>
+            </div>
+        </div>
+
+        <div class="telegram-info">
+            <h3>Bot Configuration</h3>
+            <p><strong>Bot Token:</strong> <%= botToken ? 'Configured ✓' : 'Not configured ✗' %></p>
+            <p class="info-text">
+                <strong>How to add users:</strong><br>
+                1. Ask the user to send <code>/start</code> to your bot<br>
+                2. Enter their Telegram username below<br>
+                3. Click "Add User" - they will receive notifications
+            </p>
+        </div>
+
+        <div class="add-user-section">
+            <h3>Add New User</h3>
+            <form id="addUserForm" class="add-user-form">
+                <div class="form-group">
+                    <input type="text" id="username" name="username" placeholder="Telegram Username (without @)" required>
+                    <button type="submit" class="btn">Add User</button>
+                </div>
+            </form>
+        </div>
+
+        <h3>Current Recipients (<%= telegramUsers.length %>)</h3>
+        <% if (telegramUsers.length > 0) { %>
+            <div class="users-list">
+                <% telegramUsers.forEach(user => { %>
+                    <div class="user-item">
+                        <div class="user-info">
+                            <strong>@<%= user.username %></strong>
+                            <span class="chat-id">ID: <%= user.chatId %></span>
+                        </div>
+                        <button class="remove-btn" onclick="removeUser('<%= user.chatId %>')">Remove</button>
+                    </div>
+                <% }) %>
+            </div>
+        <% } else { %>
+            <p class="no-users">No Telegram users configured. Add users above to receive notifications.</p>
+        <% } %>
+    </div>
+
+    <script>
+        // Add user form submission
+        document.getElementById('addUserForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value.trim();
+            if (!username) return;
+
+            try {
+                const response = await fetch('/admin/telegram/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username })
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert('User added successfully!');
+                    location.reload();
+                } else {
+                    alert('Error: ' + result.error);
+                }
+            } catch (error) {
+                alert('Network error. Please try again.');
+            }
+        });
+
+        // Remove user function
+        async function removeUser(chatId) {
+            if (!confirm('Are you sure you want to remove this user?')) return;
+
+            try {
+                const response = await fetch('/admin/telegram/remove', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ chatId })
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert('User removed successfully!');
+                    location.reload();
+                } else {
+                    alert('Error: ' + result.error);
+                }
+            } catch (error) {
+                alert('Network error. Please try again.');
+            }
+        }
+
+    </script>
+</body>
+</html>

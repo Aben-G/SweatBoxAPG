@@ -57,46 +57,65 @@ npm start
 
 ## 📱 Message Format
 
-### Contact Form
-```
-🏋️ New Contact Form Submission - SweatBox APG
-
-👤 Name: John Doe
-📧 Email: john@example.com
-📱 Phone: +1234567890
-
-💬 Message:
-Hello, I'm interested in joining your gym...
-
-⏰ Submitted: 1/20/2025, 3:30:00 PM
 ```
 
-### Membership Registration
-```
-🏋️ New Membership Registration - SweatBox APG
+## 🛡 Security Features
 
-👤 Name: Jane Smith
-📧 Email: jane@example.com
-📱 Phone: +1234567890
+- **Session Management** - Secure admin authentication
+- **Environment Variables** - Sensitive data protection
+- **Input Validation** - Form data validation
+- **CORS Protection** - Cross-origin request security
+- **Error Handling** - Graceful error management
 
-💳 Selected Plan: monthly
-📅 Start Date: 2025-01-25
+## 📊 Admin Dashboard Features
 
-⏰ Submitted: 1/20/2025, 3:30:00 PM
-```
+### Form Management
+- View all contact form submissions
+- Track membership registrations
+- Monitor store orders with complete details
+- Export capabilities (future enhancement)
 
-## 🔧 API Endpoints
+### Telegram Management
+- Add/remove notification recipients
+- View current configured users
+- Test notification system
+- Manage bot configuration
 
-- `POST /api/contact` - Handle contact form submissions
-- `POST /api/membership` - Handle membership registrations
-- `GET /api/health` - Health check endpoint
+## 🎯 Production Considerations
 
-## 🛠️ Development
+### Performance
+- Static file serving optimized
+- Session management configured for production
+- Error logging implemented
+- Health check endpoint available
 
-The server serves static files from the root directory, so you can access your website at `http://localhost:3000` when the server is running.
+### Scalability
+- In-memory storage (upgrade to database recommended)
+- Multi-user Telegram notifications
+- Modular code structure
+- Easy to extend with new features
 
-## 📝 Notes
+## 📞 Support
 
-- Make sure to keep your `.env` file secure and never commit it to version control
-- The bot token and chat ID are sensitive information
-- Test the forms thoroughly before going live
+For issues or questions:
+1. Check the admin dashboard for system status
+2. Verify Telegram bot configuration
+3. Review server logs in Render dashboard
+4. Test API endpoints using the health check
+
+## 🔄 Updates and Maintenance
+
+### Regular Tasks
+- Monitor admin dashboard for submissions
+- Check Telegram notifications are working
+- Review server logs in Render
+- Update dependencies periodically
+
+### Backup Recommendations
+- Export form submissions regularly
+- Keep environment variables backed up
+- Monitor uptime and performance
+
+---
+
+**SweatBox APG** - Professional gym management system with modern web interface and real-time notifications.
