@@ -1204,26 +1204,76 @@ function setupShopPage() {
     const closeConfirmationBtn = document.getElementById('closeConfirmation');
 
     if (checkoutForm) {
-        checkoutForm.addEventListener('submit', (e) => {
+        checkoutForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // Show order confirmation
-            if (orderConfirmation) {
-                toggleCheckoutModal(false);
-                orderConfirmation.classList.add('open');
+            // Get form data
+            const formData = new FormData(checkoutForm);
+            const cart = getCart();
+            const total = calculateCartTotal();
 
-                // Populate simple order details
-                const orderIdEl = document.getElementById('orderId');
-                const orderDateEl = document.getElementById('orderDate');
-                const orderTotalAmountEl = document.getElementById('orderTotalAmount');
-                const total = calculateCartTotal();
-                const orderId = 'SB-' + Math.random().toString(36).slice(2, 8).toUpperCase();
-                if (orderIdEl) orderIdEl.textContent = orderId;
-                if (orderDateEl) orderDateEl.textContent = new Date().toLocaleString();
-                if (orderTotalAmountEl) orderTotalAmountEl.textContent = `${total.toLocaleString()} ETB`;
+            // Prepare order data
+            const orderData = {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                address: formData.get('address'),
+                city: formData.get('city'),
+                state: formData.get('state'),
+                zipCode: formData.get('zipCode'),
+                country: formData.get('country'),
+                cardNumber: formData.get('cardNumber'),
+                expiryDate: formData.get('expiryDate'),
+                cvv: formData.get('cvv'),
+                cardName: formData.get('cardName'),
+                total: total,
+                items: cart.map(item => ({
+                    name: item.name,
+                    quantity: item.quantity,
+                    price: item.price
+                }))
+            };
 
-                // Clear cart after successful order
-                clearCart();
+            try {
+                // Submit order to server
+                const response = await fetch('/api/order', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(orderData)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // Show order confirmation
+                    if (orderConfirmation) {
+                        toggleCheckoutModal(false);
+                        orderConfirmation.classList.add('open');
+
+                        // Populate order details from server response
+                        const orderIdEl = document.getElementById('orderId');
+                        const orderDateEl = document.getElementById('orderDate');
+                        const orderTotalAmountEl = document.getElementById('orderTotalAmount');
+                        
+                        if (orderIdEl) orderIdEl.textContent = result.orderId;
+                        if (orderDateEl) orderDateEl.textContent = new Date(result.orderDate).toLocaleString();
+                        if (orderTotalAmountEl) orderTotalAmountEl.textContent = `${total.toLocaleString()} ETB`;
+
+                        // Clear cart after successful order
+                        clearCart();
+                        
+                        // Show success notification
+                        showNotification('Order placed successfully!', 'success');
+                    }
+                } else {
+                    showNotification('Failed to place order. Please try again.', 'error');
+                }
+            } catch (error) {
+                console.error('Order submission error:', error);
+                showNotification('Network error. Please check your connection and try again.', 'error');
             }
         });
     }

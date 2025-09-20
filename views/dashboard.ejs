@@ -75,6 +75,60 @@
         <% } else { %>
             <p class="no-submissions">No membership registrations yet.</p>
         <% } %>
+
+        <h2>Store Orders</h2>
+        <% if (orderSubmissions.length > 0) { %>
+            <div class="table-wrapper">
+                <table class="submissions-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Total</th>
+                            <th>Items</th>
+                            <th>Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% orderSubmissions.forEach(order => { %>
+                            <tr>
+                                <td><%= new Date(order.timestamp).toLocaleString() %></td>
+                                <td><strong><%= order.orderId %></strong></td>
+                                <td><%= order.firstName %> <%= order.lastName %></td>
+                                <td><%= order.email %></td>
+                                <td><%= order.phone %></td>
+                                <td><strong>$<%= order.total || '0.00' %></strong></td>
+                                <td>
+                                    <% if (order.items && order.items.length > 0) { %>
+                                        <div class="order-items">
+                                            <% order.items.forEach(item => { %>
+                                                <div class="order-item">
+                                                    <%= item.name %> (Qty: <%= item.quantity %>)
+                                                </div>
+                                            <% }) %>
+                                        </div>
+                                    <% } else { %>
+                                        <em>No items</em>
+                                    <% } %>
+                                </td>
+                                <td>
+                                    <div class="shipping-address">
+                                        <%= order.address || 'N/A' %><br>
+                                        <%= order.city || '' %> <%= order.state || '' %> <%= order.zipCode || '' %><br>
+                                        <%= order.country || '' %>
+                                    </div>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        <% } else { %>
+            <p class="no-submissions">No orders yet.</p>
+        <% } %>
     </div>
 </body>
 </html>

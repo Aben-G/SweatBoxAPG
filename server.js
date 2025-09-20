@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 3000;
 // In-memory storage for submissions (replace with a database in production)
 const contactSubmissions = [];
 const membershipSubmissions = [];
+const orderSubmissions = [];
 
 // Middleware
 app.use(cors());
@@ -147,6 +148,74 @@ app.post('/api/membership', async (req, res) => {
     }
 });
 
+// Order form endpoint
+app.post('/api/order', async (req, res) => {
+    try {
+        const submission = { ...req.body, timestamp: new Date() };
+
+        if (!submission.firstName || !submission.lastName || !submission.email || !submission.phone) {
+            return res.status(400).json({ error: 'Missing required fields' });
+        }
+
+        // Generate order ID
+        const orderId = 'ORD-' + Date.now() + '-' + Math.random().toString(36).substr(2, 5).toUpperCase();
+        submission.orderId = orderId;
+
+        // Store submission
+        orderSubmissions.unshift(submission);
+
+        // Format items for Telegram
+        let itemsList = '';
+        if (submission.items && submission.items.length > 0) {
+            itemsList = submission.items.map(item => 
+                `• ${item.name} - Qty: ${item.quantity} - $${item.price}`
+            ).join('\n');
+        }
+
+        const telegramMessage = `
+🛒 <b>New Order - SweatBox APG</b>
+
+👤 <b>Customer:</b> ${submission.firstName} ${submission.lastName}
+📧 <b>Email:</b> ${submission.email}
+📱 <b>Phone:</b> ${submission.phone}
+
+🆔 <b>Order ID:</b> ${submission.orderId}
+💰 <b>Total:</b> $${submission.total || '0.00'}
+
+📦 <b>Items:</b>
+${itemsList || 'No items specified'}
+
+🏠 <b>Shipping Address:</b>
+${submission.address || 'Not provided'}
+${submission.city || ''} ${submission.state || ''} ${submission.zipCode || ''}
+${submission.country || ''}
+
+⏰ <b>Ordered:</b> ${submission.timestamp.toLocaleString()}
+        `;
+
+        const success = await sendToTelegram(telegramMessage);
+        
+        if (success) {
+            res.json({ 
+                success: true, 
+                message: 'Order placed successfully!',
+                orderId: orderId,
+                orderDate: submission.timestamp.toISOString()
+            });
+        } else {
+            res.json({ 
+                success: true, 
+                message: 'Order placed, but Telegram notification failed.',
+                orderId: orderId,
+                orderDate: submission.timestamp.toISOString()
+            });
+        }
+    } catch (error) {
+        console.error('Order form error:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
     res.json({ status: 'OK', timestamp: new Date().toISOString() });
@@ -177,7 +246,7 @@ app.post('/admin/login', (req, res) => {
 
 // Dashboard page (protected)
 app.get('/admin/dashboard', requireLogin, (req, res) => {
-    res.render('dashboard', { contactSubmissions, membershipSubmissions });
+    res.render('dashboard', { contactSubmissions, membershipSubmissions, orderSubmissions });
 });
 
 // Logout
