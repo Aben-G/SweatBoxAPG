@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - SweatBox APG</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Admin Dashboard</h1>
+            <a href="/admin/logout" class="logout-btn">Logout</a>
+        </div>
+
+        <h2>Contact Form Submissions</h2>
+        <% if (contactSubmissions.length > 0) { %>
+            <div class="table-wrapper">
+                <table class="submissions-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Message</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% contactSubmissions.forEach(sub => { %>
+                            <tr>
+                                <td><%= new Date(sub.timestamp).toLocaleString() %></td>
+                                <td><%= sub.firstName %> <%= sub.lastName %></td>
+                                <td><%= sub.email %></td>
+                                <td><%= sub.phone || 'N/A' %></td>
+                                <td><div class="message"><%= sub.message %></div></td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        <% } else { %>
+            <p class="no-submissions">No contact form submissions yet.</p>
+        <% } %>
+
+        <h2>Membership Registrations</h2>
+        <% if (membershipSubmissions.length > 0) { %>
+            <div class="table-wrapper">
+                <table class="submissions-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Plan</th>
+                            <th>Start Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% membershipSubmissions.forEach(sub => { %>
+                            <tr>
+                                <td><%= new Date(sub.timestamp).toLocaleString() %></td>
+                                <td><%= sub.firstName %> <%= sub.lastName %></td>
+                                <td><%= sub.email %></td>
+                                <td><%= sub.phone || 'N/A' %></td>
+                                <td><%= sub.selectedPlan %></td>
+                                <td><%= sub.startDate || 'N/A' %></td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        <% } else { %>
+            <p class="no-submissions">No membership registrations yet.</p>
+        <% } %>
+    </div>
+</body>
+</html>
