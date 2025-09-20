@@ -7,9 +7,6 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 require('dotenv').config();
 
-// For Vercel serverless functions
-const serverless = require('serverless-http');
-
 // Database setup
 const dbPath = path.join(__dirname, 'sweatbox.db');
 const db = new sqlite3.Database(dbPath, (err) => {
@@ -59,10 +56,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// Serve static files
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/admin', express.static(path.join(__dirname, 'public', 'admin')));
+app.use(express.static('public')); // Serve all static files from the 'public' directory
 
 // Session Configuration
 app.use(session({
@@ -143,93 +137,6 @@ function requireLogin(req, res, next) {
         res.redirect('/admin/login');
     }
 }
-
-// --- Admin Routes ---
-
-// Admin login page
-app.get('/admin/login', (req, res) => {
-    if (req.session.loggedin) {
-        return res.redirect('/admin/dashboard');
-    }
-    res.render('login', { 
-        title: 'Admin Login',
-        error: null,
-        currentPage: 'login'
-    });
-});
-
-// Admin login form submission
-app.post('/admin/login', (req, res) => {
-    const { username, password } = req.body;
-    
-    if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-        req.session.loggedin = true;
-        req.session.username = username;
-        res.redirect('/admin/dashboard');
-    } else {
-        res.render('login', { 
-            title: 'Admin Login',
-            error: 'Invalid username or password',
-            currentPage: 'login'
-        });
-    }
-});
-
-// Admin dashboard (protected)
-app.get('/admin/dashboard', requireLogin, async (req, res) => {
-    try {
-        // Get all submissions
-        const contactSubmissions = await dbAll(
-            'SELECT * FROM submissions WHERE type = ? ORDER BY created_at DESC',
-            ['contact']
-        );
-        
-        const membershipSubmissions = await dbAll(
-            'SELECT * FROM submissions WHERE type = ? ORDER BY created_at DESC',
-            ['membership']
-        );
-        
-        const orderSubmissions = await dbAll(
-            'SELECT * FROM submissions WHERE type = ? ORDER BY created_at DESC',
-            ['order']
-        );
-
-        // Parse the JSON data for each submission
-        const parseSubmissions = (subs) => {
-            return subs.map(sub => ({
-                ...JSON.parse(sub.data),
-                id: sub.id,
-                created_at: sub.created_at
-            }));
-        };
-            
-        res.render('dashboard', { 
-            contactSubmissions: parseSubmissions(contactSubmissions),
-            membershipSubmissions: parseSubmissions(membershipSubmissions),
-            orderSubmissions: parseSubmissions(orderSubmissions),
-            title: 'Dashboard',
-            currentPage: 'dashboard'
-        });
-    } catch (error) {
-        console.error('Dashboard error:', error);
-        res.status(500).send('Error loading dashboard');
-    }
-});
-
-// Admin logout
-app.get('/admin/logout', (req, res) => {
-    req.session.destroy();
-    res.redirect('/admin/login');
-});
-
-// Redirect root /admin to /admin/dashboard
-app.get('/admin', (req, res) => {
-    if (req.session.loggedin) {
-        res.redirect('/admin/dashboard');
-    } else {
-        res.redirect('/admin/login');
-    }
-});
 
 // --- API Routes ---
 
@@ -623,21 +530,13 @@ app.get('/admin/logout', (req, res) => {
 
 // --- Server Start ---
 
-// For local development
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
-        console.log(`🔐 Admin panel available at http://localhost:${PORT}/admin`);
-        console.log(`---`);
-        console.log(`Admin Username: ${ADMIN_USERNAME}`);
-        console.log(`Admin Password: ${ADMIN_PASSWORD}`);
-        console.log(`---`);
-        console.log(`📱 Telegram Bot Token: ${TELEGRAM_BOT_TOKEN ? 'Configured' : 'Missing'}`);
-        console.log(`💬 Telegram Chat ID: ${TELEGRAM_CHAT_ID ? 'Configured' : 'Missing'}`);
-    });
-}
-
-// For Vercel serverless functions
-module.exports = app;
-module.exports.handler = serverless(app);
+app.listen(PORT, () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
+    console.log(`🔐 Admin panel available at http://localhost:${PORT}/admin`);
+    console.log(`---`);
+    console.log(`Admin Username: ${ADMIN_USERNAME}`);
+    console.log(`Admin Password: ${ADMIN_PASSWORD}`);
+    console.log(`---`);
+    console.log(`📱 Telegram Bot Token: ${TELEGRAM_BOT_TOKEN ? 'Configured' : 'Missing'}`);
+    console.log(`💬 Telegram Chat ID: ${TELEGRAM_CHAT_ID ? 'Configured' : 'Missing'}`);
 });
