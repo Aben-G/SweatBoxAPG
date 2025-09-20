@@ -2323,7 +2323,41 @@ function initializeTrainersPage() {
     }
 }
 
+// =============================================
+// ADVERTISING BANNER SLIDER FUNCTIONALITY
+// =============================================
+function initializeAdBannerSlider() {
+    const slides = document.querySelectorAll('.ad-banner-slider .banner-slide');
+    
+    if (slides.length === 0) return;
+    
+    let currentSlide = 0;
+    
+    function showSlide(index) {
+        // Remove active class from all slides
+        slides.forEach(slide => slide.classList.remove('active'));
+        
+        // Add active class to current slide
+        slides[index].classList.add('active');
+        
+        // Force a reflow to ensure the slide is visible
+        slides[index].offsetHeight;
+    }
+    
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+    
+    // Initialize first slide immediately
+    showSlide(0);
+    
+    // Auto-play with 8-second interval
+    setInterval(nextSlide, 8000);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     initializeBannerSlider();
     initializeTrainersPage();
+    initializeAdBannerSlider();
 });
