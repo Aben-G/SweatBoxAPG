@@ -62,10 +62,6 @@
                 </button>
             </nav>
 
-            <!-- Back to top button -->
-            <button id="backToTop" class="back-to-top-btn" aria-label="Back to top" title="Back to top">
-                <i class="fas fa-arrow-up"></i>
-            </button>
 
             <!-- Mobile menu button -->
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
@@ -128,7 +124,66 @@
 
         <main>
             <section id="pageContainer">
-                <!-- Content removed -->
+                <div class="contact-container">
+                    <div class="contact-header">
+                        <h1>Get in Touch</h1>
+                        <p>We'd love to hear from you. Fill out the form below or use the contact details provided.</p>
+                    </div>
+
+                    <div class="contact-content">
+                        <div class="contact-form-container">
+                            <form id="contactForm" class="contact-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="firstName">First Name</label>
+                                        <input type="text" id="firstName" name="firstName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lastName">Last Name</label>
+                                        <input type="text" id="lastName" name="lastName" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="email">Email Address</label>
+                                        <input type="email" id="email" name="email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Phone Number</label>
+                                        <input type="tel" id="phone" name="phone">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea id="message" name="message" rows="6" required></textarea>
+                                </div>
+                                <button type="submit" class="submit-btn">Send Message</button>
+                            </form>
+                        </div>
+
+                        <div class="contact-details-container">
+                            <div class="contact-details">
+                                <h3>Contact Information</h3>
+                                <div class="detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <p>123 Fitness Street, Bole Sub-City, Addis Ababa, Ethiopia</p>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-phone"></i>
+                                    <p>+251 91 234 5678</p>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <p>contact@sweatboxapg.com</p>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <p>Mon - Fri: 6am - 10pm<br>Sat - Sun: 8am - 8pm</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
         </main>
 
@@ -162,6 +217,11 @@
             </div>
         </footer>
     </div>
+
+    <!-- Back to top button -->
+    <button id="backToTop" class="back-to-top-btn" aria-label="Back to top" title="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="script.js"></script>
 </body>

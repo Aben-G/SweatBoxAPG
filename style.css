@@ -701,51 +701,51 @@
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-
+    
     .products-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 15px;
     }
-
+    
     .cart-sidebar {
         width: 100%;
         right: -100%;
     }
-
+    
     .form-row {
         flex-direction: column;
         gap: 0;
     }
-
+    
     .receipt-actions {
         flex-direction: column;
     }
 }
 
 @media (max-width: 480px) {
-
+    
     .category-tabs {
         gap: 5px;
     }
-
+    
     .category-tab {
         padding: 8px 12px;
         font-size: 0.9rem;
     }
-
+    
     .products-grid {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: 10px;
     }
-
+    
     .product-image {
         height: 150px;
     }
-
+    
     .product-info {
         padding: 10px;
     }
-
+    
     .product-name {
         font-size: 1rem;
     }
@@ -1555,24 +1555,24 @@ html[data-theme="light"] .class-description {
     .main-hero-section {
         padding: 30px 20px;
     }
-
+    
     .main-headline {
         font-size: 2.2rem;
     }
-
+    
     .main-subtitle {
         font-size: 1rem;
     }
-
+    
     .desktop-only {
         display: none;
     }
-
+    
     .main-buttons {
         flex-direction: column;
         gap: 10px;
     }
-
+    
     .gym-image {
         position: relative;
         right: auto;
@@ -1582,20 +1582,20 @@ html[data-theme="light"] .class-description {
         height: 200px;
         margin-top: 20px;
     }
-
+    
     .classes-grid {
         grid-template-columns: 1fr;
     }
-
+    
     main {
         flex-direction: column;
     }
-
+    
     main aside {
         width: 100%;
         order: 2;
     }
-
+    
     main #pageContainer {
         order: 1;
     }
@@ -1638,6 +1638,186 @@ h2 {
 
 .small {
     font-size: 13px;
+}
+
+/* Contact Page Styles */
+.contact-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(30, 30, 30, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    color: var(--text);
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.contact-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.contact-header p {
+    font-size: 1.1rem;
+    color: var(--muted);
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.contact-form-container {
+    background: transparent;
+    padding: 0;
+}
+
+.contact-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.contact-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form label {
+    margin-bottom: 0.5rem;
+    color: var(--text);
+    font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 2px solid #777;
+    color: #f1f1f1;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.3);
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: var(--accent);
+}
+
+.contact-details-container {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-details h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    color: var(--muted);
+}
+
+.detail-item i {
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin-right: 1rem;
+    width: 20px;
+    text-align: center;
+}
+
+[data-theme="light"] .contact-container {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .contact-form-container {
+    background: transparent;
+}
+
+[data-theme="light"] .contact-details-container {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .contact-header h1,
+[data-theme="light"] .contact-form label,
+[data-theme="light"] .contact-details h3 {
+    color: #1a1a1a;
+}
+
+[data-theme="light"] .contact-header p,
+[data-theme="light"] .detail-item {
+    color: #333;
+}
+
+[data-theme="light"] .contact-form input,
+[data-theme="light"] .contact-form textarea {
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #1a1a1a;
+}
+
+[data-theme="light"] .submit-btn {
+    background: #1a1a1a;
+    color: #ffffff;
+}
+
+[data-theme="light"] .submit-btn:hover {
+    background: #333;
+}
+
+@media (max-width: 768px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form .form-row {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Footer */
@@ -2872,7 +3052,7 @@ body.home-page #pageContainer::-webkit-scrollbar {
         white-space: normal;
         text-align: center;
     }
-
+    
     footer div {
         margin: 4px 0;
     }
@@ -3073,11 +3253,11 @@ nav .lang-toggle-btn i {
 /* Back to top button */
 .back-to-top-btn {
     position: fixed;
-    bottom: 100px;
-    /* Positioned above theme button */
+    bottom: 30px;
+    /* Positioned in bottom right corner */
     right: 30px;
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.9);
     /* White in dark theme */
@@ -3095,9 +3275,9 @@ nav .lang-toggle-btn i {
     visibility: hidden;
     transform: translateY(20px);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    z-index: 999;
-    /* Below theme button */
-    box-shadow:
+    z-index: 1000;
+    /* High z-index for visibility */
+    box-shadow: 
         0 6px 24px rgba(0, 0, 0, 0.2),
         0 3px 12px rgba(0, 0, 0, 0.1),
         inset 0 1px 0 rgba(255, 255, 255, 0.8);
@@ -3109,7 +3289,7 @@ nav .lang-toggle-btn i {
     /* Black in light theme */
     color: rgba(255, 255, 255, 0.9);
     /* White icon in light theme */
-    box-shadow:
+    box-shadow: 
         0 6px 24px rgba(0, 0, 0, 0.4),
         0 3px 12px rgba(0, 0, 0, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -3127,7 +3307,7 @@ nav .lang-toggle-btn i {
     /* Pure white in dark theme */
     color: rgba(0, 0, 0, 0.9);
     /* Pure black icon in dark theme */
-    box-shadow:
+    box-shadow: 
         0 12px 32px rgba(0, 0, 0, 0.3),
         0 6px 20px rgba(0, 0, 0, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
@@ -3139,7 +3319,7 @@ nav .lang-toggle-btn i {
     /* Pure black in light theme */
     color: rgba(255, 255, 255, 1);
     /* Pure white icon in light theme */
-    box-shadow:
+    box-shadow: 
         0 12px 32px rgba(0, 0, 0, 0.5),
         0 6px 20px rgba(0, 0, 0, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
@@ -3149,7 +3329,7 @@ nav .lang-toggle-btn i {
     transform: translateY(-1px) scale(1.05);
     background: rgba(255, 255, 255, 1);
     /* Pure white in dark theme */
-    box-shadow:
+    box-shadow: 
         0 4px 16px rgba(0, 0, 0, 0.2),
         0 2px 8px rgba(0, 0, 0, 0.1),
         inset 0 1px 0 rgba(255, 255, 255, 0.7);
@@ -3159,7 +3339,7 @@ nav .lang-toggle-btn i {
 [data-theme="light"] .back-to-top-btn:active {
     background: rgba(0, 0, 0, 1);
     /* Pure black in light theme */
-    box-shadow:
+    box-shadow: 
         0 4px 16px rgba(0, 0, 0, 0.4),
         0 2px 8px rgba(0, 0, 0, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -3206,11 +3386,10 @@ nav .lang-toggle-btn i {
         width: 45px;
         height: 45px;
         bottom: 20px;
-        /* Moved to bottom corner since theme button is hidden */
         right: 20px;
         font-size: 18px;
     }
-
+    
     .back-to-top-btn i {
         font-size: 16px;
     }
@@ -3221,11 +3400,10 @@ nav .lang-toggle-btn i {
         width: 40px;
         height: 40px;
         bottom: 20px;
-        /* Moved to bottom corner since theme button is hidden */
         right: 15px;
         font-size: 16px;
     }
-
+    
     .back-to-top-btn i {
         font-size: 14px;
     }
@@ -3251,32 +3429,32 @@ nav .lang-toggle-btn i {
         gap: 8px;
         margin-top: 12px;
     }
-
+    
     .social-link {
         padding: 10px 12px;
         font-size: 14px;
     }
-
+    
     .social-link i {
         font-size: 16px;
     }
-
-
+    
+    
     .button-row {
         flex-direction: column;
         gap: 6px;
     }
-
+    
     .button-row .cart-toggle-btn {
         flex: 1;
         width: 100%;
     }
-
+    
     .cart-toggle-btn {
         padding: 12px 14px;
         font-size: 14px;
     }
-
+    
     .cart-toggle-btn i {
         font-size: 16px;
     }
@@ -3945,15 +4123,15 @@ nav .lang-toggle-btn i {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 15px;
     }
-
+    
     .stat-number {
         font-size: 2rem;
     }
-
+    
     .contact-icon {
         font-size: 2rem;
     }
-
+    
     .feature-section,
     .stats-section,
     .contact-section {
@@ -3969,15 +4147,15 @@ nav .lang-toggle-btn i {
         grid-template-columns: 1fr;
         gap: 15px;
     }
-
+    
     .stat-number {
         font-size: 1.8rem;
     }
-
+    
     .contact-icon {
         font-size: 1.8rem;
     }
-
+    
     .feature-section,
     .stats-section,
     .contact-section {
@@ -3992,44 +4170,44 @@ nav .lang-toggle-btn i {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-
+    
     .about-hero {
         padding: 25px 15px;
         margin-bottom: 30px;
     }
-
+    
     .about-hero h2 {
         font-size: 2rem;
     }
-
+    
     .about-intro {
         font-size: 1rem;
     }
-
+    
     .info-section {
         padding: 20px;
     }
-
+    
     .info-section h3 {
         font-size: 1.3rem;
     }
-
+    
     .services-grid {
         grid-template-columns: 1fr;
     }
-
+    
     .expertise-item {
         padding: 12px;
     }
-
+    
     .location-card {
         padding: 15px;
     }
-
+    
     .modern-container {
         padding: 20px;
     }
-
+    
     .feature-grid {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 15px;
@@ -4041,49 +4219,49 @@ nav .lang-toggle-btn i {
         padding: 20px 12px;
         margin-bottom: 25px;
     }
-
+    
     .about-hero h2 {
         font-size: 1.7rem;
     }
-
+    
     .about-intro {
         font-size: 0.95rem;
     }
-
+    
     .info-section {
         padding: 15px;
     }
-
+    
     .info-section h3 {
         font-size: 1.2rem;
     }
-
+    
     .expertise-item {
         padding: 10px;
         gap: 10px;
     }
-
+    
     .expertise-icon {
         font-size: 1.2em;
     }
-
+    
     .location-card {
         padding: 12px;
     }
-
+    
     .service-card {
         padding: 15px;
     }
-
+    
     .modern-container {
         padding: 15px;
     }
-
+    
     .feature-grid {
         grid-template-columns: 1fr;
         gap: 10px;
     }
-
+    
     .feature-icon {
         font-size: 2.5rem;
     }
@@ -4359,19 +4537,19 @@ nav .lang-toggle-btn i {
         grid-template-columns: 1fr;
         gap: 16px;
     }
-
+    
     .branches-grid,
     .contact-grid,
     .reviews-grid {
         grid-template-columns: 1fr;
         gap: 16px;
     }
-
+    
     .services-list {
         grid-template-columns: 1fr;
         gap: 16px;
     }
-
+    
     .feature-card,
     .branch-card,
     .service-item,
@@ -4379,14 +4557,14 @@ nav .lang-toggle-btn i {
     .review-card {
         padding: 20px;
     }
-
+    
     .branches-section h3,
     .services-section h3,
     .contact-section h3,
     .reviews-section h3 {
         font-size: 24px;
     }
-
+    
     .feature-icon {
         font-size: 36px;
     }
@@ -4401,18 +4579,18 @@ nav .lang-toggle-btn i {
     .review-card {
         padding: 16px;
     }
-
+    
     .branches-section h3,
     .services-section h3,
     .contact-section h3,
     .reviews-section h3 {
         font-size: 20px;
     }
-
+    
     .feature-icon {
         font-size: 32px;
     }
-
+    
     .review-text {
         font-size: 14px;
     }
@@ -4902,7 +5080,7 @@ nav .lang-toggle-btn i {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image:
+    background-image: 
         radial-gradient(circle at 20% 50%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 40% 80%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
@@ -4920,17 +5098,17 @@ nav .lang-toggle-btn i {
         opacity: 0.6;
     }
 
-    25% {
+    25% { 
         transform: translateY(-10px) rotate(90deg) scale(1.1);
         opacity: 0.8;
     }
 
-    50% {
+    50% { 
         transform: translateY(-20px) rotate(180deg) scale(0.9);
         opacity: 1;
     }
 
-    75% {
+    75% { 
         transform: translateY(-10px) rotate(270deg) scale(1.05);
         opacity: 0.7;
     }
@@ -5258,29 +5436,29 @@ nav .lang-toggle-btn i {
         min-height: 60vh;
         padding: 40px 20px;
     }
-
+    
     .hero-banner {
         margin-bottom: 30px;
     }
-
+    
     .hero-title {
         font-size: 2.5rem;
     }
-
+    
     .hero-subtitle {
         font-size: 1.1rem;
     }
-
+    
     .person-image {
         max-width: 300px;
     }
-
+    
     .ad-banner-slider {
         margin: 40px 20px;
         height: auto;
         flex-direction: column;
     }
-
+    
     .trainer-image-sticky {
         position: relative;
         left: 0;
@@ -5290,14 +5468,14 @@ nav .lang-toggle-btn i {
         height: 200px;
         margin: 0 auto 20px;
     }
-
+    
     .banner-container {
         height: auto;
         min-height: 300px;
         margin-left: 0;
         width: 100%;
     }
-
+    
     .banner-text {
         padding-left: 0;
         text-align: center;
@@ -5316,62 +5494,62 @@ nav .lang-toggle-btn i {
     .banner-pricing {
         margin-left: 0;
     }
-
+    
     .banner-text h2 {
         font-size: 2rem;
     }
-
+    
     .banner-text p {
         font-size: 1rem;
     }
-
+    
     .banner-image img {
         max-width: 250px;
     }
-
+    
     .banner-stats {
         flex-direction: column;
         gap: 20px;
         align-items: center;
     }
-
+    
     .banner-features {
         flex-direction: column;
         gap: 15px;
     }
-
+    
     .banner-amenities {
         grid-template-columns: 1fr;
     }
-
+    
     .banner-community {
         flex-direction: column;
         gap: 15px;
     }
-
+    
     .banner-pricing {
         flex-direction: column;
         gap: 20px;
         text-align: center;
     }
-
+    
     .trainer-list-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 15px;
     }
-
+    
     .trainer-contact-basic {
         text-align: left;
         align-self: stretch;
     }
-
+    
     .trainer-details-expanded {
         grid-template-columns: 1fr;
         gap: 20px;
         text-align: center;
     }
-
+    
     .trainer-booking {
         grid-column: 1;
     }
@@ -5671,24 +5849,24 @@ nav .lang-toggle-btn i {
 }
 
 .trainer-contact-btn:active {
-    transform: translateY(0);
+transform: translateY(0);
 }
 
 .trainers-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    align-items: stretch;
-    justify-items: center;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 20px;
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 20px;
+align-items: stretch;
+justify-items: center;
 }
 
 .trainer-card {
-    animation: slideInUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    opacity: 0;
-    transform: translateY(50px) scale(0.9);
+animation: slideInUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+opacity: 0;
+transform: translateY(50px) scale(0.9);
     opacity: 0;
     transform: translateY(50px) scale(0.9);
 }
@@ -5831,76 +6009,76 @@ nav .lang-toggle-btn i {
         padding: 25px 15px;
         margin-bottom: 30px;
     }
-
+    
     .trainers-hero h2 {
         font-size: 2rem;
     }
-
+    
     .trainers-hero p {
         font-size: 1rem;
     }
-
+    
     .trainers-gallery {
         grid-template-columns: 1fr;
         gap: 15px;
     }
-
+    
     .trainers-gallery .gallery-item {
         height: 200px;
     }
-
+    
     .trainer-card {
         min-height: 300px;
         max-width: 260px;
     }
-
+    
     .trainer-avatar {
         width: 70px;
         height: 70px;
         font-size: 1.6rem;
         margin: 90px auto 0;
     }
-
+    
     .trainer-info {
         padding: 18px;
     }
-
+    
     .trainer-info h3 {
         font-size: 1.1rem;
     }
-
+    
     .trainer-specialty {
         font-size: 0.85rem;
         margin-bottom: 14px;
     }
-
+    
     .trainer-qualities {
         gap: 6px;
         margin-bottom: 16px;
     }
-
+    
     .quality-tag {
         font-size: 0.75rem;
         padding: 5px 10px;
     }
-
+    
     .trainer-details {
         gap: 6px;
         margin-bottom: 16px;
     }
-
+    
     .trainer-price,
     .trainer-contact,
     .trainer-email {
         font-size: 0.8rem;
         padding: 6px 10px;
     }
-
+    
     .trainer-contact-btn {
         padding: 10px 20px;
         font-size: 0.85rem;
     }
-
+    
     .trainers-grid {
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
         gap: 25px;
@@ -5913,67 +6091,67 @@ nav .lang-toggle-btn i {
         padding: 20px 12px;
         margin-bottom: 25px;
     }
-
+    
     .trainers-hero h2 {
         font-size: 1.7rem;
     }
-
+    
     .trainers-gallery .gallery-item {
         height: 180px;
     }
-
+    
     .trainer-card {
         min-height: 280px;
         max-width: 240px;
     }
-
+    
     .trainer-avatar {
         width: 60px;
         height: 60px;
         font-size: 1.4rem;
         margin: 80px auto 0;
     }
-
+    
     .trainer-info {
         padding: 16px;
     }
-
+    
     .trainer-info h3 {
         font-size: 1rem;
     }
-
+    
     .trainer-specialty {
         font-size: 0.8rem;
         margin-bottom: 12px;
     }
-
+    
     .trainer-qualities {
         gap: 5px;
         margin-bottom: 14px;
     }
-
+    
     .quality-tag {
         font-size: 0.7rem;
         padding: 4px 8px;
     }
-
+    
     .trainer-details {
         gap: 5px;
         margin-bottom: 14px;
     }
-
+    
     .trainer-price,
     .trainer-contact,
     .trainer-email {
         font-size: 0.75rem;
         padding: 5px 8px;
     }
-
+    
     .trainer-contact-btn {
         padding: 8px 16px;
         font-size: 0.8rem;
     }
-
+    
     .trainers-grid {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -6176,37 +6354,37 @@ nav .lang-toggle-btn i {
         padding: 25px 15px;
         margin-bottom: 30px;
     }
-
+    
     .contact-hero h2 {
         font-size: 2rem;
     }
-
+    
     .contact-hero p {
         font-size: 1rem;
     }
-
+    
     .contact-gallery {
         grid-template-columns: 1fr;
         gap: 15px;
     }
-
+    
     .contact-gallery .gallery-item {
         height: 200px;
     }
-
+    
     .contact-info-grid {
         grid-template-columns: 1fr;
         gap: 15px;
     }
-
+    
     .contact-info-card {
         padding: 20px;
     }
-
+    
     .contact-info-card h4 {
         font-size: 1.1rem;
     }
-
+    
     .contact-info-card p {
         font-size: 0.9rem;
     }
@@ -6217,23 +6395,23 @@ nav .lang-toggle-btn i {
         padding: 20px 12px;
         margin-bottom: 25px;
     }
-
+    
     .contact-hero h2 {
         font-size: 1.7rem;
     }
-
+    
     .contact-gallery .gallery-item {
         height: 180px;
     }
-
+    
     .contact-info-card {
         padding: 15px;
     }
-
+    
     .contact-info-card h4 {
         font-size: 1rem;
     }
-
+    
     .contact-info-card p {
         font-size: 0.85rem;
     }
@@ -6506,40 +6684,40 @@ nav .lang-toggle-btn i {
         padding: 25px 15px;
         margin-bottom: 30px;
     }
-
+    
     .membership-hero h2 {
         font-size: 2rem;
     }
-
+    
     .membership-hero p {
         font-size: 1rem;
     }
-
+    
     .membership-plans {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-
+    
     .membership-card {
         padding: 25px;
     }
-
+    
     .membership-card.featured {
         transform: none;
     }
-
+    
     .membership-card h3 {
         font-size: 1.3rem;
     }
-
+    
     .membership-card .price {
         font-size: 2rem;
     }
-
+    
     .membership-form-container {
         padding: 25px;
     }
-
+    
     .membership-form-container h3 {
         font-size: 1.5rem;
     }
@@ -6550,34 +6728,34 @@ nav .lang-toggle-btn i {
         padding: 20px 12px;
         margin-bottom: 25px;
     }
-
+    
     .membership-hero h2 {
         font-size: 1.7rem;
     }
-
+    
     .membership-card {
         padding: 20px;
     }
-
+    
     .membership-card h3 {
         font-size: 1.2rem;
     }
-
+    
     .membership-card .price {
         font-size: 1.8rem;
     }
-
+    
     .membership-form-container {
         padding: 20px;
     }
-
+    
     .membership-form input,
     .membership-form select,
     .membership-form textarea {
         padding: 10px 12px;
         font-size: 0.9rem;
     }
-
+    
     .membership-form .submit-btn {
         padding: 12px;
         font-size: 1rem;
@@ -7029,45 +7207,45 @@ nav .lang-toggle-btn i {
         padding: 25px 15px;
         margin-bottom: 30px;
     }
-
+    
     .shop-hero h2 {
         font-size: 2rem;
     }
-
+    
     .shop-hero p {
         font-size: 1rem;
     }
-
+    
     .quick-passes {
         gap: 10px;
     }
-
+    
     .quick-pass-btn {
         padding: 10px 15px;
         font-size: 0.9rem;
     }
-
+    
     .product-grid {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 20px;
     }
-
+    
     .product-image {
         height: 180px;
     }
-
+    
     .product-info {
         padding: 15px;
     }
-
+    
     .product-info h3 {
         font-size: 1.1rem;
     }
-
+    
     .cart-preview {
         padding: 20px;
     }
-
+    
     .cart-preview h3 {
         font-size: 1.3rem;
     }
@@ -7078,48 +7256,48 @@ nav .lang-toggle-btn i {
         padding: 20px 12px;
         margin-bottom: 25px;
     }
-
+    
     .shop-hero h2 {
         font-size: 1.7rem;
     }
-
+    
     .quick-passes {
         flex-direction: column;
         align-items: center;
     }
-
+    
     .quick-pass-btn {
         width: 100%;
         max-width: 200px;
     }
-
+    
     .product-grid {
         grid-template-columns: 1fr;
         gap: 15px;
     }
-
+    
     .product-image {
         height: 160px;
     }
-
+    
     .product-info {
         padding: 12px;
     }
-
+    
     .product-info h3 {
         font-size: 1rem;
     }
-
+    
     .cart-preview {
         padding: 15px;
     }
-
+    
     .cart-item {
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
     }
-
+    
     .cart-item-quantity {
         align-self: flex-end;
     }
@@ -7449,45 +7627,45 @@ nav .lang-toggle-btn i {
         min-height: 180px;
         max-height: 350px;
     }
-
+    
     .banner-content h3 {
         font-size: 2rem;
     }
-
+    
     .banner-content p {
         font-size: 1rem;
     }
-
+    
     .stats-contact-grid {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-
+    
     .stats-mini {
         grid-template-columns: repeat(2, 1fr);
     }
-
+    
     .banner-features {
         flex-direction: column;
         align-items: center;
     }
-
+    
     .location-info {
         grid-template-columns: 1fr;
     }
-
+    
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-
+    
     .trainers-showcase {
         grid-template-columns: 1fr;
     }
-
+    
     .membership-showcase {
         grid-template-columns: 1fr;
     }
-
+    
     .banner-arrow {
         width: 40px;
         height: 40px;
@@ -7501,23 +7679,23 @@ nav .lang-toggle-btn i {
         min-height: 160px;
         max-height: 300px;
     }
-
+    
     .banner-content {
         padding: 20px;
     }
-
+    
     .banner-content h3 {
         font-size: 1.5rem;
     }
-
+    
     .services-grid {
         grid-template-columns: 1fr;
     }
-
+    
     .stats-mini {
         grid-template-columns: 1fr;
     }
-
+    
     .banner-arrow {
         width: 35px;
         height: 35px;
@@ -7560,7 +7738,7 @@ nav .lang-toggle-btn i {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image:
+    background-image: 
         radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
@@ -7596,6 +7774,12 @@ nav .lang-toggle-btn i {
     max-width: 800px;
     padding: 0.75rem;
     animation: fadeInUp 1s ease-out;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 @keyframes fadeInUp {
@@ -7660,11 +7844,11 @@ nav .lang-toggle-btn i {
 
 @keyframes glow {
     from {
-        text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
     }
 
     to {
-        text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
     }
 }
 
@@ -8569,41 +8753,41 @@ nav .lang-toggle-btn i {
         padding: 1.5rem 1rem;
         margin: 0 1rem;
     }
-
+    
     .achievements-section.minimal .section-header h2 {
         font-size: 1.5rem;
     }
-
+    
     .achievements-section.minimal .section-header p {
         font-size: 0.9rem;
     }
-
+    
     .achievement-item {
         padding: 0.8rem 1rem;
         flex-direction: column;
         align-items: flex-start;
         text-align: left;
     }
-
+    
     .achievement-icon {
         margin-right: 0;
         margin-bottom: 0.5rem;
     }
-
+    
     .achievement-meta {
         margin-left: 0;
         margin-top: 0.5rem;
         align-self: flex-start;
     }
-
+    
     .achievements-stats {
         gap: 1rem;
     }
-
+    
     .stat-number {
         font-size: 1.2rem;
     }
-
+    
     .stat-label {
         font-size: 0.8rem;
     }
@@ -8614,50 +8798,50 @@ nav .lang-toggle-btn i {
         padding: 1rem 0.8rem;
         margin: 0 0.5rem;
     }
-
+    
     .achievements-section.minimal .section-header h2 {
         font-size: 1.3rem;
     }
-
+    
     .achievements-list {
         gap: 0.6rem;
     }
-
+    
     .achievement-item {
         padding: 0.7rem 0.8rem;
     }
-
+    
     .achievement-icon {
         width: 36px;
         height: 36px;
     }
-
+    
     .achievement-icon i {
         font-size: 1rem;
     }
-
+    
     .achievement-details h4 {
         font-size: 0.9rem;
     }
-
+    
     .achievement-details p {
         font-size: 0.8rem;
     }
-
+    
     .achievement-year {
         font-size: 0.75rem;
         padding: 0.2rem 0.6rem;
     }
-
+    
     .achievements-stats {
         gap: 0.8rem;
         flex-wrap: wrap;
     }
-
+    
     .stat-number {
         font-size: 1.1rem;
     }
-
+    
     .stat-label {
         font-size: 0.75rem;
     }
@@ -9247,16 +9431,16 @@ nav .lang-toggle-btn i {
     .facilities-grid {
         grid-template-columns: 1fr;
     }
-
+    
     .facility-card.large {
         grid-column: span 1;
     }
-
+    
     .achievement-showcase {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-
+    
     .community-container {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -9267,31 +9451,31 @@ nav .lang-toggle-btn i {
     .hero-title {
         font-size: 2.5rem;
     }
-
+    
     .hero-subtitle {
         font-size: 1.1rem;
     }
-
+    
     .hero-stats {
         flex-direction: column;
         gap: 2rem;
     }
-
+    
     .hero-actions {
         flex-direction: column;
         align-items: center;
     }
-
+    
     .location-cards,
     .stats-grid {
         grid-template-columns: 1fr;
     }
-
-
+    
+    
     .timeline-line {
         left: 2rem;
     }
-
+    
     .timeline-item:nth-child(odd) .timeline-content,
     .timeline-item:nth-child(even) .timeline-content {
         margin-left: 4rem;
@@ -9300,40 +9484,40 @@ nav .lang-toggle-btn i {
         padding-right: 2rem;
         text-align: left;
     }
-
+    
     .timeline-item:nth-child(odd) .timeline-date,
     .timeline-item:nth-child(even) .timeline-date {
         left: 4rem;
         right: auto;
     }
-
+    
     .timeline-icon {
         left: 2rem;
     }
-
+    
     .timeline-item:nth-child(odd) .timeline-tags {
         justify-content: flex-start;
     }
-
+    
     .banner-navigation {
         flex-direction: column;
         gap: 1rem;
     }
-
+    
     .banner-dots {
         flex-wrap: wrap;
         justify-content: center;
     }
-
+    
     .achievements-banner {
         flex-direction: column;
         align-items: center;
     }
-
+    
     .badges-grid {
         grid-template-columns: 1fr;
     }
-
+    
     .highlight-stats {
         grid-template-columns: 1fr;
     }
@@ -9343,24 +9527,24 @@ nav .lang-toggle-btn i {
     .hero-content {
         padding: 1rem;
     }
-
-
+    
+    
     .hero-title {
         font-size: 2rem;
     }
-
+    
     .section-header h2 {
         font-size: 2rem;
     }
-
+    
     .sliding-banner-enhanced .banner-slide {
         padding: 2rem 0.5rem;
     }
-
+    
     .sliding-banner-enhanced h3 {
         font-size: 1.8rem;
     }
-
+    
     .location-card,
     .stat-card,
     .facility-card,
@@ -9370,31 +9554,31 @@ nav .lang-toggle-btn i {
     .highlight-card {
         padding: 1.5rem;
     }
-
+    
     .timeline-content {
         padding: 1.5rem;
     }
-
+    
     .timeline-item:nth-child(odd) .timeline-content,
     .timeline-item:nth-child(even) .timeline-content {
         margin-left: 3rem;
         padding-left: 1rem;
     }
-
+    
     .timeline-item:nth-child(odd) .timeline-date,
     .timeline-item:nth-child(even) .timeline-date {
         left: 3rem;
     }
-
+    
     .event-item {
         flex-direction: column;
         text-align: center;
     }
-
+    
     .event-meta {
         justify-content: center;
     }
-
+    
     .event-btn {
         align-self: center;
     }
@@ -9635,7 +9819,7 @@ nav .lang-toggle-btn i {
     left: 0;
     right: 0;
     bottom: 0;
-    background:
+    background: 
         radial-gradient(circle at 20% 20%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 40% 60%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
@@ -9988,31 +10172,31 @@ nav .lang-toggle-btn i {
         padding: 15px 10px;
         /* Further reduced for mobile */
     }
-
+    
     .timeline-section .section-header h2 {
         font-size: 1.5rem;
     }
-
+    
     .timeline-section .section-header p {
         font-size: 0.9rem;
     }
-
+    
     .horizontal-timeline-container {
         padding: 30px 0;
         max-width: 100%;
     }
-
+    
     .timeline-steps {
         flex-direction: column;
         gap: 30px;
         align-items: center;
     }
-
+    
     .timeline-step {
         max-width: 280px;
         width: 100%;
     }
-
+    
     /* Reset stair step effect for mobile */
     .timeline-step:nth-child(1),
     .timeline-step:nth-child(2),
@@ -10021,20 +10205,20 @@ nav .lang-toggle-btn i {
     .timeline-step:nth-child(5) {
         margin-top: 0;
     }
-
+    
     .timeline-path {
         display: none;
         /* Hide horizontal line on mobile */
     }
-
+    
     .step-content {
         padding: 18px;
     }
-
+    
     .step-content h4 {
         font-size: 1.1rem;
     }
-
+    
     .step-content p {
         font-size: 0.9rem;
     }
@@ -10045,27 +10229,27 @@ nav .lang-toggle-btn i {
         padding: 12px 8px;
         /* Further reduced for small mobile */
     }
-
+    
     .timeline-section .section-header h2 {
         font-size: 1.3rem;
     }
-
+    
     .timeline-step {
         max-width: 250px;
     }
-
+    
     .step-content {
         padding: 15px;
     }
-
+    
     .step-content h4 {
         font-size: 1rem;
     }
-
+    
     .step-content p {
         font-size: 0.85rem;
     }
-
+    
     .tag {
         font-size: 0.65rem;
         padding: 2px 6px;
@@ -10408,11 +10592,11 @@ nav .lang-toggle-btn i {
         grid-template-columns: 1fr;
         gap: 12px;
     }
-
+    
     .stat-item {
         padding: 16px;
     }
-
+    
     .stat-item .stat-number {
         font-size: 2em;
     }
@@ -10422,19 +10606,19 @@ nav .lang-toggle-btn i {
     .location-sidebar-item {
         padding: 8px;
     }
-
+    
     .location-sidebar-item h5 {
         font-size: 12px;
     }
-
+    
     .location-sidebar-item p {
         font-size: 11px;
     }
-
+    
     .contact-sidebar .contact-item {
         padding: 6px 8px;
     }
-
+    
     .contact-sidebar .contact-item span {
         font-size: 11px;
     }
@@ -10532,18 +10716,18 @@ nav .lang-toggle-btn i {
 .plans-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
 }
 
 .plan-card {
-    background: var(--panel);
-    border-radius: 20px;
-    padding: 2rem;
-    border: 2px solid var(--border);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+background: linear-gradient(-45deg, #1a1a1a, #2c2c2c, #404040);
+background-size: 400% 400%;
+animation: gradientAnimation 15s ease infinite;
+border-radius: 20px;
+padding: 2rem;
+border: 1px solid var(--border);
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
 }
 
 .plan-card:hover {
@@ -10556,6 +10740,36 @@ nav .lang-toggle-btn i {
     border-color: var(--primary);
     background: linear-gradient(135deg, var(--panel) 0%, rgba(255, 107, 53, 0.05) 100%);
     transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .plan-card {
+    background: linear-gradient(-45deg, #ffffff, #f0f0f0, #e0e0e0);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    border: 1px solid #ddd;
+}
+
+[data-theme="light"] .plan-card .plan-name,
+[data-theme="light"] .plan-card .amount,
+[data-theme="light"] .plan-card .period,
+[data-theme="light"] .plan-card .feature-item span {
+    color: #333;
+}
+
+[data-theme="light"] .plan-card .currency {
+    color: #555;
+}
+
+[data-theme="light"] .plan-card .plan-savings {
+    color: #e67e22;
+    background: rgba(230, 126, 34, 0.1);
+}
+
+[data-theme="light"] .plan-card.featured {
+    background: linear-gradient(-45deg, #ffffff, #f0f0f0, #e0e0e0);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
 }
 
 .plan-badge {
@@ -10648,6 +10862,15 @@ nav .lang-toggle-btn i {
     background: var(--accent);
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+}
+
+[data-theme="light"] .plan-select-btn {
+    background: #333;
+    color: white;
+}
+
+[data-theme="light"] .plan-select-btn:hover {
+    background: #111;
 }
 
 /* Registration Section */
