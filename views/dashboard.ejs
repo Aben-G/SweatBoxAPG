@@ -12,17 +12,29 @@
         <div class="dashboard-header">
             <h1>Admin Dashboard</h1>
             <div>
+                <button id="theme-switcher" class="logout-btn">Toggle Theme</button>
                 <a href="/admin/telegram" class="logout-btn">Telegram Settings</a>
                 <a href="/admin/logout" class="logout-btn">Logout</a>
             </div>
         </div>
 
-        <h2>Contact Form Submissions</h2>
+        <div class="tabs">
+            <button class="tab-link active" data-tab="contact">Contact Submissions <span class="badge <%= contactSubmissions.length > 0 ? '' : 'badge-zero' %>"><%= contactSubmissions.length %></span></button>
+            <button class="tab-link" data-tab="membership">Membership Registrations <span class="badge <%= membershipSubmissions.length > 0 ? '' : 'badge-zero' %>"><%= membershipSubmissions.length %></span></button>
+            <button class="tab-link" data-tab="orders">Store Orders <span class="badge <%= orderSubmissions.length > 0 ? '' : 'badge-zero' %>"><%= orderSubmissions.length %></span></button>
+        </div>
+
+        <div id="contact" class="tab-content active">
+            <div class="tab-header">
+                <h2>Contact Form Submissions</h2>
+                <button class="delete-btn hidden" data-type="contact">Delete Selected</button>
+            </div>
         <% if (contactSubmissions.length > 0) { %>
             <div class="table-wrapper">
                 <table class="submissions-table">
                     <thead>
                         <tr>
+                            <th><input type="checkbox" class="select-all" data-type="contact"></th>
                             <th>Date</th>
                             <th>Name</th>
                             <th>Email</th>
@@ -33,11 +45,12 @@
                     <tbody>
                         <% contactSubmissions.forEach(sub => { %>
                             <tr>
-                                <td><%= new Date(sub.timestamp).toLocaleString() %></td>
-                                <td><%= sub.firstName %> <%= sub.lastName %></td>
-                                <td><%= sub.email %></td>
-                                <td><%= sub.phone || 'N/A' %></td>
-                                <td><div class="message"><%= sub.message %></div></td>
+                                <td data-label="Select"><input type="checkbox" class="select-item" data-id="<%= sub.id %>"></td>
+                                <td data-label="Date"><%= new Date(sub.data.timestamp).toLocaleString() %></td>
+                                <td data-label="Name"><%= sub.data.firstName %> <%= sub.data.lastName %></td>
+                                <td data-label="Email"><%= sub.data.email %></td>
+                                <td data-label="Phone"><%= sub.data.phone || 'N/A' %></td>
+                                <td data-label="Message"><div class="message"><%= sub.data.message %></div></td>
                             </tr>
                         <% }) %>
                     </tbody>
@@ -46,13 +59,19 @@
         <% } else { %>
             <p class="no-submissions">No contact form submissions yet.</p>
         <% } %>
+    </div>
 
-        <h2>Membership Registrations</h2>
+    <div id="membership" class="tab-content">
+        <div class="tab-header">
+            <h2>Membership Registrations</h2>
+            <button class="delete-btn hidden" data-type="membership">Delete Selected</button>
+        </div>
         <% if (membershipSubmissions.length > 0) { %>
             <div class="table-wrapper">
                 <table class="submissions-table">
                     <thead>
                         <tr>
+                            <th><input type="checkbox" class="select-all" data-type="membership"></th>
                             <th>Date</th>
                             <th>Name</th>
                             <th>Email</th>
@@ -64,12 +83,13 @@
                     <tbody>
                         <% membershipSubmissions.forEach(sub => { %>
                             <tr>
-                                <td><%= new Date(sub.timestamp).toLocaleString() %></td>
-                                <td><%= sub.firstName %> <%= sub.lastName %></td>
-                                <td><%= sub.email %></td>
-                                <td><%= sub.phone || 'N/A' %></td>
-                                <td><%= sub.selectedPlan %></td>
-                                <td><%= sub.startDate || 'N/A' %></td>
+                                <td data-label="Select"><input type="checkbox" class="select-item" data-id="<%= sub.id %>"></td>
+                                <td data-label="Date"><%= new Date(sub.data.timestamp).toLocaleString() %></td>
+                                <td data-label="Name"><%= sub.data.firstName %> <%= sub.data.lastName %></td>
+                                <td data-label="Email"><%= sub.data.email %></td>
+                                <td data-label="Phone"><%= sub.data.phone || 'N/A' %></td>
+                                <td data-label="Plan"><%= sub.data.selectedPlan %></td>
+                                <td data-label="Start Date"><%= sub.data.startDate || 'N/A' %></td>
                             </tr>
                         <% }) %>
                     </tbody>
@@ -78,13 +98,19 @@
         <% } else { %>
             <p class="no-submissions">No membership registrations yet.</p>
         <% } %>
+    </div>
 
-        <h2>Store Orders</h2>
+    <div id="orders" class="tab-content">
+        <div class="tab-header">
+            <h2>Store Orders</h2>
+            <button class="delete-btn hidden" data-type="orders">Delete Selected</button>
+        </div>
         <% if (orderSubmissions.length > 0) { %>
             <div class="table-wrapper">
                 <table class="submissions-table">
                     <thead>
                         <tr>
+                            <th><input type="checkbox" class="select-all" data-type="orders"></th>
                             <th>Date</th>
                             <th>Order ID</th>
                             <th>Customer</th>
@@ -98,16 +124,17 @@
                     <tbody>
                         <% orderSubmissions.forEach(order => { %>
                             <tr>
-                                <td><%= new Date(order.timestamp).toLocaleString() %></td>
-                                <td><strong><%= order.orderId %></strong></td>
-                                <td><%= order.firstName %> <%= order.lastName %></td>
-                                <td><%= order.email %></td>
-                                <td><%= order.phone %></td>
-                                <td><strong>$<%= order.total || '0.00' %></strong></td>
-                                <td>
-                                    <% if (order.items && order.items.length > 0) { %>
+                                <td data-label="Select"><input type="checkbox" class="select-item" data-id="<%= order.id %>"></td>
+                                <td data-label="Date"><%= new Date(order.data.timestamp).toLocaleString() %></td>
+                                <td data-label="Order ID"><strong><%= order.data.orderId %></strong></td>
+                                <td data-label="Customer"><%= order.data.firstName %> <%= order.data.lastName %></td>
+                                <td data-label="Email"><%= order.data.email %></td>
+                                <td data-label="Phone"><%= order.data.phone %></td>
+                                <td data-label="Total"><strong>$<%= order.data.total || '0.00' %></strong></td>
+                                <td data-label="Items">
+                                    <% if (order.data.items && order.data.items.length > 0) { %>
                                         <div class="order-items">
-                                            <% order.items.forEach(item => { %>
+                                            <% order.data.items.forEach(item => { %>
                                                 <div class="order-item">
                                                     <%= item.name %> (Qty: <%= item.quantity %>)
                                                 </div>
@@ -117,11 +144,11 @@
                                         <em>No items</em>
                                     <% } %>
                                 </td>
-                                <td>
+                                <td data-label="Address">
                                     <div class="shipping-address">
-                                        <%= order.address || 'N/A' %><br>
-                                        <%= order.city || '' %> <%= order.state || '' %> <%= order.zipCode || '' %><br>
-                                        <%= order.country || '' %>
+                                        <%= order.data.address || 'N/A' %><br>
+                                        <%= order.data.city || '' %> <%= order.data.state || '' %> <%= order.data.zipCode || '' %><br>
+                                        <%= order.data.country || '' %>
                                     </div>
                                 </td>
                             </tr>
@@ -133,5 +160,7 @@
             <p class="no-submissions">No orders yet.</p>
         <% } %>
     </div>
+    </div>
+    <script src="/admin/admin.js"></script>
 </body>
 </html>

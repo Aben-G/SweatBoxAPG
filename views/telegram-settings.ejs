@@ -12,6 +12,7 @@
         <div class="dashboard-header">
             <h1>Telegram Settings</h1>
             <div>
+                <button id="theme-switcher" class="logout-btn">Toggle Theme</button>
                 <a href="/admin/dashboard" class="logout-btn">← Back to Dashboard</a>
                 <a href="/admin/logout" class="logout-btn">Logout</a>
             </div>
@@ -56,6 +57,7 @@
         <% } %>
     </div>
 
+    <script src="/admin/admin.js"></script>
     <script>
         // Add user form submission
         document.getElementById('addUserForm').addEventListener('submit', async (e) => {

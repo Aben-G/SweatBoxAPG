@@ -363,12 +363,19 @@ app.get('/admin/dashboard', requireLogin, async (req, res) => {
             "SELECT * FROM submissions WHERE type = 'order' ORDER BY created_at DESC"
         );
         
-        // Parse the JSON data for each submission
+        // Safely parse the JSON data for each submission
         const parseSubmissions = (subs) => 
-            subs.map(sub => ({
-                ...sub,
-                data: JSON.parse(sub.data)
-            }));
+            subs.map(sub => {
+                try {
+                    return {
+                        ...sub,
+                        data: JSON.parse(sub.data)
+                    };
+                } catch (e) {
+                    console.error(`Failed to parse JSON for submission ID: ${sub.id}`, e);
+                    return null; // Return null for submissions that fail to parse
+                }
+            }).filter(Boolean); // Filter out any null entries
             
         res.render('dashboard', { 
             contactSubmissions: parseSubmissions(contactSubmissions),
@@ -515,6 +522,29 @@ app.get('/admin/telegram/debug', requireLogin, async (req, res) => {
     } catch (error) {
         console.error('Error fetching Telegram updates:', error);
         res.status(500).json({ success: false, error: 'Failed to fetch Telegram updates' });
+    }
+});
+
+// Delete submissions (protected)
+app.post('/admin/submissions/delete', requireLogin, async (req, res) => {
+    const { ids } = req.body;
+
+    if (!ids || !Array.isArray(ids) || ids.length === 0) {
+        return res.json({ success: false, error: 'No submission IDs provided' });
+    }
+
+    try {
+        const placeholders = ids.map(() => '?').join(',');
+        const result = await dbRun(`DELETE FROM submissions WHERE id IN (${placeholders})`, ids);
+
+        if (result.changes === 0) {
+            return res.json({ success: false, error: 'No submissions found to delete' });
+        }
+
+        res.json({ success: true, message: `${result.changes} submissions deleted successfully` });
+    } catch (error) {
+        console.error('Error deleting submissions:', error);
+        res.json({ success: false, error: 'Failed to delete submissions' });
     }
 });
 
