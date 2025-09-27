@@ -19,12 +19,13 @@
         </div>
 
         <div class="tabs">
-            <button class="tab-link active" data-tab="contact">Contact Submissions <span class="badge <%= contactSubmissions.length > 0 ? '' : 'badge-zero' %>"><%= contactSubmissions.length %></span></button>
+            <button class="tab-link" data-tab="contact">Contact Submissions <span class="badge <%= contactSubmissions.length > 0 ? '' : 'badge-zero' %>"><%= contactSubmissions.length %></span></button>
             <button class="tab-link" data-tab="membership">Membership Registrations <span class="badge <%= membershipSubmissions.length > 0 ? '' : 'badge-zero' %>"><%= membershipSubmissions.length %></span></button>
             <button class="tab-link" data-tab="orders">Store Orders <span class="badge <%= orderSubmissions.length > 0 ? '' : 'badge-zero' %>"><%= orderSubmissions.length %></span></button>
+            <button class="tab-link active" data-tab="products">Products <span class="badge <%= products.length > 0 ? '' : 'badge-zero' %>"><%= products.length %></span></button>
         </div>
 
-        <div id="contact" class="tab-content active">
+        <div id="contact" class="tab-content">
             <div class="tab-header">
                 <h2>Contact Form Submissions</h2>
                 <button class="delete-btn hidden" data-type="contact">Delete Selected</button>
@@ -158,6 +159,75 @@
             </div>
         <% } else { %>
             <p class="no-submissions">No orders yet.</p>
+        <% } %>
+    </div>
+
+    <!-- Products Tab -->
+    <div id="products" class="tab-content active">
+        <div class="tab-header">
+            <h2>Store Products</h2>
+            <a href="/admin/products" class="logout-btn" style="background: linear-gradient(135deg, #ff6b35, #f7931e); text-decoration: none; color: white;">
+                <i class="fas fa-plus"></i> Manage Products
+            </a>
+        </div>
+        <% if (products.length > 0) { %>
+            <div class="table-wrapper">
+                <table class="submissions-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Status</th>
+                            <th>Created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% products.forEach(product => { %>
+                            <tr>
+                                <td data-label="Image">
+                                    <% if (product.image) { %>
+                                        <img src="<%= product.image %>" alt="<%= product.name %>" style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px;" onerror="this.style.display='none'">
+                                    <% } else { %>
+                                        <div style="width: 50px; height: 50px; background: #f0f0f0; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                            <i class="fas fa-image" style="color: #ccc;"></i>
+                                        </div>
+                                    <% } %>
+                                </td>
+                                <td data-label="Name"><%= product.name %></td>
+                                <td data-label="Category">
+                                    <span style="background: #f0f0f0; padding: 4px 8px; border-radius: 12px; font-size: 0.8rem;">
+                                        <%= product.category %>
+                                    </span>
+                                </td>
+                                <td data-label="Price">
+                                    <span style="font-weight: 600; color: #ff6b35;">
+                                        <%= parseFloat(product.price).toLocaleString() %> ETB
+                                    </span>
+                                </td>
+                                <td data-label="Stock"><%= product.stock_quantity %> units</td>
+                                <td data-label="Status">
+                                    <span style="padding: 4px 8px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; <%= product.is_active ? 'background: #d4edda; color: #155724;' : 'background: #f8d7da; color: #721c24;' %>">
+                                        <%= product.is_active ? 'Active' : 'Inactive' %>
+                                    </span>
+                                </td>
+                                <td data-label="Created"><%= new Date(product.created_at).toLocaleDateString() %></td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        <% } else { %>
+            <div style="text-align: center; padding: 3rem; color: #666;">
+                <i class="fas fa-box-open" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                <h3>No Products Yet</h3>
+                <p>Start by adding your first product to the store.</p>
+                <a href="/admin/products" class="logout-btn" style="background: linear-gradient(135deg, #ff6b35, #f7931e); text-decoration: none; margin-top: 1rem; display: inline-block; color: white;">
+                    <i class="fas fa-plus"></i> Add First Product
+                </a>
+            </div>
         <% } %>
     </div>
     </div>

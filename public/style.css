@@ -191,6 +191,37 @@
     margin-bottom: 30px;
 }
 
+/* No Products Message */
+.no-products-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 2rem;
+    background: transparent;
+    margin: 2rem 0;
+}
+
+.no-products-message i {
+    font-size: 3.5rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+}
+
+.no-products-message h3 {
+    color: var(--text);
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.no-products-message p {
+    color: var(--muted);
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
 .product-card {
     background: var(--panel);
     border: 1px solid var(--border, rgba(255, 255, 255, 0.1));

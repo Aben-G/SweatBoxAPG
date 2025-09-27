@@ -5,7 +5,21 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
+const multer = require('multer');
 require('dotenv').config();
+
+// Import database functions
+const { 
+    addTelegramUser, 
+    getTelegramUsers, 
+    removeTelegramUser,
+    addProduct,
+    getProducts,
+    getProductById,
+    updateProduct,
+    deleteProduct,
+    deleteProducts
+} = require('./database');
 
 // Database setup
 const dbPath = path.join(__dirname, 'sweatbox.db');
@@ -48,7 +62,7 @@ function dbGet(sql, params = []) {
 }
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Telegram bot configuration (moved to avoid duplicate declarations)
 
@@ -76,6 +90,32 @@ const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 // Admin Credentials (from .env file)
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'password';
+
+// Multer configuration for file uploads
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/images/products/');
+    },
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        cb(null, 'product-' + uniqueSuffix + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({ 
+    storage: storage,
+    limits: {
+        fileSize: 5 * 1024 * 1024 // 5MB limit
+    },
+    fileFilter: function (req, file, cb) {
+        // Accept only image files
+        if (file.mimetype.startsWith('image/')) {
+            cb(null, true);
+        } else {
+            cb(new Error('Only image files are allowed!'), false);
+        }
+    }
+});
 
 // --- Helper Functions ---
 
@@ -363,6 +403,9 @@ app.get('/admin/dashboard', requireLogin, async (req, res) => {
             "SELECT * FROM submissions WHERE type = 'order' ORDER BY created_at DESC"
         );
         
+        // Fetch products count
+        const products = await getProducts();
+        
         // Safely parse the JSON data for each submission
         const parseSubmissions = (subs) => 
             subs.map(sub => {
@@ -380,7 +423,8 @@ app.get('/admin/dashboard', requireLogin, async (req, res) => {
         res.render('dashboard', { 
             contactSubmissions: parseSubmissions(contactSubmissions),
             membershipSubmissions: parseSubmissions(membershipSubmissions),
-            orderSubmissions: parseSubmissions(orderSubmissions)
+            orderSubmissions: parseSubmissions(orderSubmissions),
+            products: products
         });
     } catch (error) {
         console.error('Error fetching dashboard data:', error);
@@ -545,6 +589,144 @@ app.post('/admin/submissions/delete', requireLogin, async (req, res) => {
     } catch (error) {
         console.error('Error deleting submissions:', error);
         res.json({ success: false, error: 'Failed to delete submissions' });
+    }
+});
+
+// --- Products Management Routes ---
+
+// Products management page (protected)
+app.get('/admin/products', requireLogin, async (req, res) => {
+    try {
+        const products = await getProducts();
+        res.render('products', { products });
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        res.status(500).send('Error loading products page');
+    }
+});
+
+// Add new product (protected)
+app.post('/admin/products/add', requireLogin, async (req, res) => {
+    try {
+        const { name, description, price, category, image, stockQuantity } = req.body;
+        
+        if (!name || !price || !category) {
+            return res.json({ success: false, error: 'Name, price, and category are required' });
+        }
+
+        const productData = {
+            name: name.trim(),
+            description: description?.trim() || '',
+            price: parseFloat(price),
+            category: category.trim(),
+            image: image?.trim() || '',
+            stockQuantity: parseInt(stockQuantity) || 0
+        };
+
+        const result = await addProduct(productData);
+        res.json({ success: true, message: 'Product added successfully', product: result });
+    } catch (error) {
+        console.error('Error adding product:', error);
+        res.json({ success: false, error: 'Failed to add product' });
+    }
+});
+
+// Update product (protected)
+app.post('/admin/products/update', requireLogin, async (req, res) => {
+    try {
+        const { id, name, description, price, category, image, stockQuantity, isActive } = req.body;
+        
+        if (!id || !name || !price || !category) {
+            return res.json({ success: false, error: 'ID, name, price, and category are required' });
+        }
+
+        const productData = {
+            name: name.trim(),
+            description: description?.trim() || '',
+            price: parseFloat(price),
+            category: category.trim(),
+            image: image?.trim() || '',
+            stockQuantity: parseInt(stockQuantity) || 0,
+            isActive: isActive === 'true' || isActive === true
+        };
+
+        await updateProduct(id, productData);
+        res.json({ success: true, message: 'Product updated successfully' });
+    } catch (error) {
+        console.error('Error updating product:', error);
+        res.json({ success: false, error: error.message || 'Failed to update product' });
+    }
+});
+
+// Delete products (protected)
+app.post('/admin/products/delete', requireLogin, async (req, res) => {
+    try {
+        const { ids } = req.body;
+
+        if (!ids || !Array.isArray(ids) || ids.length === 0) {
+            return res.json({ success: false, error: 'No product IDs provided' });
+        }
+
+        const result = await deleteProducts(ids);
+        res.json({ 
+            success: true, 
+            message: `${result.deletedCount} product(s) deleted successfully` 
+        });
+    } catch (error) {
+        console.error('Error deleting products:', error);
+        res.json({ success: false, error: 'Failed to delete products' });
+    }
+});
+
+// Get product by ID (protected)
+app.get('/admin/products/:id', requireLogin, async (req, res) => {
+    try {
+        const product = await getProductById(req.params.id);
+        if (!product) {
+            return res.status(404).json({ success: false, error: 'Product not found' });
+        }
+        res.json({ success: true, product });
+    } catch (error) {
+        console.error('Error fetching product:', error);
+        res.status(500).json({ success: false, error: 'Failed to fetch product' });
+    }
+});
+
+// Upload product image (protected)
+app.post('/admin/products/upload-image', requireLogin, upload.single('image'), (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ success: false, error: 'No image file uploaded' });
+        }
+        
+        const imageUrl = `/images/products/${req.file.filename}`;
+        res.json({ success: true, imageUrl });
+    } catch (error) {
+        console.error('Error uploading image:', error);
+        res.status(500).json({ success: false, error: 'Failed to upload image' });
+    }
+});
+
+// --- Public API Routes for Products ---
+
+// Get all active products for the shop page
+app.get('/api/products', async (req, res) => {
+    try {
+        const products = await getProducts(true); // Only active products
+        // Transform the data to match the client-side format
+        const formattedProducts = products.map(product => ({
+            id: product.id.toString(),
+            name: product.name,
+            description: product.description,
+            price: parseFloat(product.price),
+            category: product.category,
+            image: product.image || '/images/placeholder-product.jpg',
+            stockQuantity: product.stock_quantity
+        }));
+        res.json(formattedProducts);
+    } catch (error) {
+        console.error('Error fetching products for API:', error);
+        res.status(500).json({ error: 'Failed to fetch products' });
     }
 });
 

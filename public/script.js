@@ -835,37 +835,27 @@ function initializeBannerSlider() {
     }
 }
 
-const PRODUCTS = [
-    // Shoes
-    { id: 'p1', name: 'CrossFit Training Shoes', price: 2500, image: 'https://images.unsplash.com/photo-1605348532760-6753d2c43329?auto=format&fit=crop&w=800&q=60', description: 'High-performance training shoes for CrossFit.', category: 'shoes' },
-    { id: 'p2', name: 'Running Shoes', price: 1800, image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=60', description: 'Lightweight running shoes for cardio sessions.', category: 'shoes' },
-    { id: 'p3', name: 'Weightlifting Shoes', price: 3200, image: 'https://images.unsplash.com/photo-1596461404969-9372132a134a?auto=format&fit=crop&w=800&q=60', description: 'Stable and supportive shoes for heavy lifts.', category: 'shoes' },
+// Products will be loaded from the admin panel
+let PRODUCTS = [];
 
-    // Tops
-    { id: 'p4', name: 'Performance T-Shirt', price: 800, image: 'https://images.unsplash.com/photo-1581655353564-df123a1642b1?auto=format&fit=crop&w=800&q=60', description: 'Moisture-wicking t-shirt for intense workouts.', category: 'tops' },
-    { id: 'p5', name: 'Tank Top', price: 650, image: 'https://images.unsplash.com/photo-1611312449412-6cefac5dc2d0?auto=format&fit=crop&w=800&q=60', description: 'Breathable tank top for maximum mobility.', category: 'tops' },
-    { id: 'p6', name: 'Hoodie', price: 1500, image: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=60', description: 'Comfortable hoodie for warm-ups and cool-downs.', category: 'tops' },
-
-    // Bottoms
-    { id: 'p7', name: 'Training Shorts', price: 900, image: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=800&q=60', description: 'Flexible and durable shorts for all types of training.', category: 'bottoms' },
-    { id: 'p8', name: 'Joggers', price: 1200, image: 'https://images.unsplash.com/photo-1563389234822-1b0529798c73?auto=format&fit=crop&w=800&q=60', description: 'Stylish and comfortable joggers for gym and casual wear.', category: 'bottoms' },
-    { id: 'p9', name: 'Compression Pants', price: 1100, image: 'https://images.unsplash.com/photo-1612871689353-ccc5b033aaac?auto=format&fit=crop&w=800&q=60', description: 'Supportive compression pants for improved performance.', category: 'bottoms' },
-
-    // Weights
-    { id: 'p10', name: 'Dumbbell Set', price: 5000, image: 'https://images.unsplash.com/photo-1584735935639-c09f2e571c37?auto=format&fit=crop&w=800&q=60', description: 'Adjustable dumbbell set for a variety of exercises.', category: 'weights' },
-    { id: 'p11', name: 'Kettlebell', price: 2000, image: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=60', description: 'Versatile kettlebell for strength and conditioning.', category: 'weights' },
-    { id: 'p12', name: 'Barbell', price: 8000, image: 'https://images.unsplash.com/photo-1547919343-035b7185e6a8?auto=format&fit=crop&w=800&q=60', description: 'Olympic barbell for heavy lifting.', category: 'weights' },
-
-    // Materials
-    { id: 'p13', name: 'Yoga Mat', price: 700, image: 'https://images.unsplash.com/photo-1591291621229-a1d7c3b22b4a?auto=format&fit=crop&w=800&q=60', description: 'Non-slip yoga mat for stretching and floor exercises.', category: 'materials' },
-    { id: 'p14', name: 'Resistance Bands', price: 500, image: 'https://images.unsplash.com/photo-1607962837359-5e7e8438a7da?auto=format&fit=crop&w=800&q=60', description: 'Set of resistance bands for strength and mobility.', category: 'materials' },
-    { id: 'p15', name: 'Gymnastic Rings', price: 1500, image: 'https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=800&q=60', description: 'Wooden gymnastic rings for bodyweight training.', category: 'materials' },
-
-    // Supplements
-    { id: 'p16', name: 'Whey Protein', price: 3500, image: 'https://images.unsplash.com/photo-1579783902614-a345cd077227?auto=format&fit=crop&w=800&q=60', description: 'High-quality whey protein for muscle recovery.', category: 'supplements' },
-    { id: 'p17', name: 'Creatine', price: 1200, image: 'https://images.unsplash.com/photo-1639413665432-8c17555f75f3?auto=format&fit=crop&w=800&q=60', description: 'Micronized creatine for increased strength and power.', category: 'supplements' },
-    { id: 'p18', name: 'Pre-Workout', price: 1800, image: 'https://images.unsplash.com/photo-1623382121394-84c9b46a0691?auto=format&fit=crop&w=800&q=60', description: 'Energy-boosting pre-workout for intense training sessions.', category: 'supplements' }
-];
+// Load products from API
+async function loadProducts() {
+    try {
+        const response = await fetch('/api/products');
+        if (response.ok) {
+            PRODUCTS = await response.json();
+            console.log('Products loaded:', PRODUCTS.length);
+            // Re-render products if on shop page
+            if (window.location.pathname.includes('shop.html')) {
+                renderProducts();
+            }
+        } else {
+            console.error('Failed to load products:', response.status);
+        }
+    } catch (error) {
+        console.error('Error loading products:', error);
+    }
+}
 
 // Cart management functions
 function getCart() {
@@ -1072,6 +1062,19 @@ function renderProducts() {
     // Clear existing products
     productsGrid.innerHTML = '';
 
+    // Show message if no products
+    if (filteredProducts.length === 0) {
+        const noProducts = document.createElement('div');
+        noProducts.className = 'no-products-message';
+        noProducts.innerHTML = `
+            <i class="fas fa-box-open"></i>
+            <h3>No products available yet</h3>
+            <p>Check back soon for our latest products!</p>
+        `;
+        productsGrid.appendChild(noProducts);
+        return;
+    }
+
     // Render filtered products
     filteredProducts.forEach(product => {
         const productCard = document.createElement('div');
@@ -1114,8 +1117,8 @@ function setupShopPage() {
     // Initialize banner slider
     initializeBannerSlider();
 
-    // Render products initially so they appear automatically
-    renderProducts();
+    // Load products from API first, then render
+    loadProducts();
 
     // Setup category tabs
     const categoryTabs = document.querySelectorAll('.category-tab');
@@ -1610,10 +1613,8 @@ function initializePage() {
     // Update cart UI
     updateCartUI();
 
-    // Render products if on shop page
-    if (window.location.pathname.includes('shop.html')) {
-        renderProducts();
-    }
+    // Load products on all pages for cart functionality
+    loadProducts();
 }
 
 // Initialize everything when DOM is loaded
