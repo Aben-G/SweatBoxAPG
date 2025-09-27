@@ -437,12 +437,12 @@
                         <p style="font-size: 0.8rem; color: #28a745;">Upload successful!</p>
                     `;
                 } else {
-                    alert('Error uploading image: ' + result.error);
+                    CustomModal.alert('Error uploading image: ' + result.error, 'Upload Error', 'error');
                     previewContainer.innerHTML = `<p style="color: #dc3545;">Upload failed.</p>`;
                 }
             } catch (error) {
                 console.error('Image upload error:', error);
-                alert('Network error during image upload.');
+                CustomModal.alert('Network error during image upload.', 'Network Error', 'error');
                 previewContainer.innerHTML = `<p style="color: #dc3545;">Upload failed.</p>`;
             }
         });
@@ -529,13 +529,13 @@
                 const result = await response.json();
                 
                 if (result.success) {
-                    alert(result.message);
+                    await CustomModal.alert(result.message, 'Success', 'success');
                     location.reload();
                 } else {
-                    alert('Error: ' + result.error);
+                    await CustomModal.alert('Error: ' + result.error, 'Error', 'error');
                 }
             } catch (error) {
-                alert('Network error. Please try again.');
+                await CustomModal.alert('Network error. Please try again.', 'Network Error', 'error');
             }
         });
 
@@ -548,16 +548,22 @@
                 if (result.success) {
                     showProductForm(result.product);
                 } else {
-                    alert('Error: ' + result.error);
+                    await CustomModal.alert('Error: ' + result.error, 'Error', 'error');
                 }
             } catch (error) {
-                alert('Network error. Please try again.');
+                await CustomModal.alert('Network error. Please try again.', 'Network Error', 'error');
             }
         }
 
         // Delete product function
         async function deleteProduct(productId) {
-            if (!confirm('Are you sure you want to delete this product?')) {
+            const confirmed = await CustomModal.confirm(
+                'Are you sure you want to delete this product? This action cannot be undone.',
+                'Delete Product',
+                'warning'
+            );
+            
+            if (!confirmed) {
                 return;
             }
             
@@ -573,13 +579,13 @@
                 const result = await response.json();
                 
                 if (result.success) {
-                    alert(result.message);
+                    await CustomModal.alert(result.message, 'Success', 'success');
                     location.reload();
                 } else {
-                    alert('Error: ' + result.error);
+                    await CustomModal.alert('Error: ' + result.error, 'Error', 'error');
                 }
             } catch (error) {
-                alert('Network error. Please try again.');
+                await CustomModal.alert('Network error. Please try again.', 'Network Error', 'error');
             }
         }
     </script>
