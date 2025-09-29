@@ -9,6 +9,7 @@ const translations = {
         trainers: "Trainers",
         shop: "Store",
         membership: "Membership",
+        gallery: "Gallery",
         contact: "Contact",
         myCart: "My Cart",
         theme: "Theme",
@@ -105,6 +106,7 @@ const translations = {
         trainers: "ስልጠና ሰጪዎች",
         shop: "ሱቅ",
         membership: "አባልነት",
+        gallery: "ማቅረቢያ",
         contact: "ያግኙን",
         myCart: "የእኔ ጋሪ",
         theme: "ገጽታ",
@@ -265,26 +267,28 @@ function updateAllLanguageToggles(lang) {
 function applyTranslations(lang) {
     const t = translations[lang];
 
-    // Update navigation links
+    // Update navigation links (Desktop)
     const navLinks = document.querySelectorAll('.nav-links a');
-    if (navLinks.length >= 6) {
+    if (navLinks.length >= 7) {
         navLinks[0].textContent = t.home;
         navLinks[1].textContent = t.about;
         navLinks[2].textContent = t.trainers;
         navLinks[3].textContent = t.shop;
         navLinks[4].textContent = t.membership;
-        navLinks[5].textContent = t.contact;
+        navLinks[5].textContent = t.gallery;
+        navLinks[6].textContent = t.contact;
     }
 
     // Update mobile navigation links
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-content .nav-links a');
-    if (mobileNavLinks.length >= 6) {
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+    if (mobileNavLinks.length >= 7) {
         mobileNavLinks[0].textContent = t.home;
         mobileNavLinks[1].textContent = t.about;
         mobileNavLinks[2].textContent = t.trainers;
         mobileNavLinks[3].textContent = t.shop;
         mobileNavLinks[4].textContent = t.membership;
-        mobileNavLinks[5].textContent = t.contact;
+        mobileNavLinks[5].textContent = t.gallery;
+        mobileNavLinks[6].textContent = t.contact;
     }
 
     // Update header buttons
